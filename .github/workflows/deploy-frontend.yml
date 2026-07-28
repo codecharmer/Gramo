@@ -1,0 +1,119 @@
+name: Deploy Gramo frontend to VPS
+
+# The static Gatsby site at gramo.cafe. It builds against the headless
+# WordPress backend at cms.gramo.cafe, so it runs on three triggers:
+#   - a push that touches the frontend (or this workflow),
+#   - a repository_dispatch from WordPress when an editor publishes content
+#     (gramo-core's Deploy\RebuildTrigger sends event_type: content-updated),
+#   - manual dispatch.
+#
+# The frontend and the backend live in separate document roots
+# (public_html vs public_cms), so the --delete rsync here can never touch
+# WordPress core, wp-config.php, or uploads.
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'frontend/**'
+      - 'package.json'
+      - 'package-lock.json'
+  repository_dispatch:
+    types: [content-updated]
+  workflow_dispatch:
+
+concurrency:
+  group: frontend-deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  FRONTEND_DEPLOY_PATH: /home/gramo/public_html
+  WP_GRAPHQL_URL: https://cms.gramo.cafe/graphql
+  GATSBY_API_URL: https://cms.gramo.cafe/wp-json/gramo/v1
+  SITE_URL: https://gramo.cafe
+
+jobs:
+  build-and-deploy:
+    name: Build Gatsby and publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: frontend/.nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Wait for the WordPress GraphQL endpoint
+        run: |
+          for attempt in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$WP_GRAPHQL_URL" \
+              -H 'Content-Type: application/json' \
+              -d '{"query":"{ generalSettings { title } }"}' || echo 000)
+            if [ "$code" = "200" ]; then
+              echo "GraphQL is up (attempt $attempt)."
+              exit 0
+            fi
+            echo "GraphQL not ready yet (HTTP $code); retrying in 10s…"
+            sleep 10
+          done
+          echo "::error::The GraphQL endpoint never became available at $WP_GRAPHQL_URL"
+          exit 1
+
+      - name: Build the site
+        run: npm run build --workspace=frontend
+
+      - name: Verify the build produced pages
+        run: |
+          test -f frontend/public/index.html || { echo "::error::No index.html in the build output"; exit 1; }
+          echo "Built $(find frontend/public -name '*.html' | wc -l) HTML pages."
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Publish to the web root
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -p ${{ secrets.SSH_PORT }}" \
+            --exclude '.well-known/' \
+            --exclude 'cgi-bin/' \
+            --exclude '.htaccess' \
+            --exclude '.user.ini' \
+            frontend/public/ \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${FRONTEND_DEPLOY_PATH}/"
+
+      - name: Fix ownership and permissions
+        run: |
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -p ${{ secrets.SSH_PORT }} \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "chown -R gramo:gramo ${FRONTEND_DEPLOY_PATH} && \
+             find ${FRONTEND_DEPLOY_PATH} -type d -exec chmod 755 {} + && \
+             find ${FRONTEND_DEPLOY_PATH} -type f -exec chmod 644 {} +"
+
+      - name: Clear the cPanel NGINX cache
+        run: |
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -p ${{ secrets.SSH_PORT }} \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "/usr/local/cpanel/scripts/ea-nginx clear_cache gramo && \
+             /usr/local/cpanel/scripts/ea-nginx reload" || \
+            echo "Cache clear skipped (ea-nginx unavailable)."
+
+      - name: Smoke test the live site
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE_URL/" || echo 000)
+          echo "GET $SITE_URL/ → $code"
+          test "$code" = "200" || { echo "::error::The live site did not return 200"; exit 1; }
