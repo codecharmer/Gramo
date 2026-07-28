@@ -33,6 +33,25 @@ final class Redirects implements Bootable {
 
 	public function boot(): void {
 		add_action( 'template_redirect', array( $this, 'redirect_to_frontend' ), 1 );
+		add_filter( 'allowed_redirect_hosts', array( $this, 'allow_frontend_host' ) );
+	}
+
+	/**
+	 * Let wp_safe_redirect() send visitors to the static frontend.
+	 *
+	 * Without this the frontend host counts as external, and every redirect
+	 * below silently lands on wp-admin instead — wp_safe_redirect()'s
+	 * documented fallback.
+	 *
+	 * @param array<int,string> $hosts Allowed redirect hosts.
+	 * @return array<int,string>
+	 */
+	public function allow_frontend_host( array $hosts ): array {
+		$host = wp_parse_url( Cors::frontend_url(), PHP_URL_HOST );
+		if ( is_string( $host ) && '' !== $host ) {
+			$hosts[] = $host;
+		}
+		return $hosts;
 	}
 
 	public function redirect_to_frontend(): void {
