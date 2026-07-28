@@ -53,13 +53,6 @@ final class TwilioClient {
 			$account = $sid;
 		}
 
-		if ( '' === $sid || '' === $token ) {
-			return self::failure( __( 'Faltan las credenciales de Twilio.', 'gramo-core' ) );
-		}
-		if ( '' === $from && '' === $mssid ) {
-			return self::failure( __( 'No hay número remitente ni Messaging Service configurado.', 'gramo-core' ) );
-		}
-
 		$to = self::to_e164( trim( $to ) );
 		if ( '' === $to || '' === trim( $body ) ) {
 			return self::failure( __( 'Destinatario o mensaje vacío.', 'gramo-core' ) );
@@ -67,14 +60,22 @@ final class TwilioClient {
 
 		// Dry run: compose and report success without calling the provider, so
 		// the full order → notify → reply workflow (and the SMS log) can be
-		// exercised on local/staging or while provider onboarding is pending.
-		// Callers log the message either way, so nothing else changes.
+		// exercised on local/staging or while provider onboarding is pending —
+		// including before any Twilio credentials exist, which is why this
+		// short-circuit runs ahead of the credential checks.
 		if ( ! empty( $sms['dry_run'] ) ) {
 			return array(
 				'success' => true,
 				'sid'     => 'DRYRUN-' . substr( md5( $to . $body . (string) time() ), 0, 20 ),
 				'error'   => '',
 			);
+		}
+
+		if ( '' === $sid || '' === $token ) {
+			return self::failure( __( 'Faltan las credenciales de Twilio.', 'gramo-core' ) );
+		}
+		if ( '' === $from && '' === $mssid ) {
+			return self::failure( __( 'No hay número remitente ni Messaging Service configurado.', 'gramo-core' ) );
 		}
 
 		// Channel prefixing: WhatsApp uses the same Messages endpoint but both

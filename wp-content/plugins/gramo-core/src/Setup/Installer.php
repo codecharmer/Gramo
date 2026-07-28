@@ -125,6 +125,9 @@ final class Installer {
 		$report['menus']      = self::install_menus();
 		$report['wc_pages']   = self::set_woocommerce_pages();
 
+		// V2 content: bilingual page/journal pairs + structured CPTs + settings.
+		$report['v2'] = ContentSeeder::install_all( $force );
+
 		update_option( 'gramo_content_installed', 1 );
 		delete_option( 'gramo_needs_content_install' );
 		$report['messages'][] = 'Contenido marcado como instalado.';
@@ -770,7 +773,18 @@ final class Installer {
 			'categories' => 0,
 		);
 
-		$post_types = array( 'product', 'page', 'wp_navigation', 'attachment' );
+		$post_types = array(
+			'product',
+			'page',
+			'post',
+			'wp_navigation',
+			'attachment',
+			'gramo_location',
+			'gramo_menu_item',
+			'gramo_team',
+			'gramo_testimonial',
+			'gramo_event',
+		);
 		foreach ( $post_types as $type ) {
 			$meta_key = 'attachment' === $type ? MediaImporter::MARKER_META : self::MARKER_META;
 			$ids      = get_posts(
@@ -783,10 +797,16 @@ final class Installer {
 				'meta_value'      => '1',        // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 				)
 			);
+			$buckets  = array(
+				'product'       => 'products',
+				'page'          => 'pages',
+				'attachment'    => 'media',
+				'wp_navigation' => 'navigation',
+			);
+			$bucket   = $buckets[ $type ] ?? 'content';
 			foreach ( $ids as $id ) {
 				if ( wp_delete_post( (int) $id, true ) ) {
-					$bucket = 'product' === $type ? 'products' : ( 'page' === $type ? 'pages' : ( 'attachment' === $type ? 'media' : 'navigation' ) );
-					++$report[ $bucket ];
+					$report[ $bucket ] = ( $report[ $bucket ] ?? 0 ) + 1;
 				}
 			}
 		}

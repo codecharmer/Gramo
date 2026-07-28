@@ -53,6 +53,11 @@ final class Plugin {
 			// Content model (CPTs, taxonomy, schema meta, admin meta boxes).
 			Content\PostTypes::class,
 			Content\MetaBoxes::class,
+			Content\Blocks::class,
+			Content\Patterns::class,
+
+			// Bilingual translation pairs (pages + journal).
+			I18n\Translations::class,
 
 			// WooCommerce foundation.
 			Woo\Support::class,
@@ -70,12 +75,21 @@ final class Plugin {
 			// GraphQL exposure of the content model.
 			Graphql\Fields::class,
 
+			// Headless surface: block JSON, CORS, redirects, hardening, rebuilds.
+			Headless\EditorBlocks::class,
+			Headless\Cors::class,
+			Headless\Redirects::class,
+			Headless\Hardening::class,
+			Deploy\RebuildTrigger::class,
+
 			// SEO.
 			Seo\MetaTags::class,
 			Seo\SchemaGraph::class,
 
 			// REST + CLI.
 			Rest\Routes::class,
+			Rest\OrderController::class,
+			Rest\InquiryController::class,
 			Cli\Commands::class,
 
 			// Admin operations.

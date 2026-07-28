@@ -352,6 +352,10 @@ final class Settings implements Bootable {
 		$this->text_row( $g, 'announcement_en', __( 'Aviso (EN)', 'gramo-core' ), $v );
 		$this->text_row( $g, 'announcement_url', __( 'Aviso — enlace (URL)', 'gramo-core' ), $v, 'url' );
 
+		$this->text_row( $g, 'delivery_fee', __( 'Costo de envío local (MXN)', 'gramo-core' ), $v, 'number' );
+		$this->text_row( $g, 'delivery_free_over', __( 'Envío gratis a partir de (MXN)', 'gramo-core' ), $v, 'number' );
+		$this->help_row( __( 'Se aplica a pedidos con entrega a domicilio. Deja 0 para desactivar el costo o el umbral.', 'gramo-core' ) );
+
 		$this->text_row( $g, 'social_instagram', __( 'Instagram (URL)', 'gramo-core' ), $v, 'url' );
 		$this->text_row( $g, 'social_facebook', __( 'Facebook (URL)', 'gramo-core' ), $v, 'url' );
 		$this->text_row( $g, 'social_spotify', __( 'Spotify (URL)', 'gramo-core' ), $v, 'url' );

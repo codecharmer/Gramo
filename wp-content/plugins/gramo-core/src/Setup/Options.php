@@ -146,6 +146,9 @@ final class Options implements Bootable {
 				'social_spotify'       => '',
 				'social_linktree'      => '',
 				'whatsapp_community'   => '',
+				// Local delivery pricing for the pay-on-delivery checkout.
+				'delivery_fee'         => 0,
+				'delivery_free_over'   => 0,
 			),
 		);
 	}
@@ -391,6 +394,8 @@ final class Options implements Bootable {
 			'social_spotify'       => esc_url_raw( (string) ( $value['social_spotify'] ?? '' ) ),
 			'social_linktree'      => esc_url_raw( (string) ( $value['social_linktree'] ?? '' ) ),
 			'whatsapp_community'   => esc_url_raw( (string) ( $value['whatsapp_community'] ?? '' ) ),
+			'delivery_fee'         => max( 0, (float) ( $value['delivery_fee'] ?? 0 ) ),
+			'delivery_free_over'   => max( 0, (float) ( $value['delivery_free_over'] ?? 0 ) ),
 		);
 	}
 }
