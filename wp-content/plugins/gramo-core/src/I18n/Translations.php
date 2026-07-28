@@ -36,8 +36,14 @@ final class Translations implements Bootable {
 	/** Post types that participate in translation pairs. */
 	private const POST_TYPES = array( 'page', 'post' );
 
-	/** Term meta holding the English category name. */
+	/** Term meta holding the English term name. */
 	public const TERM_NAME_EN = '_gramo_name_en';
+
+	/** Taxonomies whose terms carry an English name alongside the Spanish one. */
+	private const BILINGUAL_TAXONOMIES = array( 'category', Schema::MENU_SECTION_TAX );
+
+	/** GraphQL types for those taxonomies. */
+	private const BILINGUAL_TERM_TYPES = array( 'Category', 'MenuSection' );
 
 	private const NONCE_ACTION = 'gramo_i18n_save';
 	private const NONCE_FIELD  = 'gramo_i18n_nonce';
@@ -56,11 +62,13 @@ final class Translations implements Bootable {
 		add_action( 'restrict_manage_posts', array( $this, 'render_locale_filter' ) );
 		add_action( 'pre_get_posts', array( $this, 'apply_locale_filter' ) );
 
-		// Bilingual journal categories.
-		add_action( 'category_add_form_fields', array( $this, 'render_term_name_en_add' ) );
-		add_action( 'category_edit_form_fields', array( $this, 'render_term_name_en_edit' ) );
-		add_action( 'created_category', array( $this, 'save_term_name_en' ) );
-		add_action( 'edited_category', array( $this, 'save_term_name_en' ) );
+		// Bilingual taxonomy names (journal categories + menu sections).
+		foreach ( self::BILINGUAL_TAXONOMIES as $taxonomy ) {
+			add_action( "{$taxonomy}_add_form_fields", array( $this, 'render_term_name_en_add' ) );
+			add_action( "{$taxonomy}_edit_form_fields", array( $this, 'render_term_name_en_edit' ) );
+			add_action( "created_{$taxonomy}", array( $this, 'save_term_name_en' ) );
+			add_action( "edited_{$taxonomy}", array( $this, 'save_term_name_en' ) );
+		}
 
 		add_action( 'graphql_register_types', array( $this, 'register_graphql' ) );
 	}
@@ -483,26 +491,28 @@ final class Translations implements Bootable {
 			);
 		}
 
-		register_graphql_field(
-			'Category',
-			'nameEn',
-			array(
-				'type'        => 'String',
-				'description' => __( 'Nombre de la categoría en inglés.', 'gramo-core' ),
-				'resolve'     => static function ( $term ): ?string {
-					$id = 0;
-					if ( is_object( $term ) ) {
-						if ( isset( $term->databaseId ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- WPGraphQL model property.
-							$id = (int) $term->databaseId; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- WPGraphQL model property.
-						} elseif ( isset( $term->term_id ) ) {
-							$id = (int) $term->term_id;
+		foreach ( self::BILINGUAL_TERM_TYPES as $term_type ) {
+			register_graphql_field(
+				$term_type,
+				'nameEn',
+				array(
+					'type'        => 'String',
+					'description' => __( 'Nombre del término en inglés.', 'gramo-core' ),
+					'resolve'     => static function ( $term ): ?string {
+						$id = 0;
+						if ( is_object( $term ) ) {
+							if ( isset( $term->databaseId ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- WPGraphQL model property.
+								$id = (int) $term->databaseId; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- WPGraphQL model property.
+							} elseif ( isset( $term->term_id ) ) {
+								$id = (int) $term->term_id;
+							}
 						}
-					}
-					$name = (string) get_term_meta( $id, self::TERM_NAME_EN, true );
-					return '' === $name ? null : $name;
-				},
-			)
-		);
+						$name = (string) get_term_meta( $id, self::TERM_NAME_EN, true );
+						return '' === $name ? null : $name;
+					},
+				)
+			);
+		}
 	}
 
 	/*

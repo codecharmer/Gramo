@@ -1,0 +1,206 @@
+@use '../styles/mixins' as mx;
+
+.board {
+	background: var(--gramo-board);
+	color: var(--gramo-cream);
+}
+
+.boardInner {
+	@include mx.wide-width;
+
+	padding-block: var(--space-4);
+}
+
+.eyebrow {
+	@include mx.caps-caption;
+
+	color: var(--gramo-bronze);
+	margin: 0 0 var(--space-1);
+}
+
+.title {
+	color: var(--gramo-cream);
+	font-size: var(--text-title);
+	margin: 0;
+}
+
+.neighborhood {
+	color: rgb(239 230 212 / 75%);
+	font-family: var(--font-serif-text);
+	font-style: italic;
+	margin: var(--space-1) 0 0;
+}
+
+.detail {
+	padding-block: var(--space-5);
+}
+
+.detailInner {
+	@include mx.wide-width;
+
+	align-items: start;
+	display: grid;
+	gap: var(--space-5);
+	grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+
+	@media (max-width: 860px) {
+		gap: var(--space-4);
+		grid-template-columns: 1fr;
+	}
+}
+
+.column {
+	min-width: 0;
+}
+
+.contact {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+.plate {
+	@include mx.plate;
+
+	margin: 0 0 var(--space-3);
+	padding: 0.65rem;
+}
+
+.address {
+	margin: 0 0 var(--space-2);
+	white-space: pre-line;
+}
+
+.contactLinks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+}
+
+.contactLink {
+	font-variant-numeric: tabular-nums;
+}
+
+.mapsLink {
+	@include mx.caps-caption;
+	@include mx.focus-ring;
+
+	color: var(--gramo-copper);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.sheetHeader {
+	@include mx.caps-caption;
+
+	border-bottom: var(--rule-strong);
+	font-family: var(--font-caption);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-2);
+	padding-bottom: var(--space-1);
+
+	&:not(:first-child) {
+		margin-top: var(--space-4);
+	}
+}
+
+.hours {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	margin: 0;
+}
+
+.hoursRow {
+	@include mx.dotted-leader;
+}
+
+.hoursDay {
+	@include mx.caps-caption;
+
+	color: var(--gramo-gray);
+}
+
+.hoursRange {
+	font-variant-numeric: tabular-nums;
+	margin: 0;
+}
+
+.hoursUnavailable {
+	color: var(--gramo-gray);
+	margin: 0;
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1) var(--space-2);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.chip {
+	@include mx.caps-caption;
+
+	border: 1px solid var(--gramo-gray);
+	padding: 0.3rem 0.6rem;
+}
+
+.description {
+	margin: var(--space-4) 0 0;
+	white-space: pre-line;
+}
+
+.gallery {
+	padding-block: var(--space-4);
+}
+
+.galleryInner {
+	@include mx.wide-width;
+
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.galleryPlate {
+	@include mx.plate;
+
+	margin: 0;
+	padding: 0.65rem;
+}
+
+.galleryCaption {
+	@include mx.caps-caption;
+
+	border-top: var(--rule);
+	color: var(--gramo-gray);
+	margin-top: 0.6rem;
+	padding: 0.5rem 0.25rem 0.1rem;
+}
+
+.guide {
+	padding-block: var(--space-4);
+}
+
+.guideInner {
+	@include mx.content-width;
+}
+
+.guideHeader {
+	@include mx.caps-caption;
+
+	border-bottom: var(--rule-strong);
+	font-family: var(--font-caption);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-2);
+	padding-bottom: var(--space-1);
+}
+
+.guideBody {
+	white-space: pre-line;
+}

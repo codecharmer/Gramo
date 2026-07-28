@@ -1,0 +1,85 @@
+@use '../styles/mixins' as mx;
+
+.card {
+	@include mx.plate;
+	@include mx.plate-hover;
+
+	display: flex;
+	flex-direction: column;
+	padding: 0.65rem;
+	position: relative;
+}
+
+.image {
+	border-bottom: var(--rule);
+	margin-bottom: var(--space-2);
+}
+
+.imagePlaceholder {
+	aspect-ratio: 4 / 3;
+	background: var(--gramo-paper);
+	border-bottom: var(--rule);
+	margin-bottom: var(--space-2);
+}
+
+.body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding: 0 0.35rem 0.5rem;
+}
+
+.city {
+	@include mx.caps-caption;
+
+	margin: 0 0 var(--space-1);
+}
+
+.olive {
+	color: var(--gramo-olive);
+}
+
+.bronze {
+	color: var(--gramo-bronze);
+}
+
+.name {
+	font-size: var(--text-subtitle);
+	margin: 0 0 var(--space-1);
+}
+
+// Stretched link: the whole plate is clickable; the maps link floats above.
+.link {
+	@include mx.focus-ring;
+
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		inset: 0;
+		position: absolute;
+	}
+}
+
+.address {
+	color: var(--gramo-gray);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-2);
+	white-space: pre-line;
+}
+
+.mapsLink {
+	@include mx.caps-caption;
+	@include mx.focus-ring;
+
+	color: var(--gramo-copper);
+	margin-top: auto;
+	position: relative;
+	text-decoration: none;
+	width: fit-content;
+	z-index: 1;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

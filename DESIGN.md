@@ -4,121 +4,113 @@
 
 ## Direction contract
 
-**THESIS:** Gramo's craft is measurable — origin, altitude, process, roast, eight
-intervened spaces — so the site draws its proof as hand-inked data portraits
-(the Du Bois 1900 grammar) instead of the category's latte-art hero + three-card
-grid, which it refuses.
+**THESIS: La Galería.** Gramo's own label art — the matte-black bags carrying
+hand-illustrated poster work per lot — *is* the artwork. The site is the gallery
+that hangs it: warm-black walls, pools of gallery light, museum wall labels, and
+nothing else competing. It refuses the category's cream-paper-and-serif café
+template, and it refuses decorating over the brand: the walls stay quiet so the
+art can be loud.
 
-**OWN-WORLD:** Aged ivory board and espresso-black inked fields; flat hand-laid
-chart pigments — walnut, muted olive, bronze, one copper accent; engraved-era
-serif display over tracked small-caps grotesk captions; every section opens with
-a chart-form invented for its question (altitude spirals, intervention maps,
-origin-to-cup lines); photography mounted as captioned archival plates, never
-full-bleed bleached heroes.
+**OWN-WORLD:** Warm near-black walls (`#141210`, the bags' own black) with bone
+type and soft elliptical light pools; daylight rooms in warm bone (`#F1EDE4`)
+for reading surfaces (journal, about, menu). Display type in a heavy rounded
+geometric sans that echoes the GRAMO wordmark's roundness; body in a neutral
+grotesk; captions and wall labels in small tracked caps. The only site-owned
+accent is brass (`#B08A54`); saturated color enters **only inside the artwork
+photography** — never as a page field, never as decoration.
 
-**STORY:** A visitor understands within one viewport that Gramo is a specialty
-roaster with real data behind every bag, believes it because the numbers are
-drawn like art, and acts — explores the coffee or visits a café.
+**STORY:** A visitor lands in a dark room with one work lit — a Gramo bag,
+photographed as an object — reads its wall label (origin, process, notes,
+price), understands instantly that this is a roaster with real craft and real
+personality, and moves to the shop or to a café.
 
-**FIRST VIEWPORT (home):** Espresso-black board, full width. Left: GRAMO stamped
-in cream serif caps with the tagline "Intervenimos espacios en donde hace falta
-buen café" and two actions — "Explorar café" (copper plate button), "Visita un
-café" (outlined). Right: the brand's own data portrait — eight intervened
-spaces as a stepped square map (Cuernavaca/CDMX), with a bronze count-line of
-origins in the catalog. Below the fold the board gives way to ivory paper.
+**FIRST VIEWPORT (home):** Warm-black room, full height. The GRAMO wordmark small
+at top-left in bone. Center-right: one bag lit by a soft elliptical pool, scaled
+large. Left: a short display line ("Intervenimos espacios en donde hace falta
+buen café") with a wall label beneath it — tracked caps eyebrow, one line of
+data — and two actions: "Explorar café" (bone plate, black caps) and "Visita un
+café" (hairline bone outline).
 
-**FORM:** Coffee Data Portraits — user-chosen fused challenger
-(dubois-data-portraits, seed key c25057d1) over the assigned Roaster's Manifest;
-staging: portrait-per-section editorial, no filament zoom.
+**FORM:** La Galería — user-chosen (2026-07-28) after rejecting both the
+data-portrait concept and the played-straight canon. Grounded in the brand's own
+assets: the 2024 wordmark and the label-art bag photography.
 
-## Palette (tokens are provisional until the first build settles them)
+## Palette
 
 | Token | Value | Role |
 |---|---|---|
-| `--gramo-paper` | `#F2EBDD` | Ivory board — page ground |
-| `--gramo-paper-deep` | `#E7DCC8` | Plate/panel fill on paper |
-| `--gramo-board` | `#191410` | Espresso-black inked board (hero fields, footer) |
-| `--gramo-ink` | `#241B14` | Text on paper |
-| `--gramo-cream` | `#EFE6D4` | Text/lines on board |
-| `--gramo-walnut` | `#6E4A2F` | Chart pigment 1 |
-| `--gramo-olive` | `#67653F` | Chart pigment 2 |
-| `--gramo-bronze` | `#96713D` | Chart pigment 3 / secondary accent |
-| `--gramo-copper` | `#B4633A` | The one hot pigment — primary action, active states |
-| `--gramo-gray` | `#8B7F6E` | Warm gray — rules, captions, disabled |
+| `--gramo-wall` | `#141210` | Warm black — gallery walls, default ground |
+| `--gramo-wall-deep` | `#0D0B0A` | Deeper black — vignette, footer, image mats |
+| `--gramo-bone` | `#F1EDE4` | Bone — type on walls, daylight-room ground |
+| `--gramo-bone-dim` | `rgb(241 237 228 / 62%)` | Secondary type on walls |
+| `--gramo-ink` | `#1A1714` | Type on bone (daylight rooms) |
+| `--gramo-brass` | `#B08A54` | The one site accent — links, focus, active |
+| `--gramo-gray` | `#8A8177` | Hairlines, tertiary type |
+| `--art-violet` | `#7B3FA0` | Artwork key (category dot only) |
+| `--art-marigold` | `#E8A33D` | Artwork key |
+| `--art-teal` | `#2E8F8A` | Artwork key |
+| `--art-signal` | `#C7422F` | Artwork key |
 
-Color strategy: full palette, four named chart pigments laid flat at region
-scale (a hero board, a pigment-filled chart block), never bright saturated
-hues, never gradients. Light ivory ground overall (morning-daylight café use);
-the espresso board is a field within it, not a dark mode.
+Rules: the four artwork keys appear only as 8px category dots or 2px underlines
+— never as fills, bands, or backgrounds. No gradients except the gallery light
+pool (a single soft radial, ≤22% bone). Rooms alternate wall → daylight → wall;
+the page always closes on wall black.
 
 ## Typography
 
-- **Display serif:** Libre Caslon Display / Libre Caslon Text (italic for
-  editorial accents) — Caslon is period-true to the 1900 print world and reads
-  quiet-luxury without the AI-default faces (Fraunces/Playfair/Cormorant are
-  banned here).
-- **Body + UI grotesk:** Archivo (regular/medium/semibold).
-- **Data labels + captions:** Archivo Narrow, uppercase, tracked `0.08em` —
-  the silkscreen/caption voice of the chart grammar. Tabular numerals for data.
-- Self-hosted woff2 only, `font-display: swap`, latin + latin-ext subsets.
-- Scale: display steps are large and few (fluid clamp); captions small and
-  tracked; body 17–18px equivalent, generous leading.
+- **Display:** Figtree Black / ExtraBold — rounded geometric, echoing the GRAMO
+  wordmark's terminals. Tight leading (1.05), `text-wrap: balance`, sizes large
+  and few. Never italic.
+- **Body:** Archivo 400/500 — neutral grotesk, ~17px, leading 1.65, measure 65ch.
+- **Wall labels / captions:** Archivo 600, uppercase, tracked `0.1em`,
+  12–13px — the museum-label voice used for eyebrows, data rows, nav, buttons.
+- **Data:** Archivo tabular numerals for prices, altitudes, hours.
+- Self-hosted woff2 via Fontsource; only the weights above are loaded.
+
+## The wall label (signature device)
+
+Every work — coffee, café, journal entry — carries a wall label: a bone hairline
+box or bottom-ruled block with tracked-caps title, then rows of `LABEL · value`
+in caps/tabular pairs. This is the site's one repeated ornament and it replaces
+generic cards. Coffee label rows: ORIGEN · PROCESO · ALTITUD · NOTAS · PRECIO.
+Café label rows: DIRECCIÓN · HORARIO · TELÉFONO.
 
 ## Composition rules
 
-- Sections are **portraits**: each opens with its question set as a serif
-  headline + a small-caps caption line, then the chart-form or plate that
-  answers it. One idea per portrait; generous board margins (the page breathes
-  like a mounted exhibition).
-- Charts invent their form per question and are drawn as SVG with hand-inked
-  weight (2–3px strokes, slightly imperfect joins, flat pigment fills, small
-  tracked caption labels + thin leader lines). Never a charting library look.
-- Photography = **plates**: mounted with a paper edge, small-caps caption and
-  thin rule beneath; duotone-warm treatment acceptable; no full-bleed washed
-  hero photography.
-- Bilingual grammar: ES leads at text size, EN never shown simultaneously
-  (separate routes); data labels stay ES on both locales only where they are
-  proper names (tasting notes translate).
-- Tables (menu, hours) use the stock-sheet voice: Archivo Narrow caps headers,
-  dotted leaders, tabular numerals, pigment squares as section keys.
-
-## Components
-
-- Buttons: rectangular "inked plates" — copper fill with cream caps
-  (primary), 1.5px ink outline (secondary); pressed = ink fill. No rounded
-  pills, no shadows-as-decoration.
-- Cards (coffee/journal/location): paper plates with a pigment key square, the
-  serif title, small-caps data rows (origin · altitude · process), price in
-  tabular numerals. Hover: plate lifts 2px with a hard offset ink shadow
-  (printed-board depth, not blur).
-- Accordion (FAQ): ledger rows with a plus that rotates to ×; rules stay 1px ink.
-- Forms: underlined fields on paper with small-caps labels; focus = copper
-  underline thickening. Errors in copper, never red.
-- Nav: thin board strip — wordmark left (serif caps), small-caps links, a
-  copper cart count square. Language switch: `ES · EN` small caps.
+- **One work per room.** Sections are full-viewport-ish rooms with a single
+  subject; padding starts at 7rem desktop / 4rem mobile. Never a three-card grid
+  of equal weight where a hang would do.
+- **Spotlight, not full-bleed.** Product photography sits centered on the wall
+  inside a light pool with generous margin; café photography may go wide but
+  keeps a bone hairline mat.
+- **Daylight rooms** (journal body, about, menu, forms) invert to bone ground
+  with ink type for long reading; they open and close with a hairline rule.
+- Menu keeps café-menu grammar in the daylight room: caps section headers,
+  hairline rows, dotted leaders, tabular prices.
+- The wordmark is used as an image asset (`logo-bone.png` / `logo-ink.png`),
+  never re-typed in a substitute face.
 
 ## Motion
 
-- Signature: charts ink themselves once on first scroll into view (SVG
-  stroke-draw, 600–900ms, ease-out), then rest. Stats count up once.
-- Everything else: fades/translate ≤16px; hover lifts. GSAP lazy-loaded, fully
-  disabled under `prefers-reduced-motion` (content always visible without JS).
-- No parallax deeper than 8px; no looping ambient animation.
+- Signature: on first scroll into a room, the light pool fades up (600ms) and
+  the work scales 1.03 → 1 (900ms, ease-out) with its label rising 8px. Once.
+- Hover: bone plate buttons invert; images lift ≤2px; 180ms.
+- GSAP lazy-loaded, gated on `prefers-reduced-motion` (static lit state, all
+  content visible without JS). No parallax beyond 8px, no ambient loops.
 
 ## Prohibitions
 
-- No bright saturated hues, no gradients, no glassmorphism, no rounded-pill UI.
-- No full-bleed washed hero photo with centered white serif (the refused rut).
-- No chart-library defaults (gridlines-on-white, legend chips); every data
-  graphic is drawn in the world's inked grammar.
-- No cream-and-terracotta AI-default drift: copper is `#B4633A` used sparingly
-  as action/accent, never a page wash.
-- The board texture stays subtle (paper grain ≤4% noise); never skeuomorphic
-  torn edges or coffee-stain clichés.
+- No cream-paper-and-serif café template; no serif display anywhere.
+- No saturated color as page fields, bands, or gradients — artwork only.
+- No paper grain, hard offset shadows, tag/manifest props, or chart-portrait
+  grammar (all rejected directions).
+- No rounded-pill buttons, glassmorphism, or drop shadows as decoration.
+- No stock photography; imagery is Gramo's own label art, bags, and rooms.
 
 ## Accessibility commitments
 
-Contrast: ink on paper 12+:1; cream on board 11+:1; copper on paper ≥4.5:1 for
-text-size uses (buttons carry cream text on copper ≥4.5:1). Focus states: 2px
-copper outline offset 2px. All charts carry text equivalents (the data is HTML
-tables or captioned lists under the SVG). WCAG AA + reduced motion honored.
+Bone on wall ≥ 13:1; ink on bone ≥ 13:1; brass reserved for ≥4.5:1 uses. Focus:
+2px brass outline, 2px offset, always visible on the dark ground. Light pools
+are decorative only — never the sole cue. Native `details/summary` accordions,
+semantic landmarks, hreflang + JSON-LD per the SEO layer, reduced motion fully
+honored.

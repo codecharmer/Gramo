@@ -680,29 +680,58 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     journal: 'journalIndex',
   };
 
+  // The EN peer of the Spanish front page is the English front page: WordPress
+  // only knows one `page_on_front`, so the pairing decides the EN root.
+  const esFront = allGramoPage.nodes.find(
+    (n) => Boolean(n.isFront) && (n.locale ?? 'es') !== 'en'
+  );
+  const enFrontSlug: string | null = esFront?.translation?.slug ?? null;
+
+  /** Paths claimed by real WordPress pages, so generated routes never collide. */
+  const createdPaths = new Set<string>();
+
   // ---- WP pages (block-composed). -----------------------------------------
   for (const node of allGramoPage.nodes) {
     const locale = node.locale === 'en' ? 'en' : 'es';
-    const isFront = Boolean(node.isFront);
+    const isFront =
+      Boolean(node.isFront) || (locale === 'en' && enFrontSlug !== null && node.slug === enFrontSlug);
     const base = locale === 'en' ? '/en/' : '/';
     const pagePath = isFront ? base : `${base}${node.slug}/`;
+    const peerIsFront =
+      node.translation !== null &&
+      ((Boolean(node.isFront) && locale === 'es') ||
+        (locale === 'en' && enFrontSlug !== null && node.slug === enFrontSlug));
     const translationPath = node.translation
-      ? node.translation.locale === 'en'
-        ? node.translation.slug
+      ? peerIsFront
+        ? locale === 'es'
+          ? '/en/'
+          : '/'
+        : node.translation.locale === 'en'
           ? `/en/${node.translation.slug}/`
-          : '/en/'
-        : `/${node.translation.slug}/`
+          : `/${node.translation.slug}/`
       : null;
 
     const templateKey = TEMPLATE_SLUGS[String(node.slug)] ?? 'page';
 
+    createdPaths.add(pagePath);
     createPage({
       path: pagePath,
       component: templates[templateKey],
+      context: { databaseId: node.databaseId, locale, translationPath },
+    });
+  }
+
+  // ---- Journal index: generated unless an editor made a WP page for it. ----
+  for (const locale of ['es', 'en'] as const) {
+    const journalPath = STATIC_ROUTES.journal[locale];
+    if (createdPaths.has(journalPath)) continue;
+    createPage({
+      path: journalPath,
+      component: templates.journalIndex,
       context: {
-        databaseId: node.databaseId,
+        databaseId: 0,
         locale,
-        translationPath: isFront && node.translation ? (locale === 'es' ? '/en/' : '/') : translationPath,
+        translationPath: STATIC_ROUTES.journal[locale === 'es' ? 'en' : 'es'],
       },
     });
   }

@@ -1,0 +1,72 @@
+@use '../styles/mixins' as mx;
+
+.header {
+	padding-block: var(--space-5) var(--space-3);
+}
+
+.headerInner {
+	@include mx.content-width;
+}
+
+.category {
+	@include mx.caps-caption;
+
+	color: var(--gramo-bronze);
+	margin: 0 0 var(--space-1);
+}
+
+.title {
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-2);
+	text-wrap: balance;
+}
+
+.meta {
+	@include mx.caps-caption;
+
+	border-top: var(--rule);
+	color: var(--gramo-gray);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: 0;
+	padding-top: var(--space-1);
+	width: fit-content;
+}
+
+.plateWrap {
+	@include mx.content-width;
+
+	margin-bottom: var(--space-4);
+}
+
+.plate {
+	@include mx.plate;
+
+	margin: 0;
+	padding: 0.65rem;
+}
+
+.body {
+	padding-bottom: var(--space-4);
+}
+
+.related {
+	border-top: var(--rule);
+	padding-block: var(--space-5);
+}
+
+.relatedInner {
+	@include mx.wide-width;
+}
+
+.relatedHeading {
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-4);
+}
+
+.relatedGrid {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

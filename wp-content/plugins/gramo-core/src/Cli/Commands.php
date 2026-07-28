@@ -286,7 +286,7 @@ final class Commands implements Bootable {
 	 *
 	 * ## OPTIONS
 	 *
-	 * --yes
+	 * [--yes]
 	 * : Required confirmation. Without it the command aborts.
 	 *
 	 * ## EXAMPLES

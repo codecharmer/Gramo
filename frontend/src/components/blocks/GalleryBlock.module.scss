@@ -1,0 +1,53 @@
+@use '../../styles/mixins' as mx;
+
+.gallery {
+	padding-block: var(--space-5);
+}
+
+.items {
+	@include mx.wide-width;
+}
+
+.grid {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(var(--gallery-columns, 3), minmax(0, 1fr));
+
+	@media (max-width: 860px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@media (max-width: 560px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.strip {
+	display: flex;
+	gap: var(--space-3);
+	overflow-x: auto;
+	padding-bottom: var(--space-2);
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+
+	.plate {
+		flex: 0 0 clamp(16rem, 40vw, 24rem);
+		scroll-snap-align: start;
+	}
+}
+
+.plate {
+	@include mx.plate;
+
+	margin: 0;
+	padding: 0.65rem;
+}
+
+.caption {
+	@include mx.caps-caption;
+
+	border-top: var(--rule);
+	color: var(--gramo-gray);
+	margin-top: 0.6rem;
+	padding: 0.5rem 0.25rem 0.1rem;
+}

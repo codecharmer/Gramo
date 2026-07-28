@@ -1,5 +1,7 @@
-// Shared mixins for the Coffee Data Portraits world.
+// Shared mixins — La Galería.
 
+/// The museum wall-label voice: tracked caps used for eyebrows, data rows,
+/// nav, and buttons.
 @mixin caps-caption {
 	font-family: var(--font-caption);
 	font-size: var(--text-caption);
@@ -8,28 +10,60 @@
 	text-transform: uppercase;
 }
 
-@mixin display-serif {
+/// Display type: heavy rounded geometric, echoing the GRAMO wordmark.
+@mixin display-type {
 	font-family: var(--font-display);
-	font-weight: 400;
+	font-weight: 800;
+	letter-spacing: var(--tracking-display);
 	line-height: var(--leading-tight);
-	letter-spacing: -0.01em;
 }
 
+/// Legacy alias — older components call this name.
+@mixin display-serif {
+	@include display-type;
+}
+
+/// A dark gallery room: warm-black wall with a soft light pool behind content.
+@mixin wall-room {
+	background-color: var(--gramo-wall);
+	color: var(--gramo-bone);
+	position: relative;
+
+	&::before {
+		background: var(--light-pool);
+		content: '';
+		inset: 0;
+		pointer-events: none;
+		position: absolute;
+	}
+
+	> * {
+		position: relative;
+	}
+}
+
+/// A daylight room: bone ground for long reading.
+@mixin daylight-room {
+	background-color: var(--gramo-bone);
+	color: var(--gramo-ink);
+}
+
+/// A framed work on the wall: hairline mat, no decorative shadow.
 @mixin plate {
-	background: var(--gramo-paper-deep);
-	border: var(--rule-strong);
-	box-shadow: var(--shadow-plate);
+	background: transparent;
+	border: var(--hairline-bone);
+	box-shadow: none;
 }
 
 @mixin plate-hover {
 	@media (prefers-reduced-motion: no-preference) {
 		transition:
 			transform var(--duration-ui) var(--ease-ink),
-			box-shadow var(--duration-ui) var(--ease-ink);
+			border-color var(--duration-ui) var(--ease-ink);
 
 		&:hover {
-			box-shadow: var(--shadow-plate-hover);
-			transform: translate(-2px, -2px);
+			border-color: var(--gramo-brass);
+			transform: translateY(-2px);
 		}
 	}
 }
@@ -48,11 +82,12 @@
 
 @mixin focus-ring {
 	&:focus-visible {
-		outline: 2px solid var(--gramo-copper);
+		outline: 2px solid var(--gramo-brass);
 		outline-offset: 2px;
 	}
 }
 
+/// Menu/stock rows: name … price with a dotted leader between.
 @mixin dotted-leader {
 	align-items: baseline;
 	display: flex;
@@ -68,5 +103,46 @@
 
 	> :last-child {
 		order: 3;
+	}
+}
+
+/// Primary action: bone plate that inverts on hover.
+@mixin plate-button {
+	@include caps-caption;
+	@include focus-ring;
+
+	background: var(--gramo-bone);
+	border: 1px solid var(--gramo-bone);
+	color: var(--gramo-wall);
+	display: inline-block;
+	padding: 0.95rem 1.9rem;
+	text-decoration: none;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition:
+			background var(--duration-ui) var(--ease-ink),
+			color var(--duration-ui) var(--ease-ink);
+	}
+
+	&:hover {
+		background: transparent;
+		color: var(--gramo-bone);
+	}
+}
+
+/// Secondary action on a wall: hairline outline.
+@mixin outline-button {
+	@include caps-caption;
+	@include focus-ring;
+
+	background: transparent;
+	border: 1px solid rgb(241 237 228 / 45%);
+	color: var(--gramo-bone);
+	display: inline-block;
+	padding: 0.95rem 1.9rem;
+	text-decoration: none;
+
+	&:hover {
+		border-color: var(--gramo-bone);
 	}
 }

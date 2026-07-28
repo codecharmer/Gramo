@@ -1,0 +1,21 @@
+@use '../styles/mixins' as mx;
+
+.board {
+	background: var(--gramo-board);
+	color: var(--gramo-cream);
+}
+
+.boardInner {
+	@include mx.content-width;
+
+	padding-block: var(--space-4);
+}
+
+.title {
+	@include mx.caps-caption;
+
+	color: var(--gramo-cream);
+	font-family: var(--font-caption);
+	font-size: var(--text-subtitle);
+	margin: 0;
+}

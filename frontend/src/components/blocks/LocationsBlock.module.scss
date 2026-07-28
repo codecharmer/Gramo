@@ -1,0 +1,22 @@
+@use '../../styles/mixins' as mx;
+
+.locations {
+	padding-block: var(--space-6);
+}
+
+.inner {
+	@include mx.wide-width;
+}
+
+.heading {
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-4);
+	max-width: 22ch;
+	text-wrap: balance;
+}
+
+.grid {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

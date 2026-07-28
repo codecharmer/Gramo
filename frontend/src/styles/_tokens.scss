@@ -1,63 +1,76 @@
-// Gramo design tokens — the Coffee Data Portraits world (see /DESIGN.md).
-// Aged ivory board + espresso ink, four flat chart pigments, copper action.
+// Gramo design tokens — La Galería (see /DESIGN.md).
+// Warm-black gallery walls, bone type, brass accent. Saturated color lives
+// only inside the artwork photography, never in the interface.
 
 :root {
-	// Grounds.
-	--gramo-paper: #f2ebdd;
-	--gramo-paper-deep: #e7dcc8;
-	--gramo-board: #191410;
+	// Walls + rooms.
+	--gramo-wall: #141210;
+	--gramo-wall-deep: #0d0b0a;
+	--gramo-bone: #f1ede4;
+	--gramo-bone-dim: rgb(241 237 228 / 62%);
+	--gramo-bone-faint: rgb(241 237 228 / 22%);
+	--gramo-ink: #1a1714;
+	--gramo-ink-dim: rgb(26 23 20 / 64%);
 
-	// Ink.
-	--gramo-ink: #241b14;
-	--gramo-cream: #efe6d4;
+	// The one interface accent.
+	--gramo-brass: #b08a54;
+	--gramo-gray: #8a8177;
 
-	// Chart pigments (flat, hand-laid).
-	--gramo-walnut: #6e4a2f;
-	--gramo-olive: #67653f;
-	--gramo-bronze: #96713d;
-	--gramo-copper: #b4633a;
-	--gramo-gray: #8b7f6e;
+	// Artwork keys — 8px dots and 2px underlines only.
+	--art-violet: #7b3fa0;
+	--art-marigold: #e8a33d;
+	--art-teal: #2e8f8a;
+	--art-signal: #c7422f;
 
 	// Type.
-	--font-display: 'Libre Caslon Display', 'Libre Caslon Text', georgia, serif;
-	--font-serif-text: 'Libre Caslon Text', georgia, serif;
+	--font-display: 'Figtree', system-ui, -apple-system, sans-serif;
 	--font-body: 'Archivo', system-ui, -apple-system, sans-serif;
-	--font-caption: 'Archivo Narrow', 'Archivo', system-ui, sans-serif;
+	--font-caption: 'Archivo', system-ui, sans-serif;
+	--font-data: 'Archivo', system-ui, sans-serif;
 
-	// Type scale (fluid).
-	--text-display: clamp(2.6rem, 1.4rem + 5vw, 5.4rem);
-	--text-title: clamp(1.9rem, 1.2rem + 2.4vw, 3.1rem);
-	--text-subtitle: clamp(1.35rem, 1.05rem + 1vw, 1.8rem);
+	// Scale — large and few.
+	--text-display: clamp(2.7rem, 1.2rem + 6vw, 6rem);
+	--text-title: clamp(1.9rem, 1.15rem + 2.6vw, 3.2rem);
+	--text-subtitle: clamp(1.25rem, 1.02rem + 0.9vw, 1.6rem);
 	--text-body: 1.0625rem;
 	--text-caption: 0.8125rem;
 	--text-small: 0.75rem;
 
-	--leading-tight: 1.08;
+	--leading-tight: 1.05;
 	--leading-body: 1.65;
-	--tracking-caps: 0.08em;
+	--tracking-caps: 0.1em;
+	--tracking-display: -0.02em;
 
-	// Rhythm.
+	// Rhythm — rooms breathe.
 	--space-1: 0.5rem;
 	--space-2: 1rem;
 	--space-3: 1.5rem;
 	--space-4: 2.5rem;
 	--space-5: 4rem;
-	--space-6: 6.5rem;
-	--space-7: 9rem;
+	--space-6: 7rem;
+	--space-7: 10rem;
 
 	// Layout.
-	--width-content: 44rem;
-	--width-wide: 74rem;
+	--width-content: 42rem;
+	--width-wide: 78rem;
 	--gutter: clamp(1.25rem, 4vw, 3rem);
 
-	// Lines + depth (printed board, not blur).
-	--rule: 1px solid rgb(36 27 20 / 28%);
-	--rule-strong: 1.5px solid var(--gramo-ink);
-	--shadow-plate: 4px 4px 0 rgb(36 27 20 / 14%);
-	--shadow-plate-hover: 6px 6px 0 rgb(36 27 20 / 18%);
+	// Hairlines + light.
+	--hairline-bone: 1px solid rgb(241 237 228 / 22%);
+	--hairline-ink: 1px solid rgb(26 23 20 / 18%);
+	--rule: var(--hairline-ink);
+	--rule-strong: 1px solid rgb(26 23 20 / 38%);
+	--light-pool: radial-gradient(
+		ellipse 60% 55% at 50% 45%,
+		rgb(241 237 228 / 13%) 0%,
+		rgb(241 237 228 / 5%) 45%,
+		transparent 78%
+	);
+	--shadow-plate: none;
+	--shadow-plate-hover: 0 18px 40px -22px rgb(0 0 0 / 65%);
 
 	// Motion.
-	--ease-ink: cubic-bezier(0.25, 0.1, 0.25, 1);
-	--duration-draw: 800ms;
+	--ease-ink: cubic-bezier(0.22, 0.61, 0.36, 1);
+	--duration-draw: 900ms;
 	--duration-ui: 180ms;
 }

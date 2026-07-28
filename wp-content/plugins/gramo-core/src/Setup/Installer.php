@@ -41,30 +41,31 @@ final class Installer {
 	 * The three product categories the storefront is organised around,
 	 * slug => definition.
 	 *
-	 * Consolidated from the original seven (brand-brief §5): the category tiles
-	 * and the footer link to these slugs directly, so they have to be the ones
-	 * the seeder creates. See LEGACY_CATEGORIES for the previous set.
+	 * Gramo's catalogue: origin coffees, the monthly subscriptions, and the
+	 * small non-coffee pantry (matcha). The category tiles and the footer link
+	 * to these slugs directly, so they have to be the ones the seeder creates.
+	 * See LEGACY_CATEGORIES for the previous (bakery-era) set.
 	 *
 	 * @var array<string,array{name:string,description:string}>
 	 */
 	private const CATEGORIES = array(
-		'pan-rustico' => array(
-			'name'        => 'Pan rústico',
-			'description' => 'Hogazas y panes de masa madre de fermentación lenta.',
+		'cafe-en-grano' => array(
+			'name'        => 'Café en grano',
+			'description' => 'Cafés de origen tostados por nuestro sello y tostadores invitados.',
 		),
-		'pan-dulce'   => array(
-			'name'        => 'Pan dulce',
-			'description' => 'Bollería, galletas y pan dulce hecho a mano.',
+		'suscripciones' => array(
+			'name'        => 'Suscripciones',
+			'description' => 'Café en casa cada mes: orígenes en rotación y sorpresas de la casa.',
 		),
-		'varios'      => array(
-			'name'        => 'Varios',
-			'description' => 'Despensa de la casa: pestos, granola y más.',
+		'otros'         => array(
+			'name'        => 'Matcha y más',
+			'description' => 'Lo demás que pasa por la barra: matcha de Japón y despensa de la casa.',
 		),
 	);
 
 	/**
-	 * Categories seeded before the catalogue was consolidated, each mapped to
-	 * its replacement.
+	 * Categories seeded before the catalogue moved to the Gramo Café taxonomy,
+	 * each mapped to its replacement.
 	 *
 	 * Kept for two reasons: an install seeded with the old taxonomy can be
 	 * migrated in place without losing product assignments, and uninstall can
@@ -74,13 +75,16 @@ final class Installer {
 	 * @var array<string,string>
 	 */
 	private const LEGACY_CATEGORIES = array(
-		'panes-de-masa-madre' => 'pan-rustico',
-		'bolleria-croissants' => 'pan-dulce',
-		'dulces-postres'      => 'pan-dulce',
-		'galletas'            => 'pan-dulce',
-		'pasteles'            => 'pan-dulce',
-		'cafe-bebidas'        => 'varios',
-		'cajas-regalo'        => 'varios',
+		'pan-rustico'         => 'cafe-en-grano',
+		'pan-dulce'           => 'otros',
+		'varios'              => 'otros',
+		'panes-de-masa-madre' => 'cafe-en-grano',
+		'bolleria-croissants' => 'otros',
+		'dulces-postres'      => 'otros',
+		'galletas'            => 'otros',
+		'pasteles'            => 'otros',
+		'cafe-bebidas'        => 'cafe-en-grano',
+		'cajas-regalo'        => 'otros',
 	);
 
 	/**
@@ -437,6 +441,10 @@ final class Installer {
 		update_post_meta( $id, self::MARKER_META, 1 );
 		update_post_meta( $id, self::META_DESC, sanitize_text_field( (string) ( $def['meta_description'] ?? '' ) ) );
 		update_post_meta( $id, self::SEO_SHORT, sanitize_text_field( (string) ( $def['seo_short'] ?? '' ) ) );
+
+		// Coffee sheet (origin, process, tasting notes…): the entry's `fields`
+		// ride the same schema pipeline the structured CPTs use.
+		ContentSeeder::apply_product_fields( (int) $id, (array) ( $def['fields'] ?? array() ) );
 
 		if ( ! empty( $def['price_is_estimate'] ) ) {
 			update_post_meta( $id, self::PRICE_ESTIMATE_META, 1 );

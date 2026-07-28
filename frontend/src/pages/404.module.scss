@@ -1,0 +1,58 @@
+@use '../styles/mixins' as mx;
+
+.board {
+	align-items: center;
+	background: var(--gramo-board);
+	color: var(--gramo-cream);
+	display: flex;
+	min-height: calc(70vh - 3.75rem);
+}
+
+.inner {
+	@include mx.content-width;
+
+	padding-block: var(--space-6);
+	width: 100%;
+}
+
+.code {
+	@include mx.caps-caption;
+
+	color: var(--gramo-bronze);
+	font-variant-numeric: tabular-nums;
+	margin: 0 0 var(--space-2);
+}
+
+.title {
+	color: var(--gramo-cream);
+	font-size: var(--text-display);
+	margin: 0 0 var(--space-2);
+}
+
+.body {
+	color: rgb(239 230 212 / 80%);
+	font-family: var(--font-serif-text);
+	font-size: var(--text-subtitle);
+	font-style: italic;
+	margin: 0 0 var(--space-4);
+	max-width: 34ch;
+}
+
+.homeLink {
+	@include mx.caps-caption;
+	@include mx.focus-ring;
+
+	background: var(--gramo-copper);
+	color: var(--gramo-cream);
+	display: inline-block;
+	padding: 0.95rem 1.8rem;
+	text-decoration: none;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: background var(--duration-ui) var(--ease-ink);
+	}
+
+	&:hover {
+		background: var(--gramo-walnut);
+	}
+}

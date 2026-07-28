@@ -1,0 +1,97 @@
+@use '../../styles/mixins' as mx;
+
+.band {
+	margin-block: var(--space-5);
+}
+
+.espresso,
+.dark {
+	background: var(--gramo-board);
+	color: var(--gramo-cream);
+
+	.text {
+		color: rgb(239 230 212 / 80%);
+	}
+
+	.plate {
+		border: 1px solid rgb(239 230 212 / 35%);
+	}
+}
+
+.linen {
+	background: var(--gramo-paper-deep);
+	border-block: var(--rule);
+	color: var(--gramo-ink);
+
+	.text {
+		color: var(--gramo-gray);
+	}
+
+	.plate {
+		border: var(--rule-strong);
+	}
+}
+
+.inner {
+	@include mx.wide-width;
+
+	align-items: center;
+	display: grid;
+	gap: var(--space-5);
+	grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+	padding-block: var(--space-5);
+
+	@media (max-width: 860px) {
+		gap: var(--space-4);
+		grid-template-columns: 1fr;
+	}
+}
+
+// Copy fills the band when there is no plate.
+.inner:has(.copy:only-child) {
+	grid-template-columns: 1fr;
+}
+
+.heading {
+	color: inherit;
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-2);
+	max-width: 22ch;
+	text-wrap: balance;
+}
+
+.text {
+	font-family: var(--font-serif-text);
+	font-size: var(--text-subtitle);
+	font-style: italic;
+	margin: 0 0 var(--space-3);
+	max-width: 38ch;
+}
+
+.cta {
+	@include mx.caps-caption;
+	@include mx.focus-ring;
+
+	background: var(--gramo-copper);
+	color: var(--gramo-cream);
+	display: inline-block;
+	padding: 0.95rem 1.8rem;
+	text-decoration: none;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: background var(--duration-ui) var(--ease-ink);
+	}
+
+	&:hover {
+		background: var(--gramo-walnut);
+	}
+}
+
+.plate {
+	background: var(--gramo-paper);
+	padding: 0.65rem;
+
+	@media (max-width: 860px) {
+		max-width: 26rem;
+	}
+}

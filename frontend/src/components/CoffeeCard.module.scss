@@ -1,0 +1,96 @@
+@use '../styles/mixins' as mx;
+
+.card {
+	@include mx.plate;
+	@include mx.plate-hover;
+	@include mx.focus-ring;
+
+	color: var(--gramo-ink);
+	display: flex;
+	flex-direction: column;
+	padding: 0.65rem;
+	text-decoration: none;
+}
+
+.image {
+	border-bottom: var(--rule);
+	margin-bottom: var(--space-2);
+}
+
+.imagePlaceholder {
+	aspect-ratio: 4 / 3;
+	margin-bottom: var(--space-2);
+	opacity: 0.25;
+}
+
+.body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding: 0 0.35rem 0.5rem;
+	position: relative;
+}
+
+.keySquare {
+	display: block;
+	height: 0.7rem;
+	margin-bottom: var(--space-1);
+	width: 0.7rem;
+}
+
+.walnut {
+	background: var(--gramo-walnut);
+}
+
+.olive {
+	background: var(--gramo-olive);
+}
+
+.bronze {
+	background: var(--gramo-bronze);
+}
+
+.copper {
+	background: var(--gramo-copper);
+}
+
+.name {
+	font-size: var(--text-subtitle);
+	margin: 0 0 var(--space-1);
+	text-wrap: balance;
+}
+
+.dataRow {
+	@include mx.caps-caption;
+
+	color: var(--gramo-gray);
+	margin: 0 0 var(--space-1);
+}
+
+.notes {
+	@include mx.caps-caption;
+
+	color: var(--gramo-ink);
+	font-size: var(--text-small);
+	margin: 0 0 var(--space-2);
+	opacity: 0.85;
+}
+
+.priceRow {
+	align-items: baseline;
+	display: flex;
+	gap: var(--space-2);
+	margin: auto 0 0;
+	padding-top: var(--space-1);
+}
+
+.price {
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+}
+
+.stock {
+	@include mx.caps-caption;
+
+	color: var(--gramo-copper);
+}

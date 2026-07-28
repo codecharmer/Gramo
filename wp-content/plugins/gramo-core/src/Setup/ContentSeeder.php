@@ -128,6 +128,22 @@ final class ContentSeeder {
 	}
 
 	/**
+	 * Apply product schema fields (the coffee sheet) from a products.php entry.
+	 *
+	 * Public bridge for {@see Installer::install_products()}: products seed
+	 * through the WooCommerce CRUD, but their origin/process/tasting-note meta
+	 * uses the same schema pipeline as the structured CPTs.
+	 *
+	 * @param array<string,mixed> $fields Entry values keyed by schema field.
+	 */
+	public static function apply_product_fields( int $product_id, array $fields ): void {
+		if ( $product_id <= 0 || array() === $fields ) {
+			return;
+		}
+		self::apply_fields( $product_id, Schema::fields( 'product' ), $fields );
+	}
+
+	/**
 	 * Write schema fields (and EN siblings) from a data entry.
 	 *
 	 * @param array<string,array<string,mixed>> $schema Field definitions.
@@ -501,11 +517,18 @@ final class ContentSeeder {
 	 * Install option groups from data/settings.php only when absent, so
 	 * client edits survive re-seeding.
 	 *
+	 * "Absent" includes a row that still holds the pristine schema defaults:
+	 * {@see Options::install_defaults()} runs earlier in the install and
+	 * creates every option row, so a literal null-check would mean the seed
+	 * data never lands. Any deviation from the defaults is a client edit and
+	 * is kept untouched.
+	 *
 	 * @return array<string,string>
 	 */
 	public static function install_site_settings(): array {
-		$data   = self::data( 'settings', false );
-		$report = array();
+		$data     = self::data( 'settings', false );
+		$defaults = Options::defaults();
+		$report   = array();
 
 		foreach ( array(
 			Options::SITE     => 'site',
@@ -517,8 +540,10 @@ final class ContentSeeder {
 				continue;
 			}
 			$existing = get_option( $option, null );
-			if ( null === $existing ) {
-				add_option( $option, $values );
+			$pristine = null === $existing
+				|| ( is_array( $existing ) && ( $defaults[ $option ] ?? null ) === $existing );
+			if ( $pristine ) {
+				update_option( $option, $values );
 				$report[ $key ] = 'installed';
 			} else {
 				$report[ $key ] = 'kept';

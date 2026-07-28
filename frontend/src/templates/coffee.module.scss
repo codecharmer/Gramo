@@ -1,0 +1,218 @@
+@use '../styles/mixins' as mx;
+
+.board {
+	background: var(--gramo-board);
+	color: var(--gramo-cream);
+}
+
+.boardInner {
+	@include mx.wide-width;
+
+	padding-block: var(--space-4);
+}
+
+.eyebrow {
+	@include mx.caps-caption;
+
+	color: var(--gramo-bronze);
+	margin: 0 0 var(--space-1);
+}
+
+.title {
+	color: var(--gramo-cream);
+	font-size: var(--text-title);
+	margin: 0;
+	max-width: 20ch;
+	text-wrap: balance;
+}
+
+.portrait {
+	padding-block: var(--space-5);
+}
+
+.portraitInner {
+	@include mx.wide-width;
+
+	align-items: start;
+	display: grid;
+	gap: var(--space-5);
+	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+
+	@media (max-width: 860px) {
+		gap: var(--space-4);
+		grid-template-columns: 1fr;
+	}
+}
+
+.plate {
+	@include mx.plate;
+
+	margin: 0;
+	padding: 0.65rem;
+}
+
+.platePlaceholder {
+	aspect-ratio: 4 / 5;
+	background: var(--gramo-paper-deep);
+	border: var(--rule-strong);
+}
+
+.data {
+	min-width: 0;
+}
+
+.buyRow {
+	align-items: center;
+	border-bottom: var(--rule-strong);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	justify-content: space-between;
+	margin-bottom: var(--space-3);
+	padding-bottom: var(--space-3);
+}
+
+.price {
+	@include mx.display-serif;
+
+	font-size: var(--text-subtitle);
+	font-variant-numeric: tabular-nums;
+	margin: 0;
+}
+
+.addButton {
+	@include mx.caps-caption;
+	@include mx.focus-ring;
+
+	background: var(--gramo-copper);
+	border: 0;
+	color: var(--gramo-cream);
+	cursor: pointer;
+	padding: 0.95rem 1.8rem;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: background var(--duration-ui) var(--ease-ink);
+	}
+
+	&:hover {
+		background: var(--gramo-walnut);
+	}
+
+	&:disabled {
+		background: var(--gramo-gray);
+		cursor: default;
+	}
+}
+
+// The inked data sheet — dotted leaders in the stock-sheet voice.
+.sheet {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	margin: 0 0 var(--space-4);
+}
+
+.sheetRow {
+	@include mx.dotted-leader;
+}
+
+.sheetLabel {
+	@include mx.caps-caption;
+
+	color: var(--gramo-gray);
+}
+
+.sheetValue {
+	font-variant-numeric: tabular-nums;
+	margin: 0;
+	text-align: right;
+}
+
+.subheading {
+	@include mx.caps-caption;
+
+	font-family: var(--font-caption);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-2);
+}
+
+.notes {
+	margin-bottom: var(--space-4);
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2) var(--space-3);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.chip {
+	@include mx.caps-caption;
+
+	border-bottom: 3px solid;
+	padding-bottom: 0.3rem;
+}
+
+.walnut {
+	border-color: var(--gramo-walnut);
+}
+
+.olive {
+	border-color: var(--gramo-olive);
+}
+
+.bronze {
+	border-color: var(--gramo-bronze);
+}
+
+.copper {
+	border-color: var(--gramo-copper);
+}
+
+.methods {
+	margin-bottom: var(--space-2);
+}
+
+.methodList {
+	color: var(--gramo-gray);
+	margin: 0;
+}
+
+.description {
+	@include mx.content-width;
+
+	padding-block: var(--space-4);
+
+	p {
+		font-size: var(--text-body);
+		line-height: var(--leading-body);
+	}
+}
+
+.descriptionProse {
+	padding-block: var(--space-4);
+}
+
+.related {
+	border-top: var(--rule);
+	margin-top: var(--space-5);
+	padding-block: var(--space-5);
+}
+
+.relatedInner {
+	@include mx.wide-width;
+}
+
+.relatedHeading {
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-4);
+}
+
+.relatedGrid {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

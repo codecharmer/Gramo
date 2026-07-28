@@ -1,0 +1,41 @@
+@use '../styles/mixins' as mx;
+
+.header {
+	border-bottom: var(--rule);
+	padding-block: var(--space-5) var(--space-3);
+}
+
+.headerInner {
+	@include mx.wide-width;
+}
+
+.back {
+	@include mx.caps-caption;
+	@include mx.focus-ring;
+
+	color: var(--gramo-gray);
+	display: inline-block;
+	margin-bottom: var(--space-2);
+	text-decoration: none;
+
+	&:hover {
+		color: var(--gramo-ink);
+	}
+}
+
+.title {
+	font-size: var(--text-display);
+	margin: 0;
+}
+
+.gridSection {
+	padding-block: var(--space-4) var(--space-5);
+}
+
+.grid {
+	@include mx.wide-width;
+
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

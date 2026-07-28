@@ -1,4 +1,4 @@
-// Gramo global styles — base reset + the world's ground.
+// Gramo global styles — La Galería base.
 @use 'tokens';
 @use 'mixins' as mx;
 
@@ -10,6 +10,7 @@
 
 html {
 	-webkit-text-size-adjust: 100%;
+	background: var(--gramo-wall);
 	scroll-behavior: smooth;
 
 	@media (prefers-reduced-motion: reduce) {
@@ -18,21 +19,19 @@ html {
 }
 
 body {
-	background: var(--gramo-paper);
-	color: var(--gramo-ink);
+	background: var(--gramo-wall);
+	color: var(--gramo-bone);
 	font-family: var(--font-body);
 	font-size: var(--text-body);
 	line-height: var(--leading-body);
 	margin: 0;
-	// Subtle board grain — kept under 4% so it reads as paper, not texture.
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
 }
 
 h1,
 h2,
 h3,
 h4 {
-	@include mx.display-serif;
+	@include mx.display-type;
 
 	margin: 0 0 var(--space-2);
 }
@@ -43,7 +42,7 @@ p {
 
 a {
 	color: inherit;
-	text-decoration-color: var(--gramo-copper);
+	text-decoration-color: var(--gramo-brass);
 	text-decoration-thickness: 1px;
 	text-underline-offset: 0.2em;
 
@@ -57,14 +56,15 @@ img {
 
 button {
 	@include mx.focus-ring;
+
+	font-family: inherit;
 }
 
 ::selection {
-	background: var(--gramo-copper);
-	color: var(--gramo-cream);
+	background: var(--gramo-brass);
+	color: var(--gramo-bone);
 }
 
-// Visually hidden (screen-reader text).
 .sr-only {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
@@ -75,12 +75,11 @@ button {
 	width: 1px;
 }
 
-// Skip link.
 .skip-link {
 	@include mx.caps-caption;
 
-	background: var(--gramo-board);
-	color: var(--gramo-cream);
+	background: var(--gramo-bone);
+	color: var(--gramo-wall);
 	left: var(--space-2);
 	padding: 0.6rem 1rem;
 	position: absolute;

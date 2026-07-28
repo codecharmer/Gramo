@@ -1,0 +1,24 @@
+@use '../styles/mixins' as mx;
+
+.cityGroup {
+	padding-block: var(--space-4);
+}
+
+.inner {
+	@include mx.wide-width;
+}
+
+.cityHeader {
+	@include mx.caps-caption;
+
+	border-bottom: var(--rule-strong);
+	font-size: var(--text-body);
+	margin: 0 0 var(--space-3);
+	padding-bottom: var(--space-1);
+}
+
+.grid {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

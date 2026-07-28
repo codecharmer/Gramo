@@ -1,0 +1,22 @@
+@use '../styles/mixins' as mx;
+
+.section {
+	padding-block: var(--space-5);
+}
+
+.inner {
+	@include mx.wide-width;
+}
+
+.sectionHeading {
+	border-bottom: var(--rule-strong);
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-4);
+	padding-bottom: var(--space-2);
+}
+
+.grid {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

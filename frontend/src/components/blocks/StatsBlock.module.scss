@@ -1,0 +1,67 @@
+@use '../../styles/mixins' as mx;
+
+.stats {
+	padding-block: var(--space-6);
+}
+
+.inner {
+	@include mx.wide-width;
+}
+
+.heading {
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-4);
+	max-width: 22ch;
+	text-wrap: balance;
+}
+
+.row {
+	display: grid;
+	gap: var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+	margin: 0;
+}
+
+.item {
+	display: flex;
+	flex-direction: column;
+}
+
+// The numeral sits above its pigment underline; dd precedes dt visually.
+.value {
+	@include mx.display-serif;
+
+	border-bottom: 4px solid;
+	font-size: clamp(2.6rem, 1.6rem + 3.4vw, 4.4rem);
+	font-variant-numeric: tabular-nums;
+	margin: 0 0 var(--space-1);
+	padding-bottom: var(--space-1);
+	width: fit-content;
+}
+
+.walnut {
+	border-color: var(--gramo-walnut);
+}
+
+.olive {
+	border-color: var(--gramo-olive);
+}
+
+.bronze {
+	border-color: var(--gramo-bronze);
+}
+
+.copper {
+	border-color: var(--gramo-copper);
+}
+
+.suffix {
+	font-size: 0.55em;
+	margin-left: 0.1em;
+}
+
+.label {
+	@include mx.caps-caption;
+
+	color: var(--gramo-gray);
+}

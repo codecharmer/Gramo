@@ -39,14 +39,20 @@ final class PostTypes implements Bootable {
 		foreach ( Schema::post_types() as $post_type => $def ) {
 			$labels = (array) ( $def['labels'] ?? array() );
 			$args   = array(
-				'labels'       => $labels,
-				'public'       => (bool) ( $def['public'] ?? false ),
-				'show_ui'      => (bool) ( $def['show_ui'] ?? ( $def['public'] ?? false ) ),
-				'show_in_rest' => false, // Headless via GraphQL; the classic editor UI is schema meta boxes.
-				'menu_icon'    => (string) ( $def['menu_icon'] ?? 'dashicons-admin-post' ),
-				'supports'     => (array) ( $def['supports'] ?? array( 'title' ) ),
-				'has_archive'  => (bool) ( $def['has_archive'] ?? false ),
-				'rewrite'      => $def['rewrite'] ?? false,
+				'labels'              => $labels,
+				// WPGraphQL derives anonymous visibility from `public`, so content
+				// the static site must read is public here even when it has no
+				// WordPress front end of its own (Headless\Redirects sends every
+				// front-end request to gramo.cafe regardless).
+				'public'              => (bool) ( $def['public'] ?? false ),
+				'publicly_queryable'  => (bool) ( $def['publicly_queryable'] ?? ( $def['public'] ?? false ) ),
+				'exclude_from_search' => (bool) ( $def['exclude_from_search'] ?? false ),
+				'show_ui'             => (bool) ( $def['show_ui'] ?? ( $def['public'] ?? false ) ),
+				'show_in_rest'        => false, // Headless via GraphQL; the classic editor UI is schema meta boxes.
+				'menu_icon'           => (string) ( $def['menu_icon'] ?? 'dashicons-admin-post' ),
+				'supports'            => (array) ( $def['supports'] ?? array( 'title' ) ),
+				'has_archive'         => (bool) ( $def['has_archive'] ?? false ),
+				'rewrite'             => $def['rewrite'] ?? false,
 			);
 
 			if ( isset( $def['capabilities'] ) ) {

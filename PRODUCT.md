@@ -34,6 +34,12 @@ Headless WordPress (content + WooCommerce, cms.gramo.cafe) consumed by a static 
 
 ## Brand Commitments
 
+**Standing design preference (user, 2026-07-28): the category canon played
+straight** — the premium specialty-coffee editorial register of Blue Bottle /
+Aesop / Apple / Copenhagen coffee houses at full craft; no conceptual visual
+worlds or graphic devices. Concept-driven directions (data-portrait grammar)
+were explicitly rejected as off-brand.
+
 Name: Gramo (Gramo Café). Home base: Cuernavaca, Morelos; presence in CDMX. Personality (binding, from brief): warm, sophisticated, premium, minimal, quiet luxury, handcrafted, exclusive, timeless. Palette direction (binding): deep espresso, warm black, soft ivory, natural cream; walnut, muted olive, warm gray, bronze; copper accent — never bright saturated colors. Typography direction: elegant serif headings + clean sans body, editorial whitespace. Mood references (binding, not to copy): Japanese café aesthetics, Scandinavian interiors, natural wood/stone/concrete/brass, warm light, slow coffee. Real brand voice on record (evidence, to reconcile in design): playful, culture-literate product naming (film/music references), jazz nights, "intervenimos espacios" — the new site's quiet-luxury register must carry this personality without corporate flattening; keep real product names verbatim.
 
 ## Evidence on Hand

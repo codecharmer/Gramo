@@ -1,0 +1,31 @@
+@use '../../styles/mixins' as mx;
+
+.featured {
+	padding-block: var(--space-6);
+}
+
+.inner {
+	@include mx.wide-width;
+}
+
+.heading {
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-2);
+	max-width: 22ch;
+	text-wrap: balance;
+}
+
+.intro {
+	color: var(--gramo-gray);
+	font-family: var(--font-serif-text);
+	font-size: var(--text-subtitle);
+	font-style: italic;
+	margin: 0 0 var(--space-4);
+	max-width: 40ch;
+}
+
+.row {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

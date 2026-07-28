@@ -93,11 +93,6 @@ export const COFFEES_QUERY = /* GraphQL */ `
             altText
           }
         }
-        terms(first: 10) {
-          nodes {
-            slug
-          }
-        }
       }
     }
   }

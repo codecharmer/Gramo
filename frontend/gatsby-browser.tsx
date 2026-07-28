@@ -3,13 +3,11 @@
  * Fontsource; only the weights the design system uses are loaded.
  */
 
-import '@fontsource/libre-caslon-display';
-import '@fontsource/libre-caslon-text';
-import '@fontsource/libre-caslon-text/400-italic.css';
+import '@fontsource/figtree/700.css';
+import '@fontsource/figtree/800.css';
 import '@fontsource/archivo/400.css';
 import '@fontsource/archivo/500.css';
 import '@fontsource/archivo/600.css';
-import '@fontsource/archivo-narrow/600.css';
 import './src/styles/global.scss';
 
 import * as React from 'react';
