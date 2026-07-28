@@ -28,6 +28,7 @@ final class Options implements Bootable {
 	public const PICKUP   = 'gramo_pickup';
 	public const SMS      = 'gramo_sms';
 	public const SEO      = 'gramo_seo';
+	public const SITE     = 'gramo_site_settings';
 
 	public function boot(): void {
 		add_action( 'init', array( $this, 'register_settings' ) );
@@ -42,6 +43,7 @@ final class Options implements Bootable {
 			self::PICKUP   => array( $this, 'sanitize_pickup' ),
 			self::SMS      => array( $this, 'sanitize_sms' ),
 			self::SEO      => array( $this, 'sanitize_seo' ),
+			self::SITE     => array( $this, 'sanitize_site' ),
 		);
 		foreach ( $groups as $name => $sanitizer ) {
 			register_setting(
@@ -129,6 +131,22 @@ final class Options implements Bootable {
 				'organization_logo' => 0,
 				'price_range'       => '$$',
 			),
+			self::SITE     => array(
+				// Navigation and footer links: one per line, "Etiqueta ES | Label EN | /ruta".
+				'nav_lines'            => '',
+				'footer_lines'         => '',
+				'footer_note_es'       => '',
+				'footer_note_en'       => '',
+				'announcement_enabled' => false,
+				'announcement_es'      => '',
+				'announcement_en'      => '',
+				'announcement_url'     => '',
+				'social_instagram'     => '',
+				'social_facebook'      => '',
+				'social_spotify'       => '',
+				'social_linktree'      => '',
+				'whatsapp_community'   => '',
+			),
 		);
 	}
 
@@ -159,6 +177,42 @@ final class Options implements Bootable {
 	/** @return array<string,mixed> */
 	public static function seo(): array {
 		return self::group( self::SEO );
+	}
+
+	/** @return array<string,mixed> */
+	public static function site(): array {
+		return self::group( self::SITE );
+	}
+
+	/**
+	 * Parse "Etiqueta ES | Label EN | /ruta" lines into structured link items.
+	 *
+	 * Lines missing a path are skipped; a missing EN label falls back to ES.
+	 *
+	 * @return array<int,array{label_es:string,label_en:string,path:string}>
+	 */
+	public static function parse_link_lines( string $lines ): array {
+		$items = array();
+		$split = preg_split( '/\r\n|\r|\n/', $lines );
+		$split = false !== $split ? $split : array();
+		foreach ( $split as $line ) {
+			$parts = array_map( 'trim', explode( '|', $line ) );
+			if ( count( $parts ) < 2 ) {
+				continue;
+			}
+			$label_es = $parts[0];
+			$label_en = 3 === count( $parts ) ? $parts[1] : $parts[0];
+			$path     = 3 === count( $parts ) ? $parts[2] : $parts[1];
+			if ( '' === $label_es || '' === $path ) {
+				continue;
+			}
+			$items[] = array(
+				'label_es' => $label_es,
+				'label_en' => '' !== $label_en ? $label_en : $label_es,
+				'path'     => $path,
+			);
+		}
+		return $items;
 	}
 
 	/**
@@ -314,6 +368,29 @@ final class Options implements Bootable {
 			'twitter_handle'    => sanitize_text_field( (string) ( $value['twitter_handle'] ?? '' ) ),
 			'organization_logo' => (int) ( $value['organization_logo'] ?? 0 ),
 			'price_range'       => sanitize_text_field( (string) ( $value['price_range'] ?? '$$' ) ),
+		);
+	}
+
+	/**
+	 * @param mixed $value
+	 * @return array<string,mixed>
+	 */
+	public function sanitize_site( mixed $value ): array {
+		$value = is_array( $value ) ? $value : array();
+		return array(
+			'nav_lines'            => sanitize_textarea_field( (string) ( $value['nav_lines'] ?? '' ) ),
+			'footer_lines'         => sanitize_textarea_field( (string) ( $value['footer_lines'] ?? '' ) ),
+			'footer_note_es'       => sanitize_text_field( (string) ( $value['footer_note_es'] ?? '' ) ),
+			'footer_note_en'       => sanitize_text_field( (string) ( $value['footer_note_en'] ?? '' ) ),
+			'announcement_enabled' => ! empty( $value['announcement_enabled'] ),
+			'announcement_es'      => sanitize_text_field( (string) ( $value['announcement_es'] ?? '' ) ),
+			'announcement_en'      => sanitize_text_field( (string) ( $value['announcement_en'] ?? '' ) ),
+			'announcement_url'     => esc_url_raw( (string) ( $value['announcement_url'] ?? '' ) ),
+			'social_instagram'     => esc_url_raw( (string) ( $value['social_instagram'] ?? '' ) ),
+			'social_facebook'      => esc_url_raw( (string) ( $value['social_facebook'] ?? '' ) ),
+			'social_spotify'       => esc_url_raw( (string) ( $value['social_spotify'] ?? '' ) ),
+			'social_linktree'      => esc_url_raw( (string) ( $value['social_linktree'] ?? '' ) ),
+			'whatsapp_community'   => esc_url_raw( (string) ( $value['whatsapp_community'] ?? '' ) ),
 		);
 	}
 }

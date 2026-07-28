@@ -1,0 +1,16 @@
+{
+  "name": "@gramo/core-blocks",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gramo Core editor blocks — built with @wordpress/scripts (src/blocks/*/block.json auto-discovery) into build/blocks/.",
+  "author": "Gramo — Agency Build",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src/blocks"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.0.0"
+  }
+}

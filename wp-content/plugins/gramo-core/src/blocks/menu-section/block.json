@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/menu-section",
+	"title": "Sección del menú",
+	"category": "gramo",
+	"icon": "food",
+	"description": "Lista los artículos de una sección del menú (café, té, pastelería…).",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"sectionSlug": { "type": "string", "default": "" },
+		"sectionTermId": { "type": "number", "default": 0 },
+		"headingOverride": { "type": "string", "default": "" },
+		"showPrices": { "type": "boolean", "default": true }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

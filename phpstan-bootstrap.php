@@ -33,6 +33,24 @@ if ( ! defined( 'GRAMO_CORE_DIR' ) ) {
 	define( 'GRAMO_CORE_DIR', __DIR__ . '/wp-content/plugins/gramo-core/' );
 }
 
+if ( ! function_exists( 'register_graphql_object_type' ) ) {
+	/**
+	 * WPGraphQL type registration (plugin is not a composer dev dependency).
+	 *
+	 * @param array<string,mixed> $config
+	 */
+	function register_graphql_object_type( string $type_name, array $config ): void {}
+}
+
+if ( ! function_exists( 'register_graphql_field' ) ) {
+	/**
+	 * WPGraphQL field registration.
+	 *
+	 * @param array<string,mixed> $config
+	 */
+	function register_graphql_field( string $type_name, string $field_name, array $config ): void {}
+}
+
 if ( ! class_exists( 'WP_CLI' ) ) {
 	/**
 	 * Minimal WP-CLI surface used by Gramo\Core\Cli\Commands.

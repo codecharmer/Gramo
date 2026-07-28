@@ -14,6 +14,7 @@ declare( strict_types=1 );
 namespace Gramo\Core\Support;
 
 use Gramo\Core\Admin\Dashboard;
+use Gramo\Core\Content\Schema;
 use Gramo\Core\Contracts\Bootable;
 use Gramo\Core\Setup\Activator;
 
@@ -51,6 +52,11 @@ final class Assets implements Bootable {
 			return true;
 		}
 
+		// Edit screens of the schema field-bearing post types (meta boxes).
+		if ( $this->is_schema_edit_screen() ) {
+			return true;
+		}
+
 		// WooCommerce order screens (HPOS list/edit + legacy post-type screens).
 		$woo_screens = array( 'woocommerce_page_wc-orders', 'shop_order', 'edit-shop_order' );
 		return in_array( $id, $woo_screens, true );
@@ -61,6 +67,18 @@ final class Assets implements Bootable {
 	 */
 	private function is_settings_screen( string $hook ): bool {
 		return false !== strpos( $hook, $this->parent_slug() . '-ajustes' );
+	}
+
+	/**
+	 * Whether the current screen is the classic editor of a schema field-bearing
+	 * post type (Gramo CPTs + the Woo product) — where the meta boxes render.
+	 */
+	private function is_schema_edit_screen(): bool {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+
+		return null !== $screen
+			&& 'post' === $screen->base
+			&& in_array( (string) $screen->post_type, Schema::field_bearing_types(), true );
 	}
 
 	public function enqueue( string $hook ): void {
@@ -74,8 +92,8 @@ final class Assets implements Bootable {
 		wp_enqueue_style( self::HANDLE, $url . 'assets/css/admin.css', array(), $ver );
 		wp_enqueue_script( self::HANDLE, $url . 'assets/js/admin.js', array(), $ver, true );
 
-		// The Settings SEO tab uses the WP media modal for image pickers.
-		if ( $this->is_settings_screen( $hook ) && function_exists( 'wp_enqueue_media' ) ) {
+		// The Settings SEO tab and the schema image/gallery fields use the WP media modal.
+		if ( ( $this->is_settings_screen( $hook ) || $this->is_schema_edit_screen() ) && function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
 

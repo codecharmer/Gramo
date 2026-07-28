@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/testimonials",
+	"title": "Testimonios",
+	"category": "gramo",
+	"icon": "format-quote",
+	"description": "Citas de clientes tomadas del contenido de Testimonios.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"mode": { "type": "string", "default": "latest", "enum": [ "latest", "manual" ] },
+		"testimonialIds": {
+			"type": "array",
+			"default": [],
+			"items": { "type": "number" }
+		},
+		"count": { "type": "number", "default": 3 },
+		"heading": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

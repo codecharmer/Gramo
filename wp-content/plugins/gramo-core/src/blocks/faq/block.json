@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/faq",
+	"title": "Preguntas frecuentes",
+	"category": "gramo",
+	"icon": "editor-help",
+	"description": "Acordeón de preguntas y respuestas.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"heading": { "type": "string", "default": "" },
+		"intro": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

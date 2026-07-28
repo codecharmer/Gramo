@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/featured-coffees",
+	"title": "Cafés destacados",
+	"category": "gramo",
+	"icon": "coffee",
+	"description": "Muestra cafés del catálogo; los datos se resuelven desde la tienda.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"mode": { "type": "string", "default": "featured", "enum": [ "featured", "manual" ] },
+		"productIds": {
+			"type": "array",
+			"default": [],
+			"items": { "type": "number" }
+		},
+		"count": { "type": "number", "default": 3 },
+		"heading": { "type": "string", "default": "" },
+		"intro": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

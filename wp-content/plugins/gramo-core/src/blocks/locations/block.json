@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/locations",
+	"title": "Ubicaciones",
+	"category": "gramo",
+	"icon": "location-alt",
+	"description": "Muestra las cafeterías; los datos se resuelven desde Ubicaciones.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"locationIds": {
+			"type": "array",
+			"default": [],
+			"items": { "type": "number" }
+		},
+		"showMap": { "type": "boolean", "default": true },
+		"heading": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

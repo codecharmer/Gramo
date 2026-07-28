@@ -10,10 +10,12 @@
     "npm": ">=10"
   },
   "workspaces": [
-    "wp-content/themes/gramo"
+    "wp-content/themes/gramo",
+    "wp-content/plugins/gramo-core"
   ],
   "scripts": {
-    "build": "npm run build --workspace=wp-content/themes/gramo",
+    "build": "npm run build --workspace=wp-content/themes/gramo && npm run build:blocks",
+    "build:blocks": "npm run build --workspace=wp-content/plugins/gramo-core",
     "start": "npm run start --workspace=wp-content/themes/gramo",
     "lint:js": "npm run lint:js --workspace=wp-content/themes/gramo",
     "lint:css": "npm run lint:css --workspace=wp-content/themes/gramo",

@@ -1,0 +1,208 @@
+/**
+ * Gramo admin styles.
+ *
+ * Styles for the schema meta boxes ("Detalles de Gramo") and shared admin
+ * widgets: bilingual ES/EN field pairs, single-image + gallery pickers,
+ * repeater-lite rows, and the weekly hours grid. Colors follow the wp-admin
+ * palette (#c3c4c7 borders, #646970 secondary text, #b32d2e destructive).
+ */
+
+/* ------------------------------------------------------------------ */
+/* Schema meta box                                                     */
+/* ------------------------------------------------------------------ */
+
+.postbox .gramo-schema-table {
+	margin-top: 0;
+}
+
+.postbox .gramo-schema-table th {
+	width: 180px;
+	padding: 12px 10px 12px 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Bilingual (ES / EN) field pairs                                     */
+/* ------------------------------------------------------------------ */
+
+.gramo-bilingual {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+	max-width: 760px;
+}
+
+.gramo-bilingual__col {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.gramo-bilingual__col .regular-text,
+.gramo-bilingual__col .large-text {
+	width: 100%;
+}
+
+.gramo-bilingual__lang {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #646970;
+}
+
+@media ( max-width: 782px ) {
+	.gramo-bilingual {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ------------------------------------------------------------------ */
+/* Single-image picker                                                 */
+/* ------------------------------------------------------------------ */
+
+.gramo-media {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.gramo-media__preview {
+	max-width: 96px;
+	height: auto;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+	display: block;
+}
+
+.gramo-media-remove {
+	color: #b32d2e;
+}
+
+/* ------------------------------------------------------------------ */
+/* Gallery picker                                                      */
+/* ------------------------------------------------------------------ */
+
+.gramo-gallery__grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 8px;
+}
+
+.gramo-gallery__grid:empty {
+	margin-bottom: 0;
+}
+
+.gramo-gallery__item {
+	position: relative;
+	display: inline-block;
+}
+
+.gramo-gallery__item img {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+	display: block;
+}
+
+.gramo-gallery-remove {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	line-height: 18px;
+	text-align: center;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 50%;
+	color: #b32d2e;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.gramo-gallery-remove:hover {
+	border-color: #b32d2e;
+}
+
+/* ------------------------------------------------------------------ */
+/* Repeater-lite rows                                                  */
+/* ------------------------------------------------------------------ */
+
+.gramo-repeater__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 10px;
+	margin-bottom: 8px;
+}
+
+.gramo-repeater__col {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.gramo-repeater__col input {
+	min-width: 160px;
+}
+
+.gramo-repeater__col input[type='number'] {
+	min-width: 90px;
+}
+
+.gramo-repeater__col-label {
+	font-size: 11px;
+	color: #646970;
+}
+
+.gramo-repeater__row .gramo-repeater-remove {
+	color: #b32d2e;
+	font-size: 18px;
+	line-height: 1;
+	padding: 0 4px 6px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.gramo-repeater-add {
+	margin-top: 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hours grid (Lun..Dom, open/close per day)                           */
+/* ------------------------------------------------------------------ */
+
+.gramo-hours {
+	display: grid;
+	gap: 6px;
+	max-width: 460px;
+}
+
+.gramo-hours__row {
+	display: grid;
+	grid-template-columns: 48px 1fr 1fr;
+	gap: 10px;
+	align-items: center;
+}
+
+.gramo-hours__day {
+	font-weight: 600;
+}
+
+.gramo-hours__row label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	color: #646970;
+}
+
+.gramo-hours__row input[type='time'] {
+	width: 100%;
+	max-width: 130px;
+}

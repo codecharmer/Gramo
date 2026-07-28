@@ -73,9 +73,11 @@ final class Settings implements Bootable {
 		$pickup   = Options::group( Options::PICKUP );
 		$sms      = Options::group( Options::SMS );
 		$seo      = Options::group( Options::SEO );
+		$site     = Options::group( Options::SITE );
 
 		$tabs   = array(
 			'business' => __( 'Negocio', 'gramo-core' ),
+			'site'     => __( 'Sitio', 'gramo-core' ),
 			'pickup'   => __( 'Recolección', 'gramo-core' ),
 			'sms'      => __( 'SMS', 'gramo-core' ),
 			'seo'      => __( 'SEO', 'gramo-core' ),
@@ -105,6 +107,9 @@ final class Settings implements Bootable {
 
 				<div class="gramo-tab-panel" data-gramo-panel="business" <?php echo 'business' === $active ? '' : 'hidden'; ?>>
 					<?php $this->render_business( $business ); ?>
+				</div>
+				<div class="gramo-tab-panel" data-gramo-panel="site" <?php echo 'site' === $active ? '' : 'hidden'; ?>>
+					<?php $this->render_site( $site ); ?>
 				</div>
 				<div class="gramo-tab-panel" data-gramo-panel="pickup" <?php echo 'pickup' === $active ? '' : 'hidden'; ?>>
 					<?php $this->render_pickup( $pickup ); ?>
@@ -318,6 +323,49 @@ final class Settings implements Bootable {
 		echo '</select></td></tr>';
 
 		echo '</tbody></table>';
+	}
+
+	/*
+	---------------------------------------------------------------------- */
+	/*
+	Tab: Sitio (navegación, pie, aviso, redes)                             */
+	/* ---------------------------------------------------------------------- */
+
+	/**
+	 * @param array<string,mixed> $v
+	 */
+	private function render_site( array $v ): void {
+		$g = Options::SITE;
+		echo '<table class="form-table" role="presentation"><tbody>';
+
+		$this->textarea_row( $g, 'nav_lines', __( 'Navegación principal', 'gramo-core' ), $v );
+		$this->help_row( __( 'Un enlace por línea con el formato: Etiqueta ES | Label EN | /ruta — por ejemplo: «Café | Coffee | /cafe/».', 'gramo-core' ) );
+
+		$this->textarea_row( $g, 'footer_lines', __( 'Enlaces del pie', 'gramo-core' ), $v );
+		$this->help_row( __( 'Mismo formato que la navegación. Se muestran en el pie de página.', 'gramo-core' ) );
+
+		$this->text_row( $g, 'footer_note_es', __( 'Nota del pie (ES)', 'gramo-core' ), $v );
+		$this->text_row( $g, 'footer_note_en', __( 'Nota del pie (EN)', 'gramo-core' ), $v );
+
+		$this->checkbox_row( $g, 'announcement_enabled', __( 'Barra de aviso activa', 'gramo-core' ), __( 'Muestra la barra de anuncio en la parte superior del sitio.', 'gramo-core' ), $v );
+		$this->text_row( $g, 'announcement_es', __( 'Aviso (ES)', 'gramo-core' ), $v );
+		$this->text_row( $g, 'announcement_en', __( 'Aviso (EN)', 'gramo-core' ), $v );
+		$this->text_row( $g, 'announcement_url', __( 'Aviso — enlace (URL)', 'gramo-core' ), $v, 'url' );
+
+		$this->text_row( $g, 'social_instagram', __( 'Instagram (URL)', 'gramo-core' ), $v, 'url' );
+		$this->text_row( $g, 'social_facebook', __( 'Facebook (URL)', 'gramo-core' ), $v, 'url' );
+		$this->text_row( $g, 'social_spotify', __( 'Spotify (URL)', 'gramo-core' ), $v, 'url' );
+		$this->text_row( $g, 'social_linktree', __( 'Linktree (URL)', 'gramo-core' ), $v, 'url' );
+		$this->text_row( $g, 'whatsapp_community', __( 'Comunidad de WhatsApp (URL)', 'gramo-core' ), $v, 'url' );
+
+		echo '</tbody></table>';
+	}
+
+	/**
+	 * A full-width description row under the preceding field.
+	 */
+	private function help_row( string $text ): void {
+		echo '<tr><th scope="row"></th><td><p class="description">' . esc_html( $text ) . '</p></td></tr>';
 	}
 
 	/*

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/faq-item",
+	"title": "Pregunta",
+	"category": "gramo",
+	"icon": "editor-help",
+	"description": "Una pregunta con su respuesta dentro del bloque de preguntas frecuentes.",
+	"textdomain": "gramo-core",
+	"parent": [ "gramo/faq" ],
+	"attributes": {
+		"question": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

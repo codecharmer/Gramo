@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/cta-band",
+	"title": "Banda de llamada a la acción",
+	"category": "gramo",
+	"icon": "megaphone",
+	"description": "Franja destacada con mensaje y botón, opcionalmente sobre imagen.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"heading": { "type": "string", "default": "" },
+		"text": { "type": "string", "default": "" },
+		"cta": {
+			"type": "object",
+			"default": { "label": "", "url": "" }
+		},
+		"tone": { "type": "string", "default": "espresso", "enum": [ "espresso", "linen", "dark" ] },
+		"media": {
+			"type": "object",
+			"default": { "id": 0, "url": "", "alt": "" }
+		}
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

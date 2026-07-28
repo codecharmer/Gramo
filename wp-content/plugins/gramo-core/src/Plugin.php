@@ -50,6 +50,10 @@ final class Plugin {
 			Setup\Settings::class,
 			Support\Assets::class,
 
+			// Content model (CPTs, taxonomy, schema meta, admin meta boxes).
+			Content\PostTypes::class,
+			Content\MetaBoxes::class,
+
 			// WooCommerce foundation.
 			Woo\Support::class,
 			Woo\Inventory::class,
@@ -62,6 +66,9 @@ final class Plugin {
 			Sms\Logger::class,
 			Sms\OrderNotifications::class,
 			Sms\InboundController::class,
+
+			// GraphQL exposure of the content model.
+			Graphql\Fields::class,
 
 			// SEO.
 			Seo\MetaTags::class,

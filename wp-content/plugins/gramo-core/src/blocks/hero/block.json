@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/hero",
+	"title": "Hero",
+	"category": "gramo",
+	"icon": "format-image",
+	"description": "Portada principal: imagen cinematográfica, titular y llamadas a la acción.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"subheading": { "type": "string", "default": "" },
+		"media": {
+			"type": "object",
+			"default": { "id": 0, "url": "", "alt": "" }
+		},
+		"primaryCta": {
+			"type": "object",
+			"default": { "label": "", "url": "" }
+		},
+		"secondaryCta": {
+			"type": "object",
+			"default": { "label": "", "url": "" }
+		},
+		"height": { "type": "string", "default": "full", "enum": [ "full", "tall", "compact" ] }
+	},
+	"supports": { "html": false, "multiple": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

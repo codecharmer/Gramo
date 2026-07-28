@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/inquiry-form",
+	"title": "Formulario de contacto",
+	"category": "gramo",
+	"icon": "email",
+	"description": "Inserta un formulario de solicitud (contacto, mayoreo, suscripción, empleo…).",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"formType": {
+			"type": "string",
+			"default": "general",
+			"enum": [ "general", "wholesale", "subscription", "catering", "events", "careers" ]
+		},
+		"heading": { "type": "string", "default": "" },
+		"intro": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

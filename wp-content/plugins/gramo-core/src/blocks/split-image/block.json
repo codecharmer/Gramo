@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/split-image",
+	"title": "Imagen y texto",
+	"category": "gramo",
+	"icon": "align-pull-left",
+	"description": "Sección editorial de dos columnas: imagen a un lado, texto al otro.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"media": {
+			"type": "object",
+			"default": { "id": 0, "url": "", "alt": "" }
+		},
+		"imageSide": { "type": "string", "default": "left", "enum": [ "left", "right" ] },
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

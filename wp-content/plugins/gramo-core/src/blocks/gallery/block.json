@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gramo/gallery",
+	"title": "Galería",
+	"category": "gramo",
+	"icon": "format-gallery",
+	"description": "Galería fotográfica en retícula o tira horizontal.",
+	"textdomain": "gramo-core",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": { "type": "object" }
+		},
+		"layout": { "type": "string", "default": "grid", "enum": [ "grid", "strip" ] },
+		"columns": { "type": "number", "default": 3 }
+	},
+	"supports": { "html": false },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}
