@@ -1,0 +1,90 @@
+@use "../shared/controls";
+
+.gramo-hero-editor {
+	position: relative;
+	overflow: hidden;
+	border-radius: 2px;
+	background-color: #2b211c;
+	background-size: cover;
+	background-position: center;
+	color: #f7f3ec;
+
+	&.is-height-full .gramo-hero-editor__scrim {
+		min-height: 420px;
+	}
+
+	&.is-height-tall .gramo-hero-editor__scrim {
+		min-height: 320px;
+	}
+
+	&.is-height-compact .gramo-hero-editor__scrim {
+		min-height: 200px;
+	}
+
+	.gramo-hero-editor__scrim {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 48px 32px;
+		background: rgba(26, 19, 15, 0.55);
+	}
+
+	.gramo-hero-editor__content {
+		max-width: 640px;
+		text-align: center;
+	}
+
+	.gramo-hero-editor__eyebrow {
+		margin: 0 0 8px;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: #d9cbb8;
+	}
+
+	.gramo-hero-editor__heading {
+		margin: 0;
+		font-size: 34px;
+		font-weight: 500;
+		line-height: 1.15;
+		color: #f7f3ec;
+	}
+
+	.gramo-hero-editor__subheading {
+		margin: 12px 0 0;
+		font-size: 16px;
+		line-height: 1.5;
+		color: rgba(247, 243, 236, 0.85);
+	}
+
+	.gramo-hero-editor__ctas {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 12px;
+		margin-top: 20px;
+	}
+
+	.gramo-hero-editor__cta {
+		display: inline-block;
+		padding: 8px 18px;
+		border-radius: 999px;
+		font-size: 13px;
+		font-weight: 600;
+
+		&.is-primary {
+			background: #f7f3ec;
+			color: #2b211c;
+		}
+
+		&.is-secondary {
+			border: 1px solid rgba(247, 243, 236, 0.7);
+			color: #f7f3ec;
+		}
+	}
+
+	[data-rich-text-placeholder]::after {
+		color: rgba(247, 243, 236, 0.5);
+	}
+}

@@ -1,0 +1,72 @@
+@use "../shared/controls";
+
+.gramo-cta-band-editor {
+	position: relative;
+	overflow: hidden;
+	border-radius: 2px;
+	background-size: cover;
+	background-position: center;
+
+	&.is-tone-espresso {
+		background-color: #4a382c;
+		color: #f7f3ec;
+	}
+
+	&.is-tone-linen {
+		background-color: #f3ede4;
+		color: #2b211c;
+
+		.gramo-cta-band-editor__button {
+			background: #2b211c;
+			color: #f7f3ec;
+		}
+	}
+
+	&.is-tone-dark {
+		background-color: #241c17;
+		color: #f7f3ec;
+	}
+
+	&.has-image .gramo-cta-band-editor__inner {
+		background: rgba(26, 19, 15, 0.55);
+		color: #f7f3ec;
+	}
+
+	.gramo-cta-band-editor__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		padding: 40px 32px;
+		text-align: center;
+	}
+
+	.gramo-cta-band-editor__heading {
+		margin: 0;
+		font-size: 26px;
+		font-weight: 500;
+		color: inherit;
+	}
+
+	.gramo-cta-band-editor__text {
+		margin: 0;
+		max-width: 520px;
+		opacity: 0.85;
+	}
+
+	.gramo-cta-band-editor__button {
+		display: inline-block;
+		margin-top: 12px;
+		padding: 8px 20px;
+		border-radius: 999px;
+		background: #f7f3ec;
+		color: #2b211c;
+		font-size: 13px;
+		font-weight: 600;
+	}
+
+	[data-rich-text-placeholder]::after {
+		color: currentColor;
+		opacity: 0.5;
+	}
+}

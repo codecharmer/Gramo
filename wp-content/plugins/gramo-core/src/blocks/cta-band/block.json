@@ -14,7 +14,11 @@
 			"type": "object",
 			"default": { "label": "", "url": "" }
 		},
-		"tone": { "type": "string", "default": "espresso", "enum": [ "espresso", "linen", "dark" ] },
+		"tone": {
+			"type": "string",
+			"default": "espresso",
+			"enum": [ "espresso", "linen", "dark" ]
+		},
 		"media": {
 			"type": "object",
 			"default": { "id": 0, "url": "", "alt": "" }

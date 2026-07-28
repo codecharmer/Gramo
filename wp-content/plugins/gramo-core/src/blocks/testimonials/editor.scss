@@ -1,0 +1,62 @@
+@use "../shared/controls";
+
+.gramo-testimonials-editor {
+	padding: 24px;
+	border: 1px solid #e4dbd0;
+	border-radius: 2px;
+	background: #f3ede4;
+
+	.gramo-testimonials-editor__heading {
+		margin: 0 0 16px;
+		font-size: 24px;
+		font-weight: 500;
+		color: #2b211c;
+	}
+
+	.gramo-testimonials-editor__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 16px;
+	}
+
+	.gramo-testimonials-editor__card {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin: 0;
+		padding: 16px;
+		border: 1px solid #e4dbd0;
+		border-radius: 2px;
+		background: #fff;
+	}
+
+	.gramo-testimonials-editor__mark {
+		font-size: 30px;
+		line-height: 1;
+		color: #b3a18d;
+	}
+
+	.gramo-testimonials-editor__line {
+		height: 9px;
+		border-radius: 999px;
+		background: #e4dbd0;
+
+		&.is-short {
+			width: 60%;
+		}
+	}
+
+	.gramo-testimonials-editor__source {
+		margin-top: 6px;
+		font-size: 12px;
+		font-weight: 600;
+		color: #6f6259;
+	}
+
+	.gramo-testimonials-editor__note {
+		margin: 14px 0 0;
+		font-size: 12px;
+		font-style: italic;
+		color: #8a7a6b;
+	}
+}

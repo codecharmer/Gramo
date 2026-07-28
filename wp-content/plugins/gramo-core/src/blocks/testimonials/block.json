@@ -8,7 +8,11 @@
 	"description": "Citas de clientes tomadas del contenido de Testimonios.",
 	"textdomain": "gramo-core",
 	"attributes": {
-		"mode": { "type": "string", "default": "latest", "enum": [ "latest", "manual" ] },
+		"mode": {
+			"type": "string",
+			"default": "latest",
+			"enum": [ "latest", "manual" ]
+		},
 		"testimonialIds": {
 			"type": "array",
 			"default": [],

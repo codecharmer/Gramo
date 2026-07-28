@@ -1,0 +1,51 @@
+// Shared sidebar-control styles for the Gramo blocks.
+
+.gramo-media-field {
+	.gramo-media-field__stage {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.gramo-media-field__preview {
+		display: block;
+		max-width: 100%;
+		border: 1px solid #e4dbd0;
+		border-radius: 2px;
+	}
+
+	.gramo-media-field__actions {
+		display: flex;
+		gap: 8px;
+	}
+}
+
+.gramo-cta-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-bottom: 16px;
+
+	.gramo-cta-fields__legend {
+		margin: 0;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: #6f6259;
+	}
+}
+
+.gramo-entity-picker {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	max-height: 260px;
+	overflow-y: auto;
+}
+
+.gramo-entity-picker__empty {
+	margin: 0;
+	color: #6f6259;
+	font-style: italic;
+}

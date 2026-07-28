@@ -8,7 +8,11 @@
 	"description": "Muestra cafés del catálogo; los datos se resuelven desde la tienda.",
 	"textdomain": "gramo-core",
 	"attributes": {
-		"mode": { "type": "string", "default": "featured", "enum": [ "featured", "manual" ] },
+		"mode": {
+			"type": "string",
+			"default": "featured",
+			"enum": [ "featured", "manual" ]
+		},
 		"productIds": {
 			"type": "array",
 			"default": [],

@@ -23,7 +23,11 @@
 			"type": "object",
 			"default": { "label": "", "url": "" }
 		},
-		"height": { "type": "string", "default": "full", "enum": [ "full", "tall", "compact" ] }
+		"height": {
+			"type": "string",
+			"default": "full",
+			"enum": [ "full", "tall", "compact" ]
+		}
 	},
 	"supports": { "html": false, "multiple": false },
 	"editorScript": "file:./index.js",

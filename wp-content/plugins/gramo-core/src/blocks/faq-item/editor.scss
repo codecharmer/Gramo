@@ -1,0 +1,35 @@
+.gramo-faq-item-editor {
+	margin-bottom: 8px;
+	border: 1px solid #e4dbd0;
+	border-radius: 2px;
+	background: #fff;
+
+	.gramo-faq-item-editor__question-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 12px 16px;
+		border-bottom: 1px solid #efe8dd;
+	}
+
+	.gramo-faq-item-editor__question {
+		margin: 0;
+		flex: 1 1 auto;
+		font-size: 16px;
+		font-weight: 600;
+		color: #2b211c;
+	}
+
+	.gramo-faq-item-editor__marker {
+		flex: 0 0 auto;
+		font-size: 20px;
+		line-height: 1;
+		color: #8a7a6b;
+	}
+
+	.gramo-faq-item-editor__answer {
+		padding: 12px 16px;
+		color: #40352d;
+	}
+}

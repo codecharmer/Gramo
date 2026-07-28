@@ -11,7 +11,14 @@
 		"formType": {
 			"type": "string",
 			"default": "general",
-			"enum": [ "general", "wholesale", "subscription", "catering", "events", "careers" ]
+			"enum": [
+				"general",
+				"wholesale",
+				"subscription",
+				"catering",
+				"events",
+				"careers"
+			]
 		},
 		"heading": { "type": "string", "default": "" },
 		"intro": { "type": "string", "default": "" }

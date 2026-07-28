@@ -1,0 +1,61 @@
+@use "../shared/controls";
+
+.gramo-locations-editor {
+	padding: 24px;
+	border: 1px solid #e4dbd0;
+	border-radius: 2px;
+	background: #faf7f2;
+
+	.gramo-locations-editor__heading {
+		margin: 0 0 16px;
+		font-size: 24px;
+		font-weight: 500;
+		color: #2b211c;
+	}
+
+	.gramo-locations-editor__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 16px;
+	}
+
+	.gramo-locations-editor__card {
+		padding: 12px;
+		border: 1px solid #e4dbd0;
+		border-radius: 2px;
+		background: #fff;
+	}
+
+	.gramo-locations-editor__map {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 80px;
+		margin-bottom: 10px;
+		border-radius: 2px;
+		background: #e9e2d6;
+		color: #8a7a6b;
+		font-size: 12px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.gramo-locations-editor__title {
+		font-size: 13px;
+		font-weight: 600;
+		color: #2b211c;
+	}
+
+	.gramo-locations-editor__note {
+		margin: 0;
+		font-size: 12px;
+		font-style: italic;
+		color: #8a7a6b;
+	}
+}
+
+.gramo-locations-editor__help {
+	margin: 0 0 8px;
+	font-size: 12px;
+	color: #6f6259;
+}

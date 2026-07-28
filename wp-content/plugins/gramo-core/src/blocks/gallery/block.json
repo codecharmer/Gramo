@@ -13,7 +13,11 @@
 			"default": [],
 			"items": { "type": "object" }
 		},
-		"layout": { "type": "string", "default": "grid", "enum": [ "grid", "strip" ] },
+		"layout": {
+			"type": "string",
+			"default": "grid",
+			"enum": [ "grid", "strip" ]
+		},
 		"columns": { "type": "number", "default": 3 }
 	},
 	"supports": { "html": false },

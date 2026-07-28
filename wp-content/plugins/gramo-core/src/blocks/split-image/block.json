@@ -12,7 +12,11 @@
 			"type": "object",
 			"default": { "id": 0, "url": "", "alt": "" }
 		},
-		"imageSide": { "type": "string", "default": "left", "enum": [ "left", "right" ] },
+		"imageSide": {
+			"type": "string",
+			"default": "left",
+			"enum": [ "left", "right" ]
+		},
 		"eyebrow": { "type": "string", "default": "" },
 		"heading": { "type": "string", "default": "" }
 	},

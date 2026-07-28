@@ -161,7 +161,7 @@ final class OrderController implements Bootable {
 
 		$order->update_meta_data( '_gramo_fulfillment', $type );
 		if ( $location_id > 0 ) {
-			$order->update_meta_data( '_gramo_location_id', $location_id );
+			$order->update_meta_data( '_gramo_location_id', (string) $location_id );
 		}
 		$locale = 'en' === ( $body['locale'] ?? '' ) ? 'en' : 'es';
 		$order->update_meta_data( '_gramo_order_locale', $locale );
@@ -202,7 +202,9 @@ final class OrderController implements Bootable {
 
 		$subtotal = 0.0;
 		foreach ( $order->get_items() as $item ) {
-			$subtotal += (float) $item->get_total();
+			if ( $item instanceof \WC_Order_Item_Product ) {
+				$subtotal += (float) $item->get_total();
+			}
 		}
 		if ( $free_over > 0 && $subtotal >= $free_over ) {
 			return;

@@ -1,0 +1,66 @@
+@use "../shared/controls";
+
+.gramo-split-editor {
+	display: flex;
+	gap: 32px;
+	align-items: flex-start;
+	padding: 24px;
+	border: 1px solid #e4dbd0;
+	border-radius: 2px;
+	background: #faf7f2;
+
+	&.is-image-right {
+		flex-direction: row-reverse;
+	}
+
+	.gramo-split-editor__media {
+		flex: 0 0 42%;
+		margin: 0;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			border-radius: 2px;
+		}
+	}
+
+	.gramo-split-editor__placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 200px;
+		padding: 16px;
+		border: 1px dashed #cbbfae;
+		border-radius: 2px;
+		color: #6f6259;
+		font-size: 13px;
+		text-align: center;
+	}
+
+	.gramo-split-editor__body {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.gramo-split-editor__eyebrow {
+		margin: 0 0 6px;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: #8a7a6b;
+	}
+
+	.gramo-split-editor__heading {
+		margin: 0 0 12px;
+		font-size: 26px;
+		font-weight: 500;
+		line-height: 1.2;
+		color: #2b211c;
+	}
+
+	.gramo-split-editor__content {
+		color: #40352d;
+	}
+}

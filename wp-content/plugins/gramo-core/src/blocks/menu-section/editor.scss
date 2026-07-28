@@ -1,0 +1,49 @@
+.gramo-menu-editor {
+	padding: 24px;
+	border: 1px solid #e4dbd0;
+	border-radius: 2px;
+	background: #faf7f2;
+
+	.gramo-menu-editor__heading {
+		margin: 0 0 16px;
+		font-size: 20px;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		color: #2b211c;
+	}
+
+	.gramo-menu-editor__rows {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.gramo-menu-editor__row {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 10px 0;
+		border-bottom: 1px dotted #cbbfae;
+	}
+
+	.gramo-menu-editor__dish {
+		flex: 1 1 auto;
+		height: 10px;
+		border-radius: 999px;
+		background: #e4dbd0;
+	}
+
+	.gramo-menu-editor__price {
+		flex: 0 0 42px;
+		height: 10px;
+		border-radius: 999px;
+		background: #d9cbb8;
+	}
+
+	.gramo-menu-editor__note {
+		margin: 14px 0 0;
+		font-size: 12px;
+		font-style: italic;
+		color: #8a7a6b;
+	}
+}
