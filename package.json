@@ -11,7 +11,8 @@
   },
   "workspaces": [
     "wp-content/themes/gramo",
-    "wp-content/plugins/gramo-core"
+    "wp-content/plugins/gramo-core",
+    "frontend"
   ],
   "scripts": {
     "build": "npm run build --workspace=wp-content/themes/gramo && npm run build:blocks",

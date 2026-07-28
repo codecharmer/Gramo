@@ -1,0 +1,45 @@
+{
+  "name": "@gramo/frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gramo Café — static Gatsby frontend for gramo.cafe, sourced from the headless WordPress backend.",
+  "author": "Gramo — Agency Build",
+  "license": "GPL-2.0-or-later",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/archivo": "^5.1.0",
+    "@fontsource/archivo-narrow": "^5.1.0",
+    "@fontsource/libre-caslon-display": "^5.1.0",
+    "@fontsource/libre-caslon-text": "^5.1.0",
+    "gatsby": "^5.16.0",
+    "gatsby-plugin-image": "^3.16.0",
+    "gatsby-plugin-manifest": "^5.16.0",
+    "gatsby-plugin-sass": "^6.16.0",
+    "gatsby-plugin-sharp": "^5.16.0",
+    "gatsby-plugin-sitemap": "^6.16.0",
+    "gatsby-source-filesystem": "^5.16.0",
+    "gatsby-transformer-sharp": "^5.16.0",
+    "graphql-request": "^6.1.0",
+    "gsap": "^3.12.5",
+    "html-react-parser": "^5.1.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.77.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "~5.5.4"
+  }
+}

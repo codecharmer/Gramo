@@ -1,0 +1,63 @@
+// Gramo design tokens — the Coffee Data Portraits world (see /DESIGN.md).
+// Aged ivory board + espresso ink, four flat chart pigments, copper action.
+
+:root {
+	// Grounds.
+	--gramo-paper: #f2ebdd;
+	--gramo-paper-deep: #e7dcc8;
+	--gramo-board: #191410;
+
+	// Ink.
+	--gramo-ink: #241b14;
+	--gramo-cream: #efe6d4;
+
+	// Chart pigments (flat, hand-laid).
+	--gramo-walnut: #6e4a2f;
+	--gramo-olive: #67653f;
+	--gramo-bronze: #96713d;
+	--gramo-copper: #b4633a;
+	--gramo-gray: #8b7f6e;
+
+	// Type.
+	--font-display: 'Libre Caslon Display', 'Libre Caslon Text', georgia, serif;
+	--font-serif-text: 'Libre Caslon Text', georgia, serif;
+	--font-body: 'Archivo', system-ui, -apple-system, sans-serif;
+	--font-caption: 'Archivo Narrow', 'Archivo', system-ui, sans-serif;
+
+	// Type scale (fluid).
+	--text-display: clamp(2.6rem, 1.4rem + 5vw, 5.4rem);
+	--text-title: clamp(1.9rem, 1.2rem + 2.4vw, 3.1rem);
+	--text-subtitle: clamp(1.35rem, 1.05rem + 1vw, 1.8rem);
+	--text-body: 1.0625rem;
+	--text-caption: 0.8125rem;
+	--text-small: 0.75rem;
+
+	--leading-tight: 1.08;
+	--leading-body: 1.65;
+	--tracking-caps: 0.08em;
+
+	// Rhythm.
+	--space-1: 0.5rem;
+	--space-2: 1rem;
+	--space-3: 1.5rem;
+	--space-4: 2.5rem;
+	--space-5: 4rem;
+	--space-6: 6.5rem;
+	--space-7: 9rem;
+
+	// Layout.
+	--width-content: 44rem;
+	--width-wide: 74rem;
+	--gutter: clamp(1.25rem, 4vw, 3rem);
+
+	// Lines + depth (printed board, not blur).
+	--rule: 1px solid rgb(36 27 20 / 28%);
+	--rule-strong: 1.5px solid var(--gramo-ink);
+	--shadow-plate: 4px 4px 0 rgb(36 27 20 / 14%);
+	--shadow-plate-hover: 6px 6px 0 rgb(36 27 20 / 18%);
+
+	// Motion.
+	--ease-ink: cubic-bezier(0.25, 0.1, 0.25, 1);
+	--duration-draw: 800ms;
+	--duration-ui: 180ms;
+}

@@ -1,0 +1,78 @@
+@use '../../styles/mixins' as mx;
+
+.split {
+	padding-block: var(--space-6);
+}
+
+.inner {
+	@include mx.wide-width;
+
+	align-items: center;
+	display: grid;
+	gap: var(--space-5);
+	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+
+	@media (max-width: 860px) {
+		gap: var(--space-4);
+		grid-template-columns: 1fr;
+	}
+}
+
+.imageRight .inner {
+	grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+
+	@media (max-width: 860px) {
+		grid-template-columns: 1fr;
+	}
+
+	.plate {
+		order: 2;
+
+		@media (max-width: 860px) {
+			order: 0;
+		}
+	}
+}
+
+.plate {
+	@include mx.plate;
+
+	margin: 0;
+	padding: 0.65rem;
+}
+
+.platePlaceholder {
+	aspect-ratio: 4 / 5;
+	background: var(--gramo-paper-deep);
+	border: var(--rule-strong);
+}
+
+.plateCaption {
+	@include mx.caps-caption;
+
+	color: var(--gramo-gray);
+	padding: 0.6rem 0.25rem 0.1rem;
+}
+
+.eyebrow {
+	@include mx.caps-caption;
+
+	color: var(--gramo-bronze);
+	margin: 0 0 var(--space-2);
+}
+
+.heading {
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-3);
+	max-width: 20ch;
+	text-wrap: balance;
+}
+
+.copy {
+	// Inner prose keeps its own content width off — the column is the measure.
+	:global(div) {
+		margin-inline: 0;
+		max-width: none;
+		padding-inline: 0;
+	}
+}

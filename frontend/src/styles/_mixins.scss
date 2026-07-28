@@ -1,0 +1,72 @@
+// Shared mixins for the Coffee Data Portraits world.
+
+@mixin caps-caption {
+	font-family: var(--font-caption);
+	font-size: var(--text-caption);
+	font-weight: 600;
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+}
+
+@mixin display-serif {
+	font-family: var(--font-display);
+	font-weight: 400;
+	line-height: var(--leading-tight);
+	letter-spacing: -0.01em;
+}
+
+@mixin plate {
+	background: var(--gramo-paper-deep);
+	border: var(--rule-strong);
+	box-shadow: var(--shadow-plate);
+}
+
+@mixin plate-hover {
+	@media (prefers-reduced-motion: no-preference) {
+		transition:
+			transform var(--duration-ui) var(--ease-ink),
+			box-shadow var(--duration-ui) var(--ease-ink);
+
+		&:hover {
+			box-shadow: var(--shadow-plate-hover);
+			transform: translate(-2px, -2px);
+		}
+	}
+}
+
+@mixin content-width {
+	margin-inline: auto;
+	max-width: var(--width-content);
+	padding-inline: var(--gutter);
+}
+
+@mixin wide-width {
+	margin-inline: auto;
+	max-width: var(--width-wide);
+	padding-inline: var(--gutter);
+}
+
+@mixin focus-ring {
+	&:focus-visible {
+		outline: 2px solid var(--gramo-copper);
+		outline-offset: 2px;
+	}
+}
+
+@mixin dotted-leader {
+	align-items: baseline;
+	display: flex;
+	gap: 0.75rem;
+
+	&::after {
+		border-bottom: 1px dotted var(--gramo-gray);
+		content: '';
+		flex: 1;
+		order: 2;
+		transform: translateY(-0.25em);
+	}
+
+	> :last-child {
+		order: 3;
+	}
+}

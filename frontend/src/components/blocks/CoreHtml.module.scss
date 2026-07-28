@@ -1,0 +1,65 @@
+@use '../../styles/mixins' as mx;
+
+.prose {
+	@include mx.content-width;
+
+	> p,
+	> ul,
+	> ol,
+	> blockquote {
+		margin-bottom: var(--space-2);
+	}
+
+	> h2,
+	> h3 {
+		margin-top: var(--space-4);
+	}
+
+	> h2 {
+		font-size: var(--text-title);
+	}
+
+	> h3 {
+		font-size: var(--text-subtitle);
+	}
+
+	blockquote {
+		border-left: 3px solid var(--gramo-copper);
+		font-family: var(--font-serif-text);
+		font-size: 1.2em;
+		font-style: italic;
+		margin-inline: 0;
+		padding-left: var(--space-3);
+	}
+
+	hr {
+		border: 0;
+		border-top: var(--rule);
+		margin-block: var(--space-4);
+	}
+
+	:global(.wp-block-buttons) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		margin-block: var(--space-3);
+	}
+
+	:global(.wp-block-button__link) {
+		@include mx.caps-caption;
+		@include mx.focus-ring;
+
+		background: var(--gramo-copper);
+		border: none;
+		color: var(--gramo-cream);
+		display: inline-block;
+		padding: 0.85rem 1.6rem;
+		text-decoration: none;
+	}
+}
+
+.image {
+	border: var(--rule-strong);
+	box-shadow: var(--shadow-plate);
+	margin-block: var(--space-3);
+}
