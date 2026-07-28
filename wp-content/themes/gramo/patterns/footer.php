@@ -1,0 +1,100 @@
+<?php
+/**
+ * Title: Pie de página
+ * Slug: gramo/footer
+ * Categories: gramo-parts
+ * Description: Pie heredado del esquema anterior. Sin uso: parts/footer.html trae su propio marcado desde el rediseño boutique.
+ * Keywords: pie, footer, horario, dirección, instagram, legal, boletín
+ * Viewport Width: 1400
+ * Inserter: no
+ */
+
+/*
+ * LEGACY — no lo referencia ninguna plantilla ni parte, y con `Inserter: no`
+ * tampoco puede insertarse desde el editor. El pie real vive en
+ * parts/footer.html. Se conserva para no borrar trabajo sin confirmar;
+ * puede eliminarse junto con patterns/header.php.
+ */
+?>
+<!-- wp:group {"align":"full","backgroundColor":"crust","textColor":"porcelain","style":{"spacing":{"padding":{"top":"var:preset|spacing|xxl","bottom":"var:preset|spacing|xl"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group alignfull has-porcelain-color has-crust-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--xxl);padding-bottom:var(--wp--preset--spacing--xl)"><!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|lg","left":"var:preset|spacing|xl"}}}} -->
+<div class="wp-block-columns"><!-- wp:column {"width":"34%"} -->
+<div class="wp-block-column" style="flex-basis:34%"><!-- wp:heading {"level":2,"textColor":"linen","fontSize":"lg","metadata":{"bindings":{"content":{"source":"gramo/business","args":{"key":"name"}}}}} -->
+<h2 class="wp-block-heading has-linen-color has-text-color has-lg-font-size">Gramo Panadería</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"stone","fontSize":"base","style":{"typography":{"fontStyle":"italic","fontFamily":"var:preset|font-family|display"}},"metadata":{"bindings":{"content":{"source":"gramo/business","args":{"key":"tagline"}}}}} -->
+<p class="has-stone-color has-text-color has-base-font-size" style="font-family:var(--wp--preset--font-family--display);font-style:italic">Artesanal no es una moda.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"22%"} -->
+<div class="wp-block-column" style="flex-basis:22%"><!-- wp:heading {"level":2,"textColor":"rosa-soft","className":"is-style-eyebrow","fontSize":"sm"} -->
+<h2 class="wp-block-heading is-style-eyebrow has-rosa-soft-color has-text-color has-sm-font-size">Visítanos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"gramo/business","args":{"key":"address"}}}},"textColor":"porcelain","fontSize":"base"} -->
+<p class="has-porcelain-color has-text-color has-base-font-size">Calle Ejemplo 000, Cuernavaca, Morelos</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"gramo/business","args":{"key":"phone"}}}},"textColor":"porcelain","fontSize":"base"} -->
+<p class="has-porcelain-color has-text-color has-base-font-size">+52 000 000 0000</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|xxs"}}}} -->
+<p style="margin-top:var(--wp--preset--spacing--xxs)"><a href="#">Cómo llegar</a></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"22%"} -->
+<div class="wp-block-column" style="flex-basis:22%"><!-- wp:heading {"level":2,"textColor":"rosa-soft","className":"is-style-eyebrow","fontSize":"sm"} -->
+<h2 class="wp-block-heading is-style-eyebrow has-rosa-soft-color has-text-color has-sm-font-size">Horario</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"gramo/business","args":{"key":"hours_summary"}}}},"textColor":"porcelain","fontSize":"base"} -->
+<p class="has-porcelain-color has-text-color has-base-font-size">Miércoles a domingo, 9:00–15:00</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"gramo/business","args":{"key":"hours_closed"}}}},"textColor":"stone","fontSize":"base"} -->
+<p class="has-stone-color has-text-color has-base-font-size">Cerrado lunes y martes</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|xxs"}}}} -->
+<p style="margin-top:var(--wp--preset--spacing--xxs)"><a href="https://www.instagram.com/gramo.cafe/">Instagram @gramo.cafe</a></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"22%"} -->
+<div class="wp-block-column" style="flex-basis:22%"><!-- wp:heading {"level":2,"textColor":"rosa-soft","className":"is-style-eyebrow","fontSize":"sm"} -->
+<h2 class="wp-block-heading is-style-eyebrow has-rosa-soft-color has-text-color has-sm-font-size">Boletín</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"porcelain","fontSize":"base"} -->
+<p class="has-porcelain-color has-text-color has-base-font-size">Novedades y temporada, directo a tu correo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|xxs"}}}} -->
+<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--xxs)"><!-- wp:button {"className":"is-style-ghost","fontSize":"base"} -->
+<div class="wp-block-button is-style-ghost has-custom-font-size has-base-font-size"><a class="wp-block-button__link wp-element-button" href="/#suscribirse">Suscribirme</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:separator {"backgroundColor":"crust-soft","style":{"spacing":{"margin":{"top":"var:preset|spacing|lg","bottom":"var:preset|spacing|md"}}}} -->
+<hr class="wp-block-separator has-text-color has-crust-soft-color has-alpha-channel-opacity has-crust-soft-background-color has-background"/>
+<!-- /wp:separator -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|md"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"textColor":"stone","fontSize":"sm"} -->
+<p class="has-stone-color has-text-color has-sm-font-size">© 2026 Gramo Panadería. Hecho a mano en Cuernavaca.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:navigation {"textColor":"porcelain","overlayBackgroundColor":"crust","overlayTextColor":"porcelain","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"},"fontSize":"sm"} -->
+<!-- wp:navigation-link {"label":"Privacidad","url":"/aviso-de-privacidad"} /-->
+<!-- wp:navigation-link {"label":"Términos","url":"/terminos-y-condiciones"} /-->
+<!-- wp:navigation-link {"label":"Reembolsos","url":"/politica-de-reembolsos"} /-->
+<!-- wp:navigation-link {"label":"Cómo recoger","url":"/como-recoger"} /-->
+<!-- /wp:navigation --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->

@@ -1,0 +1,11 @@
+{
+  "//": "Copy to .wp-env.override.json (git-ignored) and fill in LOCAL/TEST secrets.",
+  "//2": "These become PHP constants Options::sms()/payments read before the DB option.",
+  "config": {
+    "GRAMO_TWILIO_SID": "",
+    "GRAMO_TWILIO_AUTH_TOKEN": "",
+    "GRAMO_TWILIO_ACCOUNT_SID": "",
+    "GRAMO_TWILIO_FROM": "",
+    "GRAMO_TWILIO_CHANNEL": "sms"
+  }
+}

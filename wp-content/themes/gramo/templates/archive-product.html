@@ -1,0 +1,66 @@
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","metadata":{"name":"Contenido principal"},"anchor":"pf-main","className":"pf-main pf-shop","layout":{"type":"default"}} -->
+<main id="pf-main" class="wp-block-group pf-main pf-shop">
+	<!-- wp:group {"align":"full","backgroundColor":"linen","className":"pf-band pf-page-head pf-shop-header","layout":{"type":"constrained","wideSize":"1200px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|lg","bottom":"var:preset|spacing|xl"},"blockGap":"var:preset|spacing|md"}}} -->
+	<div class="wp-block-group alignfull pf-band pf-page-head pf-shop-header has-linen-background-color has-background" style="padding-top:var(--wp--preset--spacing--lg);padding-bottom:var(--wp--preset--spacing--xl)">
+		<!-- wp:woocommerce/breadcrumbs {"fontSize":"sm"} /-->
+		<!-- wp:group {"className":"pf-head","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
+		<div class="wp-block-group pf-head">
+			<!-- wp:paragraph {"className":"pf-eyebrow"} -->
+			<p class="pf-eyebrow">Menú &amp; Tienda</p>
+			<!-- /wp:paragraph -->
+			<!-- wp:heading {"level":1,"fontSize":"xxl"} -->
+			<h1 class="wp-block-heading has-xxl-font-size">Reserva y recoge</h1>
+			<!-- /wp:heading -->
+			<!-- wp:paragraph {"className":"pf-lede"} -->
+			<p class="pf-lede">Masa madre, tiempo y fuego. Todo se hornea por encargo para recoger en el obrador — sin envíos.</p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"className":"pf-shop-body","layout":{"type":"constrained","wideSize":"1200px"},"style":{"spacing":{"padding":{"bottom":"var:preset|spacing|xxl"},"blockGap":"var:preset|spacing|md"}}} -->
+	<div class="wp-block-group pf-shop-body" style="padding-bottom:var(--wp--preset--spacing--xxl)">
+		<!-- wp:woocommerce/store-notices /-->
+
+		<!-- wp:group {"className":"pf-shop-toolbar","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"},"style":{"spacing":{"blockGap":"var:preset|spacing|sm"}}} -->
+		<div class="wp-block-group pf-shop-toolbar">
+			<!-- wp:woocommerce/product-results-count {"fontSize":"sm"} /-->
+			<!-- wp:woocommerce/catalog-sorting {"fontSize":"sm"} /-->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"title","search":"","exclude":[],"inherit":true,"taxQuery":{},"isProductCollectionBlock":true,"featured":false,"woocommerceOnSale":false,"woocommerceStockStatus":["instock","outofstock","onbackorder"],"woocommerceAttributes":[],"woocommerceHandPickedProducts":[]},"tagName":"div","displayLayout":{"type":"flex","columns":3,"shrinkColumns":true},"dimensions":{"widthType":"fill"},"collection":"woocommerce/product-collection/product-catalog","className":"pf-product-grid"} -->
+		<div class="wp-block-woocommerce-product-collection pf-product-grid">
+			<!-- wp:woocommerce/product-template -->
+				<!-- wp:group {"className":"pf-product-card pf-reveal","layout":{"type":"default"},"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}}} -->
+				<div class="wp-block-group pf-product-card pf-reveal">
+					<!-- wp:woocommerce/product-image {"imageSizing":"thumbnail","showSaleBadge":true,"aspectRatio":"4/5","scale":"cover","isDescendentOfQueryLoop":true} /-->
+					<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"md","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+					<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true,"fontSize":"base"} /-->
+					<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true,"fontSize":"sm"} /-->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:woocommerce/product-template -->
+
+			<!-- wp:query-pagination {"className":"pf-pagination","layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|xl"}}}} -->
+				<!-- wp:query-pagination-previous {"label":"Anterior"} /-->
+				<!-- wp:query-pagination-numbers /-->
+				<!-- wp:query-pagination-next {"label":"Siguiente"} /-->
+			<!-- /wp:query-pagination -->
+
+			<!-- wp:woocommerce/product-collection-no-results -->
+				<!-- wp:paragraph {"fontSize":"md","textColor":"crust-soft"} -->
+				<p class="has-crust-soft-color has-text-color has-md-font-size">No hay productos disponibles por ahora. Vuelve pronto o síguenos en <a href="https://www.instagram.com/gramo.cafe/" rel="noopener" target="_blank">Instagram</a>.</p>
+				<!-- /wp:paragraph -->
+			<!-- /wp:woocommerce/product-collection-no-results -->
+		</div>
+		<!-- /wp:woocommerce/product-collection -->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

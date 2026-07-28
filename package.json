@@ -1,0 +1,34 @@
+{
+  "name": "gramo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gramo — headless WordPress + Gatsby build (gramo-core plugin, admin-shell block theme, Gatsby frontend). Root workspace: tooling, local dev, and asset builds.",
+  "author": "Gramo — Agency Build",
+  "license": "GPL-2.0-or-later",
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
+  "workspaces": [
+    "wp-content/themes/gramo"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=wp-content/themes/gramo",
+    "start": "npm run start --workspace=wp-content/themes/gramo",
+    "lint:js": "npm run lint:js --workspace=wp-content/themes/gramo",
+    "lint:css": "npm run lint:css --workspace=wp-content/themes/gramo",
+    "lint": "npm run lint:js && npm run lint:css",
+    "format": "npm run format --workspace=wp-content/themes/gramo",
+    "env": "wp-env",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "env:clean": "wp-env clean all",
+    "env:cli": "wp-env run cli wp",
+    "env:install-content": "wp-env run cli wp gramo install",
+    "postinstall": "node -e \"console.log('\\n[gramo] Node deps installed. Next: composer install (PHP tooling), then npm run env:start to boot the local WordPress, then npm run build to compile future SCSS/JS entries. See docs/setup.md.')\""
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0",
+    "typescript": "~5.5.4"
+  }
+}
