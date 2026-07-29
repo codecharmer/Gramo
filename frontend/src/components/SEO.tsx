@@ -50,10 +50,10 @@ export function SEO({
       <link rel="canonical" href={url} />
       {noindex ? <meta name="robots" content="noindex,nofollow" /> : null}
 
-      {altUrl ? <link rel="alternate" hrefLang={selfHrefLang} href={url} /> : null}
-      {altUrl ? <link rel="alternate" hrefLang={altHrefLang} href={altUrl} /> : null}
+      {altUrl ? <link rel="alternate" {...{ hreflang: selfHrefLang }} href={url} /> : null}
+      {altUrl ? <link rel="alternate" {...{ hreflang: altHrefLang }} href={altUrl} /> : null}
       {altUrl && defaultUrl ? (
-        <link rel="alternate" hrefLang="x-default" href={defaultUrl} />
+        <link rel="alternate" {...{ hreflang: 'x-default' }} href={defaultUrl} />
       ) : null}
 
       <meta property="og:site_name" content={SITE_NAME} />
