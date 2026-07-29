@@ -52,3 +52,8 @@ Thumbs.db
 # Our own plugin (gramo-core) IS source, so it stays tracked.
 wp-content/plugins/*/
 !wp-content/plugins/gramo-core/
+
+# === Gatsby build output (frontend) ===
+# Reproduced by `npm run build --workspace=frontend`; never committed.
+frontend/.cache/
+frontend/public/

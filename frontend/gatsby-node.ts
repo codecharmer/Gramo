@@ -162,6 +162,10 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       labelEn: String
       price: String
     }
+    type GramoSeo {
+      description: String
+      short: String
+    }
     type GramoTranslationRef {
       databaseId: Int
       slug: String
@@ -212,6 +216,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       localFile: File @link(from: "localFileId")
     }
     type GramoCoffee implements Node {
+      gramoSeo: GramoSeo
       databaseId: Int!
       slug: String!
       title: String!
@@ -239,6 +244,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       localImage: File @link(from: "localImageId")
     }
     type GramoLocation implements Node {
+      gramoSeo: GramoSeo
       databaseId: Int!
       slug: String!
       title: String!
@@ -311,6 +317,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       reservationUrl: String
     }
     type GramoPage implements Node {
+      gramoSeo: GramoSeo
       databaseId: Int!
       slug: String!
       title: String!
@@ -320,6 +327,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       blocksJson: String!
     }
     type GramoJournalPost implements Node {
+      gramoSeo: GramoSeo
       databaseId: Int!
       slug: String!
       title: String!
@@ -402,6 +410,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async ({
       databaseId: node.databaseId,
       slug: node.slug,
       title: node.title,
+      gramoSeo: node.gramoSeo ?? null,
       nameEn: node.nameEn,
       descriptionEn: node.descriptionEn,
       content: node.content,
@@ -445,6 +454,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async ({
       slug: node.slug,
       title: node.title,
       menuOrder: node.menuOrder ?? 0,
+      gramoSeo: node.gramoSeo ?? null,
       shortName: node.shortName,
       address: node.address,
       neighborhood: node.neighborhood,
@@ -539,6 +549,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async ({
       title: node.title,
       locale: node.locale === 'en' ? 'en' : 'es',
       isFront: Boolean(node.isFrontPage),
+      gramoSeo: node.gramoSeo ?? null,
       translation: node.translation,
       blocksJson: node.blocksJson ?? '[]',
     });
@@ -556,6 +567,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async ({
       date: node.date,
       excerpt: node.excerpt,
       readingTime: node.readingTime ?? 1,
+      gramoSeo: node.gramoSeo ?? null,
       translation: node.translation,
       blocksJson: node.blocksJson ?? '[]',
       categories: (node.categories?.nodes ?? []).map((c: AnyRecord) => ({
