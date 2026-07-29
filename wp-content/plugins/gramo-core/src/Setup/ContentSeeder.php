@@ -42,6 +42,7 @@ final class ContentSeeder {
 	 */
 	public static function install_all( bool $force ): array {
 		return array(
+			'defaults'     => self::remove_default_content(),
 			'locations'    => self::install_cpt( 'gramo_location', 'locations', $force ),
 			'menu'         => self::install_menu( $force ),
 			'team'         => self::install_cpt( 'gramo_team', 'team', $force ),
@@ -51,6 +52,56 @@ final class ContentSeeder {
 			'journal'      => self::install_journal( $force ),
 			'settings'     => self::install_site_settings(),
 		);
+	}
+
+	/**
+	 * Remove the sample content WordPress ships with a fresh install.
+	 *
+	 * "Hello world!" and "Sample Page" are English placeholders that would
+	 * otherwise surface as the newest journal entry on a Spanish site. Only
+	 * untouched defaults are removed: anything an editor has modified, or that
+	 * carries our own seed marker, is left alone.
+	 *
+	 * @return array<string,int>
+	 */
+	public static function remove_default_content(): array {
+		$report = array( 'removed' => 0 );
+
+		foreach ( array(
+			'hello-world' => 'post',
+			'sample-page' => 'page',
+		) as $slug => $post_type ) {
+			$found = get_posts(
+				array(
+					'post_type'     => $post_type,
+					'name'          => $slug,
+					'post_status'   => 'any',
+					'numberposts'   => 1,
+					'no_found_rows' => true,
+				)
+			);
+			if ( array() === $found ) {
+				continue;
+			}
+
+			$post = $found[0];
+			if ( ! $post instanceof \WP_Post ) {
+				continue;
+			}
+			// Never touch content the client has edited or that we seeded.
+			if ( $post->post_modified_gmt !== $post->post_date_gmt ) {
+				continue;
+			}
+			if ( '' !== (string) get_post_meta( $post->ID, Installer::MARKER_META, true ) ) {
+				continue;
+			}
+
+			if ( wp_delete_post( $post->ID, true ) ) {
+				++$report['removed'];
+			}
+		}
+
+		return $report;
 	}
 
 	/*
@@ -458,7 +509,7 @@ final class ContentSeeder {
 			'post_status'  => 'publish',
 			'post_title'   => $title,
 			'post_name'    => $slug,
-			'post_content' => (string) ( $side['content'] ?? '' ),
+			'post_content' => self::resolve_media_tokens( (string) ( $side['content'] ?? '' ) ),
 		);
 		if ( isset( $side['excerpt'] ) ) {
 			$postarr['post_excerpt'] = sanitize_textarea_field( (string) $side['excerpt'] );
@@ -496,6 +547,50 @@ final class ContentSeeder {
 		self::maybe_set_thumbnail( $post_id, (string) ( $pair['media'] ?? '' ), $title );
 
 		return $post_id;
+	}
+
+	/**
+	 * Resolve @media-key tokens inside seeded block markup.
+	 *
+	 * Block media attributes need a real attachment id and URL, which only
+	 * exist once the image has been imported, and differ per environment. Seed
+	 * data therefore writes a placeholder the seeder swaps at install time:
+	 *
+	 *     {"id":0,"url":"@escena-red-apple","alt":"…"}
+	 *
+	 * The key names a file in data/media/source/. An unresolvable key leaves
+	 * an empty media object, which every block already renders without.
+	 */
+	private static function resolve_media_tokens( string $content ): string {
+		if ( ! str_contains( $content, '"@' ) ) {
+			return $content;
+		}
+
+		return (string) preg_replace_callback(
+			'/\{"id":0,"url":"@([a-z0-9-]+)","alt":"((?:[^"\\\\]|\\\\.)*)"\}/',
+			static function ( array $matches ): string {
+				$key = $matches[1];
+				$alt = $matches[2];
+				$id  = MediaImporter::ensure( $key, stripslashes( $alt ) );
+				if ( $id <= 0 ) {
+					return $matches[0];
+				}
+				$url = (string) wp_get_attachment_image_url( $id, 'full' );
+				if ( '' === $url ) {
+					return $matches[0];
+				}
+				$encoded = wp_json_encode(
+					array(
+						'id'  => $id,
+						'url' => $url,
+						'alt' => stripslashes( $alt ),
+					),
+					JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+				);
+				return false === $encoded ? $matches[0] : $encoded;
+			},
+			$content
+		);
 	}
 
 	/**
