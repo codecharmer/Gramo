@@ -11,6 +11,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import { Layout } from '@/components/Layout';
 import { SEO } from '@/components/SEO';
 import { JournalCard, type JournalCardData } from '@/components/JournalCard';
+import { RevealSection } from '@/components/RevealSection';
 import { pathFor, STATIC_ROUTES } from '@/i18n/routes';
 import { t } from '@/i18n/strings';
 import { formatDate } from '@/lib/format';
@@ -75,14 +76,17 @@ export default function JournalIndexTemplate({
       </header>
 
       {feature ? (
-        <section className={styles.featureSection}>
-          <Link to={pathFor('journal', locale, feature.slug)} className={styles.feature}>
+        <RevealSection className={styles.featureSection}>
+          <Link
+            to={pathFor('journal', locale, feature.slug)}
+            className={`${styles.feature} ${featureImage ? '' : styles.featureSolo}`}
+          >
             {featureImage ? (
-              <div className={styles.featureImage}>
+              <div className={styles.featureImage} data-reveal="work">
                 <GatsbyImage image={featureImage} alt={feature.title} loading="eager" />
               </div>
             ) : null}
-            <div className={styles.featureBody}>
+            <div className={styles.featureBody} data-reveal="label">
               {featureCategory ? (
                 <p className={styles.featureCategory}>
                   {(locale === 'en' ? featureCategory.nameEn : null) ?? featureCategory.name}
@@ -102,17 +106,17 @@ export default function JournalIndexTemplate({
               </p>
             </div>
           </Link>
-        </section>
+        </RevealSection>
       ) : null}
 
       {rest.length > 0 ? (
-        <section className={styles.gridSection}>
+        <RevealSection className={styles.gridSection}>
           <div className={styles.grid}>
             {rest.map((post, index) => (
               <JournalCard key={post.databaseId} post={post} locale={locale} index={index} />
             ))}
           </div>
-        </section>
+        </RevealSection>
       ) : null}
     </Layout>
   );

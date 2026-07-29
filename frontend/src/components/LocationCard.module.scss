@@ -1,54 +1,44 @@
 @use '../styles/mixins' as mx;
+@use '../styles/label' as lbl;
 
-.card {
-	@include mx.plate;
-	@include mx.plate-hover;
-
+.work {
 	display: flex;
 	flex-direction: column;
-	padding: 0.65rem;
 	position: relative;
 }
 
-.image {
-	border-bottom: var(--rule);
-	margin-bottom: var(--space-2);
+// Café photography keeps a hairline mat — the one framed exception.
+.mat {
+	border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+	margin-bottom: var(--space-3);
+	padding: 0.5rem;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: border-color var(--duration-ui) var(--ease-ink);
+	}
 }
 
-.imagePlaceholder {
-	aspect-ratio: 4 / 3;
-	background: var(--gramo-paper);
-	border-bottom: var(--rule);
-	margin-bottom: var(--space-2);
+.work:hover .mat {
+	border-color: var(--gramo-accent, var(--gramo-brass));
 }
 
-.body {
+.label {
+	@include lbl.label-block;
+
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	padding: 0 0.35rem 0.5rem;
 }
 
 .city {
-	@include mx.caps-caption;
-
-	margin: 0 0 var(--space-1);
-}
-
-.olive {
-	color: var(--gramo-olive);
-}
-
-.bronze {
-	color: var(--gramo-bronze);
+	@include lbl.label-eyebrow;
 }
 
 .name {
-	font-size: var(--text-subtitle);
-	margin: 0 0 var(--space-1);
+	@include lbl.label-title;
 }
 
-// Stretched link: the whole plate is clickable; the maps link floats above.
+// Stretched link: the whole work is clickable; the maps link floats above.
 .link {
 	@include mx.focus-ring;
 
@@ -61,10 +51,21 @@
 	}
 }
 
-.address {
-	color: var(--gramo-gray);
-	font-size: var(--text-caption);
-	margin: 0 0 var(--space-2);
+.rows {
+	@include lbl.label-rows;
+}
+
+.row {
+	@include lbl.label-row;
+}
+
+.key {
+	@include lbl.label-key;
+}
+
+.value {
+	@include lbl.label-value;
+
 	white-space: pre-line;
 }
 
@@ -72,8 +73,9 @@
 	@include mx.caps-caption;
 	@include mx.focus-ring;
 
-	color: var(--gramo-copper);
-	margin-top: auto;
+	color: var(--gramo-accent, var(--gramo-brass));
+	font-size: var(--text-small);
+	margin-top: var(--space-2);
 	position: relative;
 	text-decoration: none;
 	width: fit-content;

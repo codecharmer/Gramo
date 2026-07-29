@@ -26,14 +26,21 @@ export default function MenuTemplate({
   pageContext,
 }: PageProps<MenuData, GramoPageContext>): React.JSX.Element {
   const blocks = parseBlocks(data.gramoPage?.blocksJson);
+  // The page's own hero already opens the room when the editor placed one;
+  // a second wall-black title block would only repeat it.
+  const hasHero = blocks[0]?.name === 'gramo/hero';
 
   return (
     <Layout locale={pageContext.locale} translationPath={pageContext.translationPath}>
-      <header className={styles.board}>
-        <div className={styles.boardInner}>
-          <h1 className={styles.title}>{data.gramoPage?.title ?? t('menuTitle', pageContext.locale)}</h1>
-        </div>
-      </header>
+      {hasHero ? null : (
+        <header className={styles.board}>
+          <div className={styles.boardInner}>
+            <h1 className={styles.title}>
+              {data.gramoPage?.title ?? t('menuTitle', pageContext.locale)}
+            </h1>
+          </div>
+        </header>
+      )}
 
       <BlockRenderer blocks={blocks} locale={pageContext.locale} />
     </Layout>

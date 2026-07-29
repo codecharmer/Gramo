@@ -1,6 +1,9 @@
 @use '../../styles/mixins' as mx;
+@use '../../styles/label' as lbl;
 
 .locations {
+	@include mx.wall-room;
+
 	padding-block: var(--space-6);
 }
 
@@ -9,14 +12,16 @@
 }
 
 .heading {
+	@include mx.display-type;
+
 	font-size: var(--text-title);
-	margin: 0 0 var(--space-4);
+	margin: 0 0 var(--space-5);
 	max-width: 22ch;
 	text-wrap: balance;
 }
 
 .grid {
 	display: grid;
-	gap: var(--space-3);
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-5) var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
 }

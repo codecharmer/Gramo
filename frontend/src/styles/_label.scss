@@ -1,0 +1,137 @@
+// The museum wall label — the site's one repeated ornament (see DESIGN.md,
+// "The wall label"). Every work — coffee, café, journal entry — carries one:
+// a hairline-ruled block with a tracked-caps title and `LABEL · value` rows
+// in caps + tabular numerals.
+//
+// The rules and secondary type are mixed from `currentcolor`, so a label
+// reads correctly hung on a wall (bone type) or in a daylight room (ink
+// type) without either side declaring which ground it is on.
+
+@use 'mixins' as mx;
+
+/// A hairline in the label's own voice, whatever the ground.
+@function label-rule($alpha: 22%) {
+	@return color-mix(in srgb, currentcolor #{$alpha}, transparent);
+}
+
+/// The label block: a bottom-ruled column under the work.
+@mixin label-block {
+	border-top: 1px solid #{label-rule(30%)};
+	display: block;
+	padding-top: var(--space-2);
+}
+
+/// Small tracked-caps eyebrow above (or inside) a label.
+@mixin label-eyebrow {
+	@include mx.caps-caption;
+
+	align-items: center;
+	color: color-mix(in srgb, currentcolor 68%, transparent);
+	display: flex;
+	font-size: var(--text-small);
+	gap: 0.55rem;
+	margin: 0 0 var(--space-1);
+}
+
+/// The work's title, set in the display face at label scale.
+@mixin label-title {
+	@include mx.display-type;
+
+	font-size: var(--text-subtitle);
+	margin: 0 0 var(--space-2);
+	text-wrap: balance;
+}
+
+/// The stack of `LABEL · value` rows.
+@mixin label-rows {
+	display: grid;
+	margin: 0;
+	padding: 0;
+}
+
+@mixin label-row {
+	align-items: baseline;
+	border-top: 1px solid #{label-rule(16%)};
+	display: grid;
+	gap: var(--space-2);
+	grid-template-columns: minmax(5.5rem, 7rem) minmax(0, 1fr);
+	padding-block: 0.45rem;
+
+	&:first-child {
+		border-top: 0;
+	}
+}
+
+@mixin label-key {
+	@include mx.caps-caption;
+
+	// 70% keeps the key ≥5.9:1 on bone and ≥8:1 on the wall; 62% cleared
+	// 4.5:1 on bone by too little margin at 12px.
+	color: color-mix(in srgb, currentcolor 70%, transparent);
+	font-size: var(--text-small);
+	line-height: 1.4;
+}
+
+@mixin label-value {
+	font-size: var(--text-caption);
+	font-variant-numeric: tabular-nums;
+	line-height: 1.45;
+	margin: 0;
+}
+
+/// The 8px artwork-key dot — the only saturated colour outside photography.
+@mixin art-dot {
+	border-radius: 50%;
+	display: inline-block;
+	flex: 0 0 auto;
+	height: 8px;
+	width: 8px;
+}
+
+/// Rotating artwork keys. Applied to the four `.violet/.marigold/.teal/
+/// .signal` classes that `pigmentAt()` selects.
+@mixin art-key-colors($property: background) {
+	.violet {
+		#{$property}: var(--art-violet);
+	}
+
+	.marigold {
+		#{$property}: var(--art-marigold);
+	}
+
+	.teal {
+		#{$property}: var(--art-teal);
+	}
+
+	.signal {
+		#{$property}: var(--art-signal);
+	}
+}
+
+/// Hold every work in a row to one frame so the labels hang on a common
+/// line — a gallery hang, not a ragged stack. The sharp image fills the
+/// frame (gatsby-image already sets object-fit: cover on the img).
+@mixin fixed-frame($ratio) {
+	aspect-ratio: $ratio;
+	position: relative;
+
+	:global(.gatsby-image-wrapper) {
+		display: block;
+		height: 100%;
+		width: 100%;
+
+		> div:first-child {
+			display: none;
+		}
+	}
+}
+
+/// A pool of gallery light behind a spotlit work. Decorative only.
+@mixin light-pool {
+	background: var(--light-pool);
+	content: '';
+	inset: -12% -8%;
+	pointer-events: none;
+	position: absolute;
+	z-index: 0;
+}

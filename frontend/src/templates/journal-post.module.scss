@@ -1,59 +1,71 @@
 @use '../styles/mixins' as mx;
+@use '../styles/label' as lbl;
 
+// Wall-black title block, then a daylight reading room for the body.
 .header {
-	padding-block: var(--space-5) var(--space-3);
+	@include mx.wall-room;
+
+	border-bottom: var(--hairline-bone);
 }
 
 .headerInner {
 	@include mx.content-width;
+
+	padding-block: var(--space-5) var(--space-4);
 }
 
 .category {
-	@include mx.caps-caption;
+	@include lbl.label-eyebrow;
 
-	color: var(--gramo-bronze);
-	margin: 0 0 var(--space-1);
+	color: var(--gramo-brass);
 }
 
 .title {
+	@include mx.display-type;
+
+	color: var(--gramo-bone);
 	font-size: var(--text-title);
-	margin: 0 0 var(--space-2);
+	margin: 0 0 var(--space-3);
 	text-wrap: balance;
 }
 
 .meta {
 	@include mx.caps-caption;
 
-	border-top: var(--rule);
-	color: var(--gramo-gray);
+	border-top: var(--hairline-bone);
+	color: var(--gramo-bone-dim);
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--space-2);
+	font-size: var(--text-small);
+	gap: var(--space-3);
 	margin: 0;
-	padding-top: var(--space-1);
+	padding-top: var(--space-2);
 	width: fit-content;
 }
 
 .plateWrap {
-	@include mx.content-width;
+	@include mx.daylight-room;
 
-	margin-bottom: var(--space-4);
+	padding: var(--space-5) var(--gutter) 0;
 }
 
 .plate {
-	@include mx.plate;
-
-	margin: 0;
-	padding: 0.65rem;
+	border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+	margin-inline: auto;
+	max-width: var(--width-content);
+	padding: 0.6rem;
 }
 
+// The room's padding comes from the prose rooms the BlockRenderer emits;
+// the body only holds the daylight ground continuous beneath them.
 .body {
-	padding-bottom: var(--space-4);
+	@include mx.daylight-room;
 }
 
 .related {
-	border-top: var(--rule);
-	padding-block: var(--space-5);
+	@include mx.wall-room;
+
+	padding-block: var(--space-6);
 }
 
 .relatedInner {
@@ -61,12 +73,18 @@
 }
 
 .relatedHeading {
-	font-size: var(--text-title);
-	margin: 0 0 var(--space-4);
+	@include mx.caps-caption;
+
+	border-bottom: var(--hairline-bone);
+	color: var(--gramo-bone-dim);
+	font-family: var(--font-caption);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-5);
+	padding-bottom: var(--space-2);
 }
 
 .relatedGrid {
 	display: grid;
-	gap: var(--space-3);
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-5) var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
 }

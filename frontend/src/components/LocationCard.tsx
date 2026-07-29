@@ -1,9 +1,8 @@
 /**
- * Location card — plate with the café's photograph, the short name in big
- * serif, the city as a pigment-coded caption (Cuernavaca = olive,
- * CDMX = bronze) and the address in small type. The card links to the
- * location detail page; an optional "Cómo llegar ↗" caps link-out to Google
- * Maps sits above the stretched link.
+ * Location card — a café hung as a work: the photograph inside a bone
+ * hairline mat, then the museum wall label (DIRECCIÓN · ZONA) with an
+ * optional "Cómo llegar ↗" link-out. The name is a stretched link over the
+ * whole work; the maps link floats above it.
  */
 
 import * as React from 'react';
@@ -11,7 +10,7 @@ import { Link } from 'gatsby';
 import { GatsbyImage, type IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { pathFor, type Locale } from '@/i18n/routes';
-import { t } from '@/i18n/strings';
+import { t, type StringKey } from '@/i18n/strings';
 
 import * as styles from './LocationCard.module.scss';
 
@@ -35,12 +34,6 @@ interface LocationCardProps {
   showMapLink?: boolean;
 }
 
-function cityPigmentClass(city: string | null): string {
-  const normalized = (city ?? '').toLowerCase();
-  if (normalized.includes('cuernavaca')) return styles.olive ?? '';
-  return styles.bronze ?? '';
-}
-
 export function LocationCard({
   location,
   locale,
@@ -49,26 +42,38 @@ export function LocationCard({
   const image = location.localImage?.childImageSharp?.gatsbyImageData ?? null;
   const name = location.shortName ?? location.title;
 
+  const rows: Array<[StringKey, string | null]> = [
+    ['address', location.address],
+    ['neighborhood', location.neighborhood],
+  ];
+
   return (
-    <article className={styles.card}>
+    <article className={styles.work}>
       {image ? (
-        <div className={styles.image}>
+        <div className={styles.mat} data-reveal="work">
           <GatsbyImage image={image} alt={name} />
         </div>
-      ) : (
-        <div className={styles.imagePlaceholder} aria-hidden="true" />
-      )}
+      ) : null}
 
-      <div className={styles.body}>
-        {location.city ? (
-          <p className={`${styles.city} ${cityPigmentClass(location.city)}`}>{location.city}</p>
-        ) : null}
+      <div className={styles.label} data-reveal="label">
+        {location.city ? <p className={styles.city}>{location.city}</p> : null}
+
         <h3 className={styles.name}>
           <Link to={pathFor('location', locale, location.slug)} className={styles.link}>
             {name}
           </Link>
         </h3>
-        {location.address ? <p className={styles.address}>{location.address}</p> : null}
+
+        <dl className={styles.rows}>
+          {rows.map(([key, value]) =>
+            value ? (
+              <div key={key} className={styles.row}>
+                <dt className={styles.key}>{t(key, locale)}</dt>
+                <dd className={styles.value}>{value}</dd>
+              </div>
+            ) : null
+          )}
+        </dl>
 
         {showMapLink && location.mapsUrl ? (
           <a

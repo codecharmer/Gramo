@@ -1,6 +1,10 @@
 @use '../../styles/mixins' as mx;
+@use '../../styles/label' as lbl;
 
+// A wall room: the selected works hung in one row.
 .featured {
+	@include mx.wall-room;
+
 	padding-block: var(--space-6);
 }
 
@@ -9,6 +13,8 @@
 }
 
 .heading {
+	@include mx.display-type;
+
 	font-size: var(--text-title);
 	margin: 0 0 var(--space-2);
 	max-width: 22ch;
@@ -16,16 +22,16 @@
 }
 
 .intro {
-	color: var(--gramo-gray);
-	font-family: var(--font-serif-text);
-	font-size: var(--text-subtitle);
-	font-style: italic;
-	margin: 0 0 var(--space-4);
-	max-width: 40ch;
+	@include lbl.label-block;
+
+	color: var(--gramo-bone-dim);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-5);
+	max-width: 46ch;
 }
 
 .row {
 	display: grid;
-	gap: var(--space-3);
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-5) var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
 }

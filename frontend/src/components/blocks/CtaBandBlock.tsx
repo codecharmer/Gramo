@@ -10,6 +10,7 @@ import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { useBlockMedia } from '@/hooks/useBlockMedia';
+import { useReveal } from '@/lib/reveal';
 import type { CtaBandAttrs } from './types';
 import type { BlockComponentProps } from './BlockRenderer';
 
@@ -17,6 +18,7 @@ import * as styles from './CtaBandBlock.module.scss';
 
 export function CtaBandBlock({ attributes }: BlockComponentProps<CtaBandAttrs>): React.JSX.Element | null {
   const media = useBlockMedia();
+  const ref = useReveal<HTMLElement>();
   const image = media.byUrl(attributes.media?.url) ?? media.byAttachmentId(attributes.media?.id);
   const tone = attributes.tone === 'linen' ? 'linen' : attributes.tone === 'dark' ? 'dark' : 'espresso';
 
@@ -37,9 +39,9 @@ export function CtaBandBlock({ attributes }: BlockComponentProps<CtaBandAttrs>):
     ) : null;
 
   return (
-    <section className={`${styles.band} ${styles[tone] ?? ''}`}>
+    <section className={`${styles.band} ${styles[tone] ?? ''}`} ref={ref}>
       <div className={styles.inner}>
-        <div className={styles.copy}>
+        <div className={styles.copy} data-reveal="label">
           {attributes.heading ? <h2 className={styles.heading}>{attributes.heading}</h2> : null}
           {attributes.text ? <p className={styles.text}>{attributes.text}</p> : null}
           {ctaEl}
@@ -47,7 +49,10 @@ export function CtaBandBlock({ attributes }: BlockComponentProps<CtaBandAttrs>):
 
         {image ? (
           <div className={styles.plate}>
-            <GatsbyImage image={image} alt={attributes.media?.alt ?? ''} />
+            <span className={styles.pool} data-reveal="pool" aria-hidden="true" />
+            <div className={styles.plateImage} data-reveal="work">
+              <GatsbyImage image={image} alt={attributes.media?.alt ?? ''} />
+            </div>
           </div>
         ) : null}
       </div>

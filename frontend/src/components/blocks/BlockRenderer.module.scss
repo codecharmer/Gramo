@@ -1,0 +1,11 @@
+@use '../../styles/mixins' as mx;
+
+// Core WordPress blocks arrive one per paragraph. Consecutive ones are
+// grouped into a single daylight room so the bone ground stays continuous
+// and the room's padding is applied once, not per paragraph.
+.proseRoom {
+	@include mx.daylight-room;
+
+	border-block: var(--hairline-ink);
+	padding-block: var(--space-5);
+}

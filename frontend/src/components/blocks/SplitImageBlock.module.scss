@@ -1,6 +1,11 @@
 @use '../../styles/mixins' as mx;
+@use '../../styles/label' as lbl;
 
+// A daylight room: bone ground for reading, opened and closed by hairlines.
 .split {
+	@include mx.daylight-room;
+
+	border-block: var(--hairline-ink);
 	padding-block: var(--space-6);
 }
 
@@ -12,7 +17,7 @@
 	gap: var(--space-5);
 	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
 
-	@media (max-width: 860px) {
+	@media (max-width: 900px) {
 		gap: var(--space-4);
 		grid-template-columns: 1fr;
 	}
@@ -21,58 +26,74 @@
 .imageRight .inner {
 	grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
 
-	@media (max-width: 860px) {
+	@media (max-width: 900px) {
 		grid-template-columns: 1fr;
 	}
 
 	.plate {
 		order: 2;
 
-		@media (max-width: 860px) {
+		@media (max-width: 900px) {
 			order: 0;
 		}
 	}
 }
 
-.plate {
-	@include mx.plate;
+// No photograph: an editorial spread — heading left, prose right.
+.solo .inner {
+	align-items: start;
+	gap: var(--space-4) var(--space-5);
+	grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
 
-	margin: 0;
-	padding: 0.65rem;
+	@media (max-width: 900px) {
+		grid-template-columns: 1fr;
+	}
 }
 
-.platePlaceholder {
-	aspect-ratio: 4 / 5;
-	background: var(--gramo-paper-deep);
-	border: var(--rule-strong);
+.plate {
+	border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+	margin: 0;
+	padding: 0.6rem;
 }
 
 .plateCaption {
 	@include mx.caps-caption;
 
-	color: var(--gramo-gray);
-	padding: 0.6rem 0.25rem 0.1rem;
+	color: var(--gramo-ink-dim);
+	font-size: var(--text-small);
+	padding: 0.6rem 0.15rem 0.1rem;
+}
+
+.copy,
+.soloHead,
+.soloBody {
+	min-width: 0;
 }
 
 .eyebrow {
-	@include mx.caps-caption;
+	@include lbl.label-eyebrow;
 
-	color: var(--gramo-bronze);
-	margin: 0 0 var(--space-2);
+	color: var(--gramo-accent, var(--gramo-brass));
 }
 
 .heading {
+	@include mx.display-type;
+
 	font-size: var(--text-title);
 	margin: 0 0 var(--space-3);
 	max-width: 20ch;
 	text-wrap: balance;
 }
 
-.copy {
-	// Inner prose keeps its own content width off — the column is the measure.
-	:global(div) {
-		margin-inline: 0;
-		max-width: none;
-		padding-inline: 0;
-	}
+.soloHead .heading {
+	margin-bottom: 0;
+	max-width: 16ch;
+}
+
+// Inner prose keeps its column as the measure.
+.copy :global(div),
+.soloBody :global(div) {
+	margin-inline: 0;
+	max-width: none;
+	padding-inline: 0;
 }

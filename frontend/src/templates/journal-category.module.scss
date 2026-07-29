@@ -1,41 +1,54 @@
 @use '../styles/mixins' as mx;
 
 .header {
-	border-bottom: var(--rule);
-	padding-block: var(--space-5) var(--space-3);
+	@include mx.wall-room;
+
+	border-bottom: var(--hairline-bone);
 }
 
 .headerInner {
 	@include mx.wide-width;
+
+	padding-block: var(--space-5) var(--space-4);
 }
 
 .back {
 	@include mx.caps-caption;
 	@include mx.focus-ring;
 
-	color: var(--gramo-gray);
+	color: var(--gramo-bone-dim);
 	display: inline-block;
+	font-size: var(--text-small);
 	margin-bottom: var(--space-2);
 	text-decoration: none;
 
 	&:hover {
-		color: var(--gramo-ink);
+		color: var(--gramo-bone);
 	}
 }
 
 .title {
-	font-size: var(--text-display);
+	@include mx.display-type;
+
+	color: var(--gramo-bone);
+	font-size: var(--text-title);
 	margin: 0;
 }
 
 .gridSection {
-	padding-block: var(--space-4) var(--space-5);
+	@include mx.daylight-room;
+
+	padding-block: var(--space-6);
 }
 
 .grid {
 	@include mx.wide-width;
 
 	display: grid;
-	gap: var(--space-3);
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-6) var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+
+	@media (min-width: 1100px) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
 }

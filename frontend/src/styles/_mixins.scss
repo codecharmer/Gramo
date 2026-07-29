@@ -25,6 +25,10 @@
 
 /// A dark gallery room: warm-black wall with a soft light pool behind content.
 @mixin wall-room {
+	// ADDITIVE: bind the room's accent so links/focus inherit the value that
+	// clears 4.5:1 on this ground (brass = 5.9:1 on wall).
+	--gramo-accent: var(--gramo-brass);
+
 	background-color: var(--gramo-wall);
 	color: var(--gramo-bone);
 	position: relative;
@@ -44,6 +48,10 @@
 
 /// A daylight room: bone ground for long reading.
 @mixin daylight-room {
+	// ADDITIVE: brass is only 2.7:1 on bone, so daylight rooms bind the
+	// darkened brass (5.4:1) instead. See _tokens.scss.
+	--gramo-accent: var(--gramo-brass-ink);
+
 	background-color: var(--gramo-bone);
 	color: var(--gramo-ink);
 }
@@ -82,7 +90,8 @@
 
 @mixin focus-ring {
 	&:focus-visible {
-		outline: 2px solid var(--gramo-brass);
+		// Reads the room-bound accent so the ring keeps ≥4.5:1 on bone too.
+		outline: 2px solid var(--gramo-accent, var(--gramo-brass));
 		outline-offset: 2px;
 	}
 }

@@ -1,79 +1,88 @@
 @use '../styles/mixins' as mx;
+@use '../styles/label' as lbl;
 
-.board {
-	background: var(--gramo-board);
-	color: var(--gramo-cream);
+// The detail page is one gallery room: the bag lit large, its wall label
+// beside it as the data sheet.
+.room {
+	@include mx.wall-room;
+
+	padding-block: var(--space-6) var(--space-7);
 }
 
-.boardInner {
-	@include mx.wide-width;
-
-	padding-block: var(--space-4);
-}
-
-.eyebrow {
-	@include mx.caps-caption;
-
-	color: var(--gramo-bronze);
-	margin: 0 0 var(--space-1);
-}
-
-.title {
-	color: var(--gramo-cream);
-	font-size: var(--text-title);
-	margin: 0;
-	max-width: 20ch;
-	text-wrap: balance;
-}
-
-.portrait {
-	padding-block: var(--space-5);
-}
-
-.portraitInner {
+.roomInner {
 	@include mx.wide-width;
 
 	align-items: start;
 	display: grid;
 	gap: var(--space-5);
-	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+	grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
 
-	@media (max-width: 860px) {
+	@media (max-width: 900px) {
 		gap: var(--space-4);
 		grid-template-columns: 1fr;
 	}
 }
 
-.plate {
-	@include mx.plate;
-
+.work {
 	margin: 0;
-	padding: 0.65rem;
+	padding: var(--space-4);
+	position: relative;
+
+	@media (max-width: 900px) {
+		margin-inline: auto;
+		max-width: 28rem;
+		padding: var(--space-2);
+		width: 100%;
+	}
 }
 
-.platePlaceholder {
+.pool {
+	@include lbl.light-pool;
+}
+
+.workImage {
+	position: relative;
+	z-index: 1;
+}
+
+.workPlaceholder {
 	aspect-ratio: 4 / 5;
-	background: var(--gramo-paper-deep);
-	border: var(--rule-strong);
+	border: var(--hairline-bone);
+	position: relative;
+	z-index: 1;
 }
 
 .data {
 	min-width: 0;
+	padding-top: var(--space-3);
+}
+
+.eyebrow {
+	@include lbl.label-eyebrow;
+
+	color: var(--gramo-brass);
+}
+
+.title {
+	@include mx.display-type;
+
+	color: var(--gramo-bone);
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-4);
+	max-width: 18ch;
+	text-wrap: balance;
 }
 
 .buyRow {
 	align-items: center;
-	border-bottom: var(--rule-strong);
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--space-3);
-	justify-content: space-between;
-	margin-bottom: var(--space-3);
-	padding-bottom: var(--space-3);
+	margin-bottom: var(--space-4);
 }
 
 .price {
-	@include mx.display-serif;
+	@include mx.display-type;
 
 	font-size: var(--text-subtitle);
 	font-variant-numeric: tabular-nums;
@@ -81,58 +90,45 @@
 }
 
 .addButton {
-	@include mx.caps-caption;
-	@include mx.focus-ring;
+	@include mx.plate-button;
 
-	background: var(--gramo-copper);
-	border: 0;
-	color: var(--gramo-cream);
+	border: 1px solid var(--gramo-bone);
 	cursor: pointer;
-	padding: 0.95rem 1.8rem;
-
-	@media (prefers-reduced-motion: no-preference) {
-		transition: background var(--duration-ui) var(--ease-ink);
-	}
-
-	&:hover {
-		background: var(--gramo-walnut);
-	}
 
 	&:disabled {
-		background: var(--gramo-gray);
+		background: transparent;
+		border-color: rgb(241 237 228 / 35%);
+		color: var(--gramo-bone-dim);
 		cursor: default;
 	}
 }
 
-// The inked data sheet — dotted leaders in the stock-sheet voice.
+// The wall label proper.
 .sheet {
-	display: flex;
-	flex-direction: column;
-	gap: 0.55rem;
+	@include lbl.label-rows;
+
+	border-top: var(--hairline-bone);
 	margin: 0 0 var(--space-4);
+	padding-top: var(--space-1);
 }
 
 .sheetRow {
-	@include mx.dotted-leader;
+	@include lbl.label-row;
 }
 
 .sheetLabel {
-	@include mx.caps-caption;
-
-	color: var(--gramo-gray);
+	@include lbl.label-key;
 }
 
 .sheetValue {
-	font-variant-numeric: tabular-nums;
-	margin: 0;
-	text-align: right;
+	@include lbl.label-value;
 }
 
 .subheading {
 	@include mx.caps-caption;
 
-	font-family: var(--font-caption);
-	font-size: var(--text-caption);
+	color: var(--gramo-bone-dim);
+	font-size: var(--text-small);
 	margin: 0 0 var(--space-2);
 }
 
@@ -149,57 +145,50 @@
 	padding: 0;
 }
 
+// Tasting notes: caps chips on 2px artwork-key underlines.
 .chip {
 	@include mx.caps-caption;
 
-	border-bottom: 3px solid;
-	padding-bottom: 0.3rem;
+	border-bottom: 2px solid;
+	font-size: var(--text-small);
+	padding-bottom: 0.35rem;
 }
 
-.walnut {
-	border-color: var(--gramo-walnut);
-}
-
-.olive {
-	border-color: var(--gramo-olive);
-}
-
-.bronze {
-	border-color: var(--gramo-bronze);
-}
-
-.copper {
-	border-color: var(--gramo-copper);
-}
+@include lbl.art-key-colors(border-color);
 
 .methods {
-	margin-bottom: var(--space-2);
+	margin-bottom: 0;
 }
 
 .methodList {
-	color: var(--gramo-gray);
+	color: var(--gramo-bone-dim);
+	font-size: var(--text-caption);
 	margin: 0;
 }
 
-.description {
+// Long copy inverts to a daylight reading room.
+.description,
+.descriptionProse {
+	@include mx.daylight-room;
+
+	border-block: var(--hairline-ink);
+	padding-block: var(--space-5);
+}
+
+.descriptionInner {
 	@include mx.content-width;
 
-	padding-block: var(--space-4);
-
 	p {
-		font-size: var(--text-body);
-		line-height: var(--leading-body);
+		margin: 0;
+		max-width: 65ch;
 	}
 }
 
-.descriptionProse {
-	padding-block: var(--space-4);
-}
-
 .related {
-	border-top: var(--rule);
-	margin-top: var(--space-5);
-	padding-block: var(--space-5);
+	@include mx.wall-room;
+
+	border-top: var(--hairline-bone);
+	padding-block: var(--space-6);
 }
 
 .relatedInner {
@@ -207,12 +196,18 @@
 }
 
 .relatedHeading {
-	font-size: var(--text-title);
-	margin: 0 0 var(--space-4);
+	@include mx.caps-caption;
+
+	border-bottom: var(--hairline-bone);
+	color: var(--gramo-bone-dim);
+	font-family: var(--font-caption);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-5);
+	padding-bottom: var(--space-2);
 }
 
 .relatedGrid {
 	display: grid;
-	gap: var(--space-3);
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-5) var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
 }

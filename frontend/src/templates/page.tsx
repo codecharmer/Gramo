@@ -19,6 +19,7 @@ interface PageData {
     slug: string;
     isFront: boolean;
     blocksJson: string;
+    gramoSeo: { description: string | null; short: string | null } | null;
   } | null;
 }
 
@@ -51,6 +52,7 @@ export function Head({
   return (
     <SEO
       title={page?.isFront ? 'Gramo Café' : (page?.title ?? 'Gramo Café')}
+      description={page?.gramoSeo?.description ?? page?.gramoSeo?.short ?? null}
       locale={pageContext.locale}
       pathname={location.pathname}
       translationPath={pageContext.translationPath}
@@ -67,6 +69,10 @@ export const query = graphql`
       slug
       isFront
       blocksJson
+      gramoSeo {
+        description
+        short
+      }
     }
   }
 `;

@@ -43,6 +43,7 @@ final class Fields implements Bootable {
 		}
 
 		$this->register_shared_types();
+		$this->register_seo_fields();
 		$this->register_schema_fields();
 		$this->register_coffee_commerce_fields();
 		$this->register_reading_time();
@@ -366,6 +367,59 @@ final class Fields implements Bootable {
 				},
 			)
 		);
+	}
+
+	/*
+	---------------------------------------------------------------------- */
+	/*
+	Authored SEO copy                                                      */
+	/* ---------------------------------------------------------------------- */
+
+	/**
+	 * Expose the SEO copy the seeder and editors author per entry.
+	 *
+	 * The engine stores a meta description and a short summary as post meta.
+	 * Without this the static frontend has nothing to put in a description
+	 * tag, and pages ship with a title and no summary. Translation pairs each
+	 * hold their own language's copy, so no locale argument is needed.
+	 */
+	private function register_seo_fields(): void {
+		register_graphql_object_type(
+			'GramoSeo',
+			array(
+				'description' => __( 'Texto de SEO redactado para esta entrada.', 'gramo-core' ),
+				'fields'      => array(
+					'description' => array( 'type' => 'String' ),
+					'short'       => array( 'type' => 'String' ),
+				),
+			)
+		);
+
+		foreach ( array( 'Page', 'Post', 'Coffee', 'Location' ) as $graphql_type ) {
+			register_graphql_field(
+				$graphql_type,
+				'gramoSeo',
+				array(
+					'type'        => 'GramoSeo',
+					'description' => __( 'Descripción y resumen de SEO.', 'gramo-core' ),
+					'resolve'     => static function ( $post ): array {
+						$id = self::post_id( $post );
+						return array(
+							'description' => self::meta_or_null( $id, '_gramo_meta_description' ),
+							'short'       => self::meta_or_null( $id, '_gramo_seo_short' ),
+						);
+					},
+				)
+			);
+		}
+	}
+
+	/**
+	 * A post meta value, or null when empty.
+	 */
+	private static function meta_or_null( int $post_id, string $meta_key ): ?string {
+		$value = (string) get_post_meta( $post_id, $meta_key, true );
+		return '' === $value ? null : $value;
 	}
 
 	/*

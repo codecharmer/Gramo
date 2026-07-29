@@ -11,6 +11,7 @@ import { Layout } from '@/components/Layout';
 import { SEO } from '@/components/SEO';
 import { BlockRenderer, parseBlocks } from '@/components/blocks/BlockRenderer';
 import { LocationCard, type LocationCardData } from '@/components/LocationCard';
+import { RevealSection } from '@/components/RevealSection';
 import type { GramoPageContext } from './page';
 
 import * as styles from './locations-index.module.scss';
@@ -53,7 +54,7 @@ export default function LocationsIndexTemplate({
       <BlockRenderer blocks={blocks} locale={pageContext.locale} />
 
       {orderedCities.map((city) => (
-        <section key={city} className={styles.cityGroup}>
+        <RevealSection key={city} className={styles.cityGroup}>
           <div className={styles.inner}>
             <h2 className={styles.cityHeader}>{city}</h2>
             <div className={styles.grid}>
@@ -66,7 +67,7 @@ export default function LocationsIndexTemplate({
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
       ))}
     </Layout>
   );

@@ -1,7 +1,10 @@
 @use '../../styles/mixins' as mx;
 
+// Works hung in a row on the wall: hairline mats, tracked-caps captions.
 .gallery {
-	padding-block: var(--space-5);
+	@include mx.wall-room;
+
+	padding-block: var(--space-6);
 }
 
 .items {
@@ -10,10 +13,10 @@
 
 .grid {
 	display: grid;
-	gap: var(--space-3);
+	gap: var(--space-4);
 	grid-template-columns: repeat(var(--gallery-columns, 3), minmax(0, 1fr));
 
-	@media (max-width: 860px) {
+	@media (max-width: 900px) {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
@@ -24,7 +27,7 @@
 
 .strip {
 	display: flex;
-	gap: var(--space-3);
+	gap: var(--space-4);
 	overflow-x: auto;
 	padding-bottom: var(--space-2);
 	scroll-snap-type: x mandatory;
@@ -37,17 +40,20 @@
 }
 
 .plate {
-	@include mx.plate;
-
+	border: var(--hairline-bone);
 	margin: 0;
-	padding: 0.65rem;
+	padding: 0.6rem;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: border-color var(--duration-ui) var(--ease-ink);
+	}
 }
 
 .caption {
 	@include mx.caps-caption;
 
-	border-top: var(--rule);
-	color: var(--gramo-gray);
+	color: var(--gramo-bone-dim);
+	font-size: var(--text-small);
 	margin-top: 0.6rem;
-	padding: 0.5rem 0.25rem 0.1rem;
+	padding: 0.15rem;
 }

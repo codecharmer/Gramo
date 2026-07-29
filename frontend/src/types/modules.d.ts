@@ -8,3 +8,9 @@ declare module '*.module.scss' {
   const classes: { readonly [key: string]: string };
   export = classes;
 }
+
+/** Static image assets (the GRAMO wordmark) resolve to a URL string. */
+declare module '*.png' {
+  const src: string;
+  export default src;
+}

@@ -1,17 +1,25 @@
 @use '../styles/mixins' as mx;
+@use '../styles/label' as lbl;
 
+// A wall-black title block, then a daylight reading room for the entries.
 .header {
-	border-bottom: var(--rule);
-	padding-block: var(--space-5) var(--space-3);
+	@include mx.wall-room;
+
+	border-bottom: var(--hairline-bone);
 }
 
 .headerInner {
 	@include mx.wide-width;
+
+	padding-block: var(--space-5) var(--space-4);
 }
 
 .title {
-	font-size: var(--text-display);
-	margin: 0 0 var(--space-3);
+	@include mx.display-type;
+
+	color: var(--gramo-bone);
+	font-size: var(--text-title);
+	margin: 0 0 var(--space-4);
 }
 
 .filters {
@@ -25,92 +33,120 @@
 	@include mx.caps-caption;
 	@include mx.focus-ring;
 
-	color: var(--gramo-ink);
-	opacity: 0.75;
+	color: var(--gramo-bone-dim);
+	font-size: var(--text-small);
+	padding-bottom: 0.35rem;
 	text-decoration: none;
 
 	&:hover {
-		opacity: 1;
+		color: var(--gramo-bone);
 	}
 }
 
 .filterActive {
-	border-bottom: 2px solid var(--gramo-copper);
-	opacity: 1;
+	border-bottom: 1px solid var(--gramo-brass);
+	color: var(--gramo-bone);
 }
 
 .featureSection {
-	padding-block: var(--space-5);
+	@include mx.daylight-room;
+
+	padding-block: var(--space-6);
 }
 
 .feature {
 	@include mx.wide-width;
 	@include mx.focus-ring;
 
-	color: var(--gramo-ink);
+	align-items: center;
+	color: inherit;
 	display: grid;
-	gap: var(--space-4);
+	gap: var(--space-5);
 	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 	text-decoration: none;
 
-	@media (max-width: 860px) {
+	@media (max-width: 900px) {
+		gap: var(--space-4);
 		grid-template-columns: 1fr;
 	}
 }
 
-.featureImage {
-	@include mx.plate;
+.featureSolo {
+	grid-template-columns: minmax(0, 1fr);
 
-	padding: 0.65rem;
+	.featureTitle {
+		font-size: var(--text-display);
+		max-width: 16ch;
+	}
+}
+
+.featureImage {
+	border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+	padding: 0.6rem;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: border-color var(--duration-ui) var(--ease-ink);
+	}
+}
+
+.feature:hover .featureImage {
+	border-color: var(--gramo-accent, var(--gramo-brass));
 }
 
 .featureBody {
 	align-self: center;
+	min-width: 0;
 }
 
 .featureCategory {
-	@include mx.caps-caption;
-
-	color: var(--gramo-bronze);
-	margin: 0 0 var(--space-1);
+	@include lbl.label-eyebrow;
 }
 
 .featureTitle {
+	@include mx.display-type;
+
 	font-size: var(--text-title);
-	margin: 0 0 var(--space-2);
+	margin: 0 0 var(--space-3);
+	max-width: 18ch;
 	text-wrap: balance;
 }
 
 .featureExcerpt {
-	color: var(--gramo-gray);
-	font-family: var(--font-serif-text);
-	font-size: var(--text-subtitle);
-	font-style: italic;
-	margin: 0 0 var(--space-2);
-	max-width: 38ch;
+	color: var(--gramo-ink-dim);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-3);
+	max-width: 46ch;
 }
 
 .featureMeta {
 	@include mx.caps-caption;
 
-	border-top: var(--rule);
-	color: var(--gramo-gray);
+	border-top: 1px solid color-mix(in srgb, currentcolor 30%, transparent);
+	color: var(--gramo-ink-dim);
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--space-2);
+	font-size: var(--text-small);
+	gap: var(--space-3);
 	margin: 0;
-	padding-top: var(--space-1);
+	padding-top: var(--space-2);
 	width: fit-content;
 }
 
 .gridSection {
-	padding-block: var(--space-2) var(--space-5);
+	@include mx.daylight-room;
+
+	border-top: var(--hairline-ink);
+	padding-block: var(--space-6);
 }
 
 .grid {
 	@include mx.wide-width;
 
 	display: grid;
-	gap: var(--space-3);
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-6) var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+
+	@media (min-width: 1100px) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
 }

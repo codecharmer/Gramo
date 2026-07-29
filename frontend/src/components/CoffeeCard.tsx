@@ -1,8 +1,9 @@
 /**
- * Coffee card — a paper plate in the catalog grammar: pigment key square,
- * serif name, small-caps data rows (origin · altitude), tasting notes as
- * small caps, price in tabular MXN numerals. The whole card links to the
- * coffee's detail page.
+ * Coffee card — a work hung on the wall, not a box. The bag photograph sits
+ * spotlit in a pool of gallery light; beneath it the museum wall label:
+ * an artwork-key dot, the name in the display face, then ORIGEN · ALTITUD ·
+ * NOTAS · PRECIO as tracked-caps rows with tabular values. The whole work
+ * links to the coffee's room.
  */
 
 import * as React from 'react';
@@ -10,7 +11,7 @@ import { Link } from 'gatsby';
 import { GatsbyImage, type IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { pathFor, type Locale } from '@/i18n/routes';
-import { t } from '@/i18n/strings';
+import { t, type StringKey } from '@/i18n/strings';
 import { formatMxn } from '@/lib/format';
 import { pigmentAt } from '@/lib/pigments';
 
@@ -49,30 +50,45 @@ export function CoffeeCard({ coffee, locale, index = 0 }: CoffeeCardProps): Reac
   const notes = (coffee.tastingNotes ?? [])
     .map((note) => (locale === 'en' ? (note?.noteEn ?? note?.noteEs) : note?.noteEs))
     .filter((note): note is string => Boolean(note));
-  const dataRow = [coffee.origin, coffee.altitude].filter(Boolean).join(' · ');
+
+  const rows: Array<[StringKey, string | null]> = [
+    ['origin', coffee.origin],
+    ['altitude', coffee.altitude],
+    ['notes', notes.length > 0 ? notes.join(' · ') : null],
+    ['price', coffee.price != null ? formatMxn(coffee.price) : null],
+  ];
 
   return (
-    <Link to={pathFor('coffee', locale, coffee.slug)} className={styles.card}>
-      {image ? (
-        <div className={styles.image}>
-          <GatsbyImage image={image} alt={coffee.imageAlt ?? name} />
-        </div>
-      ) : (
-        <div className={`${styles.imagePlaceholder} ${styles[pigment] ?? ''}`} aria-hidden="true" />
-      )}
+    <Link to={pathFor('coffee', locale, coffee.slug)} className={styles.work}>
+      <div className={styles.frame}>
+        <span className={styles.pool} data-reveal="pool" aria-hidden="true" />
+        {image ? (
+          <div className={styles.photo} data-reveal="work">
+            <GatsbyImage image={image} alt={coffee.imageAlt ?? name} />
+          </div>
+        ) : (
+          <div className={styles.photoPlaceholder} data-reveal="work" aria-hidden="true" />
+        )}
+      </div>
 
-      <div className={styles.body}>
-        <span className={`${styles.keySquare} ${styles[pigment] ?? ''}`} aria-hidden="true" />
-        <h3 className={styles.name}>{name}</h3>
-        {dataRow ? <p className={styles.dataRow}>{dataRow}</p> : null}
-        {notes.length > 0 ? <p className={styles.notes}>{notes.join(' · ')}</p> : null}
-
-        <p className={styles.priceRow}>
-          {coffee.price != null ? (
-            <span className={styles.price}>{formatMxn(coffee.price)}</span>
-          ) : null}
-          {!purchasable ? <span className={styles.stock}>{t('outOfStock', locale)}</span> : null}
+      <div className={styles.label} data-reveal="label">
+        <p className={styles.name}>
+          <span className={`${styles.dot} ${styles[pigment] ?? ''}`} aria-hidden="true" />
+          <span>{name}</span>
         </p>
+
+        <dl className={styles.rows}>
+          {rows.map(([key, value]) =>
+            value ? (
+              <div key={key} className={styles.row}>
+                <dt className={styles.key}>{t(key, locale)}</dt>
+                <dd className={styles.value}>{value}</dd>
+              </div>
+            ) : null
+          )}
+        </dl>
+
+        {!purchasable ? <p className={styles.soldOut}>{t('outOfStock', locale)}</p> : null}
       </div>
     </Link>
   );

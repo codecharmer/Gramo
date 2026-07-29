@@ -1,65 +1,71 @@
 @use '../styles/mixins' as mx;
+@use '../styles/label' as lbl;
 
-.card {
-	@include mx.plate;
-	@include mx.plate-hover;
+.work {
 	@include mx.focus-ring;
 
-	color: var(--gramo-ink);
+	color: inherit;
 	display: flex;
 	flex-direction: column;
-	padding: 0.65rem;
 	text-decoration: none;
 }
 
-.image {
-	border-bottom: var(--rule);
-	margin-bottom: var(--space-2);
+.mat {
+	border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+	margin-bottom: var(--space-3);
+	padding: 0.5rem;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: border-color var(--duration-ui) var(--ease-ink);
+	}
 }
 
-.body {
+.work:hover .mat {
+	border-color: var(--gramo-accent, var(--gramo-brass));
+}
+
+.label {
+	@include lbl.label-block;
+
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	padding: 0 0.35rem 0.5rem;
 }
 
 .category {
-	@include mx.caps-caption;
-
-	margin: 0 0 var(--space-1);
+	@include lbl.label-eyebrow;
 }
 
-.walnut {
-	color: var(--gramo-walnut);
+.dot {
+	@include lbl.art-dot;
 }
 
-.olive {
-	color: var(--gramo-olive);
-}
-
-.bronze {
-	color: var(--gramo-bronze);
-}
-
-.copper {
-	color: var(--gramo-copper);
-}
+@include lbl.art-key-colors(background);
 
 .title {
-	font-size: var(--text-subtitle);
-	margin: 0 0 var(--space-2);
-	text-wrap: balance;
+	@include lbl.label-title;
 }
 
-.meta {
-	@include mx.caps-caption;
+.work:hover .title {
+	text-decoration: underline;
+	text-decoration-color: var(--gramo-accent, var(--gramo-brass));
+	text-underline-offset: 0.2em;
+}
 
-	border-top: var(--rule);
-	color: var(--gramo-gray);
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-2);
-	margin: auto 0 0;
-	padding-top: var(--space-1);
+.rows {
+	@include lbl.label-rows;
+
+	margin-top: auto;
+}
+
+.row {
+	@include lbl.label-row;
+}
+
+.key {
+	@include lbl.label-key;
+}
+
+.value {
+	@include lbl.label-value;
 }

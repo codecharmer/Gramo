@@ -1,11 +1,13 @@
 @use '../styles/mixins' as mx;
+@use '../styles/label' as lbl;
 
+// An empty gallery: the wall, one light pool, nothing hung.
 .board {
+	@include mx.wall-room;
+
 	align-items: center;
-	background: var(--gramo-board);
-	color: var(--gramo-cream);
 	display: flex;
-	min-height: calc(70vh - 3.75rem);
+	min-height: calc(78vh - 4.25rem);
 }
 
 .inner {
@@ -16,43 +18,30 @@
 }
 
 .code {
-	@include mx.caps-caption;
+	@include lbl.label-eyebrow;
 
-	color: var(--gramo-bronze);
+	color: var(--gramo-brass);
 	font-variant-numeric: tabular-nums;
-	margin: 0 0 var(--space-2);
 }
 
 .title {
-	color: var(--gramo-cream);
+	@include mx.display-type;
+
+	color: var(--gramo-bone);
 	font-size: var(--text-display);
-	margin: 0 0 var(--space-2);
+	margin: 0 0 var(--space-3);
+	max-width: 14ch;
 }
 
 .body {
-	color: rgb(239 230 212 / 80%);
-	font-family: var(--font-serif-text);
-	font-size: var(--text-subtitle);
-	font-style: italic;
+	@include lbl.label-block;
+
+	color: var(--gramo-bone-dim);
+	font-size: var(--text-caption);
 	margin: 0 0 var(--space-4);
-	max-width: 34ch;
+	max-width: 40ch;
 }
 
 .homeLink {
-	@include mx.caps-caption;
-	@include mx.focus-ring;
-
-	background: var(--gramo-copper);
-	color: var(--gramo-cream);
-	display: inline-block;
-	padding: 0.95rem 1.8rem;
-	text-decoration: none;
-
-	@media (prefers-reduced-motion: no-preference) {
-		transition: background var(--duration-ui) var(--ease-ink);
-	}
-
-	&:hover {
-		background: var(--gramo-walnut);
-	}
+	@include mx.plate-button;
 }

@@ -1,21 +1,21 @@
 @use '../styles/mixins' as mx;
 
 .board {
-	background: var(--gramo-board);
-	color: var(--gramo-cream);
+	@include mx.wall-room;
+
+	border-bottom: var(--hairline-bone);
 }
 
 .boardInner {
-	@include mx.content-width;
+	@include mx.wide-width;
 
-	padding-block: var(--space-4);
+	padding-block: var(--space-5) var(--space-4);
 }
 
 .title {
-	@include mx.caps-caption;
+	@include mx.display-type;
 
-	color: var(--gramo-cream);
-	font-family: var(--font-caption);
-	font-size: var(--text-subtitle);
+	color: var(--gramo-bone);
+	font-size: var(--text-title);
 	margin: 0;
 }

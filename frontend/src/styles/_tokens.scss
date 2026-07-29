@@ -14,6 +14,17 @@
 
 	// The one interface accent.
 	--gramo-brass: #b08a54;
+
+	// ADDITIVE (2026-07-28): brass reads 5.9:1 on the wall but only 2.7:1 on
+	// bone, so daylight rooms need a darkened brass to keep the ≥4.5:1
+	// commitment in DESIGN.md. Same hue, ink-side value: 5.4:1 on bone.
+	--gramo-brass-ink: #7a5a2e;
+
+	// ADDITIVE: the accent that resolves per room. `wall-room` keeps brass;
+	// `daylight-room` swaps in brass-ink. Links, focus rings and underlines
+	// read this, so contrast follows the ground automatically.
+	--gramo-accent: var(--gramo-brass);
+
 	--gramo-gray: #8a8177;
 
 	// Artwork keys — 8px dots and 2px underlines only.

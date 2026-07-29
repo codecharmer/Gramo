@@ -1,6 +1,11 @@
 @use '../../styles/mixins' as mx;
+@use '../../styles/label' as lbl;
 
+// A daylight room for writing: underlined fields, brass focus underline.
 .inquiry {
+	@include mx.daylight-room;
+
+	border-block: var(--hairline-ink);
 	padding-block: var(--space-6);
 }
 
@@ -9,6 +14,8 @@
 }
 
 .heading {
+	@include mx.display-type;
+
 	font-size: var(--text-title);
 	margin: 0 0 var(--space-2);
 	max-width: 22ch;
@@ -16,12 +23,12 @@
 }
 
 .intro {
-	color: var(--gramo-gray);
-	font-family: var(--font-serif-text);
-	font-size: var(--text-subtitle);
-	font-style: italic;
-	margin: 0 0 var(--space-4);
-	max-width: 40ch;
+	@include lbl.label-block;
+
+	color: var(--gramo-ink-dim);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-5);
+	max-width: 46ch;
 }
 
 .form {
@@ -48,30 +55,31 @@
 .label {
 	@include mx.caps-caption;
 
-	color: var(--gramo-ink);
-	margin-bottom: 0.35rem;
+	color: var(--gramo-ink-dim);
+	font-size: var(--text-small);
+	margin-bottom: 0.4rem;
 }
 
 .input {
 	background: transparent;
 	border: 0;
-	border-bottom: 1.5px solid var(--gramo-gray);
+	border-bottom: 1px solid color-mix(in srgb, currentcolor 38%, transparent);
 	color: var(--gramo-ink);
 	font-family: var(--font-body);
 	font-size: var(--text-body);
-	padding: 0.45rem 0;
+	padding: 0.5rem 0;
 
 	&:focus {
 		outline: none;
 	}
 
 	&:focus-visible {
-		border-bottom: 2.5px solid var(--gramo-copper);
+		border-bottom: 2px solid var(--gramo-accent, var(--gramo-brass));
 		outline: none;
 	}
 
 	&[aria-invalid='true'] {
-		border-bottom-color: var(--gramo-copper);
+		border-bottom: 2px solid var(--gramo-accent, var(--gramo-brass));
 	}
 }
 
@@ -82,7 +90,8 @@
 .error {
 	@include mx.caps-caption;
 
-	color: var(--gramo-copper);
+	color: var(--gramo-accent, var(--gramo-brass));
+	font-size: var(--text-small);
 	margin: 0.4rem 0 0;
 }
 
@@ -97,34 +106,34 @@
 }
 
 .submit {
-	@include mx.caps-caption;
-	@include mx.focus-ring;
+	@include mx.plate-button;
 
 	align-self: flex-start;
-	background: var(--gramo-copper);
-	border: 0;
-	color: var(--gramo-cream);
+	background: var(--gramo-ink);
+	border-color: var(--gramo-ink);
+	color: var(--gramo-bone);
 	cursor: pointer;
-	padding: 0.95rem 1.8rem;
-
-	@media (prefers-reduced-motion: no-preference) {
-		transition: background var(--duration-ui) var(--ease-ink);
-	}
 
 	&:hover {
-		background: var(--gramo-walnut);
+		background: transparent;
+		color: var(--gramo-ink);
 	}
 
 	&:disabled {
-		background: var(--gramo-gray);
+		border-color: color-mix(in srgb, currentcolor 38%, transparent);
+		color: var(--gramo-ink-dim);
 		cursor: default;
+
+		&:hover {
+			background: transparent;
+		}
 	}
 }
 
 .success {
 	@include mx.caps-caption;
 
-	border: 1.5px solid var(--gramo-olive);
-	color: var(--gramo-olive);
-	padding: var(--space-3);
+	border-top: 1px solid var(--gramo-ink);
+	color: var(--gramo-ink);
+	padding-top: var(--space-2);
 }

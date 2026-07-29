@@ -10,6 +10,7 @@ import { graphql, Link, type HeadProps, type PageProps } from 'gatsby';
 import { Layout } from '@/components/Layout';
 import { SEO } from '@/components/SEO';
 import { JournalCard, type JournalCardData } from '@/components/JournalCard';
+import { RevealSection } from '@/components/RevealSection';
 import { STATIC_ROUTES, type Locale } from '@/i18n/routes';
 import { t } from '@/i18n/strings';
 
@@ -56,13 +57,13 @@ export default function JournalCategoryTemplate({
         </div>
       </header>
 
-      <section className={styles.gridSection}>
+      <RevealSection className={styles.gridSection}>
         <div className={styles.grid}>
           {posts.map((post, index) => (
             <JournalCard key={post.databaseId} post={post} locale={locale} index={index} />
           ))}
         </div>
-      </section>
+      </RevealSection>
     </Layout>
   );
 }

@@ -8,6 +8,7 @@ import * as React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { useBlockMedia } from '@/hooks/useBlockMedia';
+import { useReveal } from '@/lib/reveal';
 import type { GalleryAttrs } from './types';
 import type { BlockComponentProps } from './BlockRenderer';
 
@@ -15,6 +16,7 @@ import * as styles from './GalleryBlock.module.scss';
 
 export function GalleryBlock({ attributes }: BlockComponentProps<GalleryAttrs>): React.JSX.Element | null {
   const media = useBlockMedia();
+  const ref = useReveal<HTMLElement>();
   const items = attributes.items ?? [];
 
   if (items.length === 0) return null;
@@ -23,7 +25,7 @@ export function GalleryBlock({ attributes }: BlockComponentProps<GalleryAttrs>):
   const columns = Math.min(4, Math.max(2, attributes.columns || 3));
 
   return (
-    <section className={styles.gallery}>
+    <section className={styles.gallery} ref={ref}>
       <div
         className={`${styles.items} ${layout === 'strip' ? styles.strip : styles.grid}`}
         style={{ '--gallery-columns': columns } as React.CSSProperties}
@@ -32,7 +34,7 @@ export function GalleryBlock({ attributes }: BlockComponentProps<GalleryAttrs>):
           const image = media.byUrl(item.url) ?? media.byAttachmentId(item.id);
           if (!image) return null;
           return (
-            <figure key={`${item.url}-${index}`} className={styles.plate}>
+            <figure key={`${item.url}-${index}`} className={styles.plate} data-reveal="work">
               <GatsbyImage image={image} alt={item.alt ?? media.altFor(item.url)} />
               {item.caption ? (
                 <figcaption className={styles.caption}>{item.caption}</figcaption>

@@ -9,6 +9,7 @@
 import * as React from 'react';
 
 import { pigmentAt } from '@/lib/pigments';
+import { useReveal } from '@/lib/reveal';
 import type { StatsAttrs, StatsItem } from './types';
 import type { BlockComponentProps } from './BlockRenderer';
 
@@ -51,6 +52,7 @@ function StatValue({ value, start }: { value: string; start: boolean }): React.J
 export function StatsBlock({ attributes }: BlockComponentProps<StatsAttrs>): React.JSX.Element | null {
   const items = (attributes.items ?? []).filter((item): item is StatsItem => Boolean(item?.value));
   const ref = React.useRef<HTMLElement>(null);
+  const revealRef = useReveal<HTMLDivElement>();
   const [inView, setInView] = React.useState(false);
 
   React.useEffect(() => {
@@ -76,10 +78,10 @@ export function StatsBlock({ attributes }: BlockComponentProps<StatsAttrs>): Rea
 
   return (
     <section className={styles.stats} ref={ref}>
-      <div className={styles.inner}>
+      <div className={styles.inner} ref={revealRef}>
         {attributes.heading ? <h2 className={styles.heading}>{attributes.heading}</h2> : null}
 
-        <dl className={styles.row}>
+        <dl className={styles.row} data-reveal="label">
           {items.map((item, index) => (
             <div key={`${item.label}-${index}`} className={styles.item}>
               <dd className={`${styles.value} ${styles[pigmentAt(index)] ?? ''}`}>

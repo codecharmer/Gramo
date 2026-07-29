@@ -1,8 +1,9 @@
 /**
- * Location detail — compact board header, contact + maps link-out, opening
- * hours as a 7-row stock-sheet, amenity caps chips, description prose, the
- * gallery as archival plates, and the neighborhood guide. JSON-LD
- * CafeOrCoffeeShop with address/geo/hours when the data exists.
+ * Location detail — a wall-black title block, the café photographed inside a
+ * bone hairline mat, the wall label (address, phone, WhatsApp, a link-out to
+ * Maps — never an embed), opening hours as a hairline table and amenities as
+ * caps chips. The café's story and the neighborhood guide invert to daylight
+ * reading rooms. JSON-LD CafeOrCoffeeShop with address/geo/hours.
  */
 
 import * as React from 'react';
@@ -12,6 +13,7 @@ import { GatsbyImage, type IGatsbyImageData } from 'gatsby-plugin-image';
 import { Layout } from '@/components/Layout';
 import { SEO } from '@/components/SEO';
 import { useBlockMedia } from '@/hooks/useBlockMedia';
+import { useReveal } from '@/lib/reveal';
 import { t, type StringKey } from '@/i18n/strings';
 import type { Locale } from '@/i18n/routes';
 import type { HoursRange, LocalizedText, OpeningHours } from '@/types/content';
@@ -100,6 +102,8 @@ export default function LocationTemplate({
   pageContext,
 }: PageProps<LocationData, LocationContext>): React.JSX.Element {
   const media = useBlockMedia();
+  const detailRef = useReveal<HTMLElement>();
+  const galleryRef = useReveal<HTMLElement>();
   const node = data.gramoLocation;
   const locale = pageContext.locale;
 
@@ -133,48 +137,71 @@ export default function LocationTemplate({
         </div>
       </header>
 
-      <section className={styles.detail}>
+      <section className={styles.detail} ref={detailRef}>
         <div className={styles.detailInner}>
           <div className={styles.column}>
             {image ? (
-              <figure className={styles.plate}>
+              <figure className={styles.plate} data-reveal="work">
                 <GatsbyImage image={image} alt={name} loading="eager" />
               </figure>
             ) : null}
 
-            <div className={styles.contact}>
-              {node.address ? <p className={styles.address}>{node.address}</p> : null}
-              <div className={styles.contactLinks}>
+            <div className={styles.contact} data-reveal="label">
+              <h2 className={styles.sheetHeader}>{t('contact', locale)}</h2>
+              <dl className={styles.rows}>
+                {node.address ? (
+                  <div className={styles.row}>
+                    <dt className={styles.key}>{t('address', locale)}</dt>
+                    <dd className={styles.value}>{node.address}</dd>
+                  </div>
+                ) : null}
+                {node.neighborhood ? (
+                  <div className={styles.row}>
+                    <dt className={styles.key}>{t('neighborhood', locale)}</dt>
+                    <dd className={styles.value}>{node.neighborhood}</dd>
+                  </div>
+                ) : null}
                 {node.phone ? (
-                  <a href={`tel:${node.phone.replace(/[^\d+]/g, '')}`} className={styles.contactLink}>
-                    {node.phone}
-                  </a>
+                  <div className={styles.row}>
+                    <dt className={styles.key}>{t('phone', locale)}</dt>
+                    <dd className={styles.value}>
+                      <a href={`tel:${node.phone.replace(/[^\d+]/g, '')}`} className={styles.contactLink}>
+                        {node.phone}
+                      </a>
+                    </dd>
+                  </div>
                 ) : null}
                 {node.whatsapp ? (
-                  <a
-                    href={waLink(node.whatsapp)}
-                    className={styles.contactLink}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    WhatsApp
-                  </a>
+                  <div className={styles.row}>
+                    <dt className={styles.key}>WhatsApp</dt>
+                    <dd className={styles.value}>
+                      <a
+                        href={waLink(node.whatsapp)}
+                        className={styles.contactLink}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        {node.whatsapp}
+                      </a>
+                    </dd>
+                  </div>
                 ) : null}
-                {node.mapsUrl ? (
-                  <a
-                    href={node.mapsUrl}
-                    className={styles.mapsLink}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {t('gettingThere', locale)} ↗
-                  </a>
-                ) : null}
-              </div>
+              </dl>
+
+              {node.mapsUrl ? (
+                <a
+                  href={node.mapsUrl}
+                  className={styles.mapsLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {t('gettingThere', locale)} ↗
+                </a>
+              ) : null}
             </div>
           </div>
 
-          <div className={styles.column}>
+          <div className={styles.column} data-reveal="label">
             <h2 className={styles.sheetHeader}>{t('hours', locale)}</h2>
             {hasAnyHours(node.hours) ? (
               <dl className={styles.hours}>
@@ -215,17 +242,24 @@ export default function LocationTemplate({
               </>
             ) : null}
 
-            {description ? <p className={styles.description}>{description}</p> : null}
           </div>
         </div>
       </section>
 
+      {description ? (
+        <section className={styles.story}>
+          <div className={styles.storyInner}>
+            <p className={styles.description}>{description}</p>
+          </div>
+        </section>
+      ) : null}
+
       {galleryImages.length > 0 ? (
-        <section className={styles.gallery}>
+        <section className={styles.gallery} ref={galleryRef}>
           <div className={styles.galleryInner}>
             {galleryImages.map((item) =>
               item.image ? (
-                <figure key={item.url} className={styles.galleryPlate}>
+                <figure key={item.url} className={styles.galleryPlate} data-reveal="work">
                   <GatsbyImage image={item.image} alt={item.alt} />
                   {item.alt ? <figcaption className={styles.galleryCaption}>{item.alt}</figcaption> : null}
                 </figure>

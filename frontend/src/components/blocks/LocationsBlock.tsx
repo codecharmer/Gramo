@@ -8,6 +8,7 @@ import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import { LocationCard, type LocationCardData } from '@/components/LocationCard';
+import { useReveal } from '@/lib/reveal';
 import type { LocationsAttrs } from './types';
 import type { BlockComponentProps } from './BlockRenderer';
 
@@ -21,6 +22,7 @@ export function LocationsBlock({
   attributes,
   locale,
 }: BlockComponentProps<LocationsAttrs>): React.JSX.Element | null {
+  const ref = useReveal<HTMLElement>();
   const data = useStaticQuery<QueryResult>(graphql`
     query BlockLocations {
       allGramoLocation(sort: { menuOrder: ASC }) {
@@ -52,7 +54,7 @@ export function LocationsBlock({
   if (locations.length === 0) return null;
 
   return (
-    <section className={styles.locations}>
+    <section className={styles.locations} ref={ref}>
       <div className={styles.inner}>
         {attributes.heading ? <h2 className={styles.heading}>{attributes.heading}</h2> : null}
 

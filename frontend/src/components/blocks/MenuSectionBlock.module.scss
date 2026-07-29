@@ -1,7 +1,18 @@
 @use '../../styles/mixins' as mx;
 
+// The menu is a daylight room: café-menu grammar for long reading.
 .sheet {
+	@include mx.daylight-room;
+
 	padding-block: var(--space-4);
+
+	&:first-child {
+		padding-top: var(--space-5);
+	}
+
+	&:last-child {
+		padding-bottom: var(--space-6);
+	}
 }
 
 .inner {
@@ -11,8 +22,7 @@
 .header {
 	@include mx.caps-caption;
 
-	border-bottom: var(--rule-strong);
-	font-size: var(--text-body);
+	border-bottom: 1px solid var(--gramo-ink);
 	margin: 0 0 var(--space-3);
 	padding-bottom: var(--space-1);
 }
@@ -44,25 +54,25 @@
 }
 
 .priceNote {
-	color: var(--gramo-gray);
+	color: var(--gramo-ink-dim);
 	font-size: var(--text-small);
 	font-variant-numeric: normal;
 	white-space: normal;
 }
 
 .description {
-	color: var(--gramo-gray);
+	color: var(--gramo-ink-dim);
 	font-size: var(--text-caption);
 	margin: 0.15rem 0 0;
-	max-width: 36rem;
+	max-width: 40rem;
 }
 
 .dietary {
 	@include mx.caps-caption;
 
-	color: var(--gramo-olive);
+	color: var(--gramo-accent, var(--gramo-brass));
 	font-size: var(--text-small);
-	margin: 0.2rem 0 0;
+	margin: 0.3rem 0 0;
 }
 
 .variants {
@@ -70,10 +80,11 @@
 	flex-direction: column;
 	gap: 0.35rem;
 	list-style: none;
-	margin: 0.4rem 0 0;
+	margin: 0.5rem 0 0;
 	padding: 0 0 0 var(--space-3);
 }
 
 .variantLabel {
+	color: var(--gramo-ink-dim);
 	font-size: var(--text-caption);
 }

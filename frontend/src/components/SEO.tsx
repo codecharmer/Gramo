@@ -35,6 +35,14 @@ export function SEO({
   const fullTitle = title === SITE_NAME ? title : `${title} — ${SITE_NAME}`;
   const ogLocale = locale === 'es' ? 'es_MX' : 'en_US';
 
+  // Gatsby's Head API only keeps head elements that are direct children — a
+  // conditional fragment wrapping several <link>s gets dropped, which is how
+  // the hreflang pair went missing. Each tag is therefore emitted flat.
+  const altUrl = translationPath ? `${SITE_URL}${translationPath}` : null;
+  const selfHrefLang = locale === 'es' ? 'es-MX' : 'en';
+  const altHrefLang = locale === 'es' ? 'en' : 'es-MX';
+  const defaultUrl = locale === 'es' ? url : altUrl;
+
   return (
     <>
       <title>{fullTitle}</title>
@@ -42,20 +50,10 @@ export function SEO({
       <link rel="canonical" href={url} />
       {noindex ? <meta name="robots" content="noindex,nofollow" /> : null}
 
-      {translationPath ? (
-        <>
-          <link rel="alternate" hrefLang={locale === 'es' ? 'es-MX' : 'en'} href={url} />
-          <link
-            rel="alternate"
-            hrefLang={locale === 'es' ? 'en' : 'es-MX'}
-            href={`${SITE_URL}${translationPath}`}
-          />
-          <link
-            rel="alternate"
-            hrefLang="x-default"
-            href={locale === 'es' ? url : `${SITE_URL}${translationPath}`}
-          />
-        </>
+      {altUrl ? <link rel="alternate" hrefLang={selfHrefLang} href={url} /> : null}
+      {altUrl ? <link rel="alternate" hrefLang={altHrefLang} href={altUrl} /> : null}
+      {altUrl && defaultUrl ? (
+        <link rel="alternate" hrefLang="x-default" href={defaultUrl} />
       ) : null}
 
       <meta property="og:site_name" content={SITE_NAME} />

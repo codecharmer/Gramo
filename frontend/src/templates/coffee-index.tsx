@@ -11,6 +11,7 @@ import { Layout } from '@/components/Layout';
 import { SEO } from '@/components/SEO';
 import { BlockRenderer, parseBlocks } from '@/components/blocks/BlockRenderer';
 import { CoffeeCard, type CoffeeCardData } from '@/components/CoffeeCard';
+import { RevealSection } from '@/components/RevealSection';
 import { t } from '@/i18n/strings';
 import type { GramoPageContext } from './page';
 
@@ -39,7 +40,7 @@ export default function CoffeeIndexTemplate({
       <BlockRenderer blocks={blocks} locale={pageContext.locale} />
 
       {coffees.length > 0 ? (
-        <section className={styles.section}>
+        <RevealSection className={styles.section}>
           <div className={styles.inner}>
             <h2 className={styles.sectionHeading}>{t('coffeesSection', pageContext.locale)}</h2>
             <div className={styles.grid}>
@@ -53,11 +54,11 @@ export default function CoffeeIndexTemplate({
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
       ) : null}
 
       {subscriptions.length > 0 ? (
-        <section className={styles.section}>
+        <RevealSection className={styles.section}>
           <div className={styles.inner}>
             <h2 className={styles.sectionHeading}>
               {t('subscriptionsSection', pageContext.locale)}
@@ -73,7 +74,7 @@ export default function CoffeeIndexTemplate({
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
       ) : null}
     </Layout>
   );

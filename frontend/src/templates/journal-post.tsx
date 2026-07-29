@@ -12,6 +12,7 @@ import { Layout } from '@/components/Layout';
 import { SEO } from '@/components/SEO';
 import { BlockRenderer, parseBlocks } from '@/components/blocks/BlockRenderer';
 import { JournalCard, type JournalCardData } from '@/components/JournalCard';
+import { RevealSection } from '@/components/RevealSection';
 import { t } from '@/i18n/strings';
 import type { Locale } from '@/i18n/routes';
 import { formatDate } from '@/lib/format';
@@ -91,7 +92,7 @@ export default function JournalPostTemplate({
 
         {image ? (
           <div className={styles.plateWrap}>
-            <figure className={styles.plate}>
+            <figure className={styles.plate} data-reveal="work">
               <GatsbyImage image={image} alt={post.title} loading="eager" />
             </figure>
           </div>
@@ -103,7 +104,7 @@ export default function JournalPostTemplate({
       </article>
 
       {data.related.nodes.length > 0 ? (
-        <section className={styles.related}>
+        <RevealSection className={styles.related}>
           <div className={styles.relatedInner}>
             <h2 className={styles.relatedHeading}>{t('relatedPosts', locale)}</h2>
             <div className={styles.relatedGrid}>
@@ -112,7 +113,7 @@ export default function JournalPostTemplate({
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
       ) : null}
     </Layout>
   );

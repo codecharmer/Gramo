@@ -1,6 +1,9 @@
 @use '../../styles/mixins' as mx;
+@use '../../styles/label' as lbl;
 
 .stats {
+	@include mx.wall-room;
+
 	padding-block: var(--space-6);
 }
 
@@ -9,16 +12,16 @@
 }
 
 .heading {
-	font-size: var(--text-title);
-	margin: 0 0 var(--space-4);
-	max-width: 22ch;
-	text-wrap: balance;
+	@include lbl.label-eyebrow;
+
+	color: var(--gramo-brass);
+	margin: 0 0 var(--space-5);
 }
 
 .row {
 	display: grid;
-	gap: var(--space-4);
-	grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+	gap: var(--space-5) var(--space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
 	margin: 0;
 }
 
@@ -27,41 +30,29 @@
 	flex-direction: column;
 }
 
-// The numeral sits above its pigment underline; dd precedes dt visually.
+// The numeral sits above its 2px artwork-key underline; dd precedes dt.
 .value {
-	@include mx.display-serif;
+	@include mx.display-type;
 
-	border-bottom: 4px solid;
+	border-bottom: 2px solid;
+	color: var(--gramo-bone);
 	font-size: clamp(2.6rem, 1.6rem + 3.4vw, 4.4rem);
 	font-variant-numeric: tabular-nums;
-	margin: 0 0 var(--space-1);
-	padding-bottom: var(--space-1);
+	margin: 0 0 var(--space-2);
+	padding-bottom: var(--space-2);
 	width: fit-content;
 }
 
-.walnut {
-	border-color: var(--gramo-walnut);
-}
-
-.olive {
-	border-color: var(--gramo-olive);
-}
-
-.bronze {
-	border-color: var(--gramo-bronze);
-}
-
-.copper {
-	border-color: var(--gramo-copper);
-}
+@include lbl.art-key-colors(border-color);
 
 .suffix {
-	font-size: 0.55em;
+	font-size: 0.5em;
 	margin-left: 0.1em;
 }
 
 .label {
 	@include mx.caps-caption;
 
-	color: var(--gramo-gray);
+	color: var(--gramo-bone-dim);
+	font-size: var(--text-small);
 }

@@ -1,8 +1,10 @@
 /**
  * blocksJson → React. Maps every gramo/* block to its design-system
- * component; core blocks render through CoreHtml. Unknown blocks render
- * their html leaf when present (neutral wrapper) and warn in development —
- * drift stays loud, never silent.
+ * component; core blocks render through CoreHtml. Consecutive core blocks
+ * are grouped into one daylight prose room so a page of paragraphs reads as
+ * a single lit reading surface rather than a stack of bands. Unknown blocks
+ * render their html leaf when present and warn in development — drift stays
+ * loud, never silent.
  */
 
 import * as React from 'react';
@@ -22,6 +24,8 @@ import { StatsBlock } from './StatsBlock';
 import { FaqBlock } from './FaqBlock';
 import { LocationsBlock } from './LocationsBlock';
 import { InquiryFormBlock } from './InquiryFormBlock';
+
+import * as styles from './BlockRenderer.module.scss';
 
 export interface BlockComponentProps<A = Record<string, unknown>> {
   attributes: A;
@@ -60,33 +64,51 @@ interface BlockRendererProps {
 }
 
 export function BlockRenderer({ blocks, locale }: BlockRendererProps): React.JSX.Element {
-  return (
-    <>
-      {blocks.map((block, index) => {
-        const key = `${block.name}-${index}`;
+  const output: React.ReactNode[] = [];
+  let prose: React.ReactNode[] = [];
+  let proseStart = 0;
 
-        const Component = BLOCK_MAP[block.name];
-        if (Component) {
-          return (
-            <Component
-              key={key}
-              attributes={block.attributes ?? {}}
-              innerBlocks={block.innerBlocks ?? []}
-              locale={locale}
-            />
-          );
-        }
+  const closeProseRoom = (): void => {
+    if (prose.length === 0) return;
+    output.push(
+      <section className={styles.proseRoom} key={`prose-${proseStart}`}>
+        {prose}
+      </section>
+    );
+    prose = [];
+  };
 
-        if (typeof block.html === 'string') {
-          return <CoreHtml key={key} html={block.html} />;
-        }
+  blocks.forEach((block, index) => {
+    const key = `${block.name}-${index}`;
+    const Component = BLOCK_MAP[block.name];
 
-        if (process.env.NODE_ENV === 'development') {
-          // eslint-disable-next-line no-console
-          console.warn(`[gramo] unknown block with no html fallback: ${block.name}`);
-        }
-        return null;
-      })}
-    </>
-  );
+    if (Component) {
+      closeProseRoom();
+      output.push(
+        <Component
+          key={key}
+          attributes={block.attributes ?? {}}
+          innerBlocks={block.innerBlocks ?? []}
+          locale={locale}
+        />
+      );
+      return;
+    }
+
+    if (typeof block.html === 'string') {
+      if (block.html.trim() === '') return;
+      if (prose.length === 0) proseStart = index;
+      prose.push(<CoreHtml key={key} html={block.html} />);
+      return;
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(`[gramo] unknown block with no html fallback: ${block.name}`);
+    }
+  });
+
+  closeProseRoom();
+
+  return <>{output}</>;
 }

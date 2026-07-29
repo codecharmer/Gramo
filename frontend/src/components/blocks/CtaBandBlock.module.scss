@@ -1,35 +1,25 @@
 @use '../../styles/mixins' as mx;
+@use '../../styles/label' as lbl;
 
 .band {
-	margin-block: var(--space-5);
+	position: relative;
 }
 
-.espresso,
+// tone maps to a room, never to a colour field.
+.espresso {
+	@include mx.wall-room;
+}
+
 .dark {
-	background: var(--gramo-board);
-	color: var(--gramo-cream);
+	@include mx.wall-room;
 
-	.text {
-		color: rgb(239 230 212 / 80%);
-	}
-
-	.plate {
-		border: 1px solid rgb(239 230 212 / 35%);
-	}
+	background-color: var(--gramo-wall-deep);
 }
 
 .linen {
-	background: var(--gramo-paper-deep);
-	border-block: var(--rule);
-	color: var(--gramo-ink);
+	@include mx.daylight-room;
 
-	.text {
-		color: var(--gramo-gray);
-	}
-
-	.plate {
-		border: var(--rule-strong);
-	}
+	border-block: var(--hairline-ink);
 }
 
 .inner {
@@ -39,59 +29,79 @@
 	display: grid;
 	gap: var(--space-5);
 	grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-	padding-block: var(--space-5);
+	padding-block: var(--space-6);
 
-	@media (max-width: 860px) {
+	@media (max-width: 900px) {
 		gap: var(--space-4);
 		grid-template-columns: 1fr;
 	}
 }
 
-// Copy fills the band when there is no plate.
+// Copy fills the room when there is no work beside it.
 .inner:has(.copy:only-child) {
 	grid-template-columns: 1fr;
 }
 
+.copy {
+	min-width: 0;
+}
+
 .heading {
+	@include mx.display-type;
+
 	color: inherit;
 	font-size: var(--text-title);
-	margin: 0 0 var(--space-2);
-	max-width: 22ch;
+	margin: 0 0 var(--space-3);
+	max-width: 20ch;
 	text-wrap: balance;
 }
 
 .text {
-	font-family: var(--font-serif-text);
-	font-size: var(--text-subtitle);
-	font-style: italic;
-	margin: 0 0 var(--space-3);
-	max-width: 38ch;
+	@include lbl.label-block;
+
+	color: color-mix(in srgb, currentcolor 72%, transparent);
+	font-size: var(--text-caption);
+	margin: 0 0 var(--space-4);
+	max-width: 44ch;
 }
 
 .cta {
-	@include mx.caps-caption;
-	@include mx.focus-ring;
+	@include mx.plate-button;
+}
 
-	background: var(--gramo-copper);
-	color: var(--gramo-cream);
-	display: inline-block;
-	padding: 0.95rem 1.8rem;
-	text-decoration: none;
-
-	@media (prefers-reduced-motion: no-preference) {
-		transition: background var(--duration-ui) var(--ease-ink);
-	}
+.linen .cta {
+	background: var(--gramo-ink);
+	border-color: var(--gramo-ink);
+	color: var(--gramo-bone);
 
 	&:hover {
-		background: var(--gramo-walnut);
+		background: transparent;
+		color: var(--gramo-ink);
 	}
 }
 
 .plate {
-	background: var(--gramo-paper);
-	padding: 0.65rem;
+	padding: var(--space-2);
+	position: relative;
 
-	@media (max-width: 860px) {
+	@media (max-width: 900px) {
 		max-width: 26rem;
 	}
+}
+
+.pool {
+	@include lbl.light-pool;
+}
+
+.plateImage {
+	position: relative;
+	z-index: 1;
+}
+
+.linen .plate {
+	border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+}
+
+.linen .pool {
+	display: none;
 }

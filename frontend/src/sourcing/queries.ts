@@ -83,6 +83,10 @@ export const COFFEES_QUERY = /* GraphQL */ `
         harvest
         availability
         subscriptionInterval
+        gramoSeo {
+          description
+          short
+        }
         price
         regularPrice
         stockStatus
@@ -162,6 +166,10 @@ export const LOCATIONS_QUERY = /* GraphQL */ `
         neighborhoodGuide {
           es
           en
+        }
+        gramoSeo {
+          description
+          short
         }
         featuredImage {
           node {
@@ -288,6 +296,10 @@ export const PAGES_QUERY = /* GraphQL */ `
         title
         isFrontPage
         locale
+        gramoSeo {
+          description
+          short
+        }
         translation {
           databaseId
           slug
@@ -310,6 +322,10 @@ export const POSTS_QUERY = /* GraphQL */ `
         excerpt
         readingTime
         locale
+        gramoSeo {
+          description
+          short
+        }
         translation {
           databaseId
           slug

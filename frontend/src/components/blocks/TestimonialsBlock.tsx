@@ -9,7 +9,7 @@ import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import type { LocalizedText } from '@/types/content';
-import { pigmentAt } from '@/lib/pigments';
+import { useReveal } from '@/lib/reveal';
 import type { TestimonialsAttrs } from './types';
 import type { BlockComponentProps } from './BlockRenderer';
 
@@ -35,6 +35,7 @@ export function TestimonialsBlock({
   attributes,
   locale,
 }: BlockComponentProps<TestimonialsAttrs>): React.JSX.Element | null {
+  const ref = useReveal<HTMLElement>();
   const data = useStaticQuery<QueryResult>(graphql`
     query Testimonials {
       allGramoTestimonial(sort: { databaseId: DESC }) {
@@ -70,17 +71,14 @@ export function TestimonialsBlock({
   if (visible.length === 0) return null;
 
   return (
-    <section className={styles.testimonials}>
+    <section className={styles.testimonials} ref={ref}>
       <div className={styles.inner}>
         {attributes.heading ? <h2 className={styles.heading}>{attributes.heading}</h2> : null}
 
         <div className={styles.list}>
-          {visible.map((node, index) => (
-            <figure key={node.databaseId} className={styles.item}>
+          {visible.map((node) => (
+            <figure key={node.databaseId} className={styles.item} data-reveal="label">
               <blockquote className={styles.quote}>
-                <span className={`${styles.mark} ${styles[pigmentAt(index)] ?? ''}`} aria-hidden="true">
-                  “
-                </span>
                 <p>{localized(node.quote, locale)}</p>
               </blockquote>
               {localized(node.attribution, locale) ? (

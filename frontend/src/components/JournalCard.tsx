@@ -1,7 +1,7 @@
 /**
- * Journal card — plate with the post's featured image, category as a
- * pigment caps caption, serif title, and a dated caps footer with reading
- * time. Links to the post.
+ * Journal card — an entry hung as a work: the featured photograph in a
+ * hairline mat, then the wall label (an artwork-key dot with the category,
+ * the title in the display face, FECHA · LECTURA rows).
  */
 
 import * as React from 'react';
@@ -42,26 +42,37 @@ export function JournalCard({ post, locale, index = 0 }: JournalCardProps): Reac
     : null;
 
   return (
-    <Link to={pathFor('journal', locale, post.slug)} className={styles.card}>
+    <Link to={pathFor('journal', locale, post.slug)} className={styles.work}>
       {image ? (
-        <div className={styles.image}>
+        <div className={styles.mat} data-reveal="work">
           <GatsbyImage image={image} alt={post.title} />
         </div>
       ) : null}
 
-      <div className={styles.body}>
+      <div className={styles.label} data-reveal="label">
         {categoryLabel ? (
-          <p className={`${styles.category} ${styles[pigment] ?? ''}`}>{categoryLabel}</p>
+          <p className={styles.category}>
+            <span className={`${styles.dot} ${styles[pigment] ?? ''}`} aria-hidden="true" />
+            {categoryLabel}
+          </p>
         ) : null}
+
         <h3 className={styles.title}>{post.title}</h3>
-        <p className={styles.meta}>
-          <span>{formatDate(post.date, locale)}</span>
+
+        <dl className={styles.rows}>
+          <div className={styles.row}>
+            <dt className={styles.key}>{t('date', locale)}</dt>
+            <dd className={styles.value}>{formatDate(post.date, locale)}</dd>
+          </div>
           {post.readingTime ? (
-            <span>
-              {post.readingTime} {t('readingTime', locale)}
-            </span>
+            <div className={styles.row}>
+              <dt className={styles.key}>{t('reading', locale)}</dt>
+              <dd className={styles.value}>
+                {post.readingTime} {t('readingTime', locale)}
+              </dd>
+            </div>
           ) : null}
-        </p>
+        </dl>
       </div>
     </Link>
   );
