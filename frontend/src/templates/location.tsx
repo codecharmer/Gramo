@@ -34,6 +34,7 @@ interface LocationDetailNode {
   hours: OpeningHours | null;
   amenities: Array<{ labelEs: string | null; labelEn: string | null } | null> | null;
   mapsUrl: string | null;
+  gramoSeo: { description: string | null; short: string | null } | null;
   latitude: string | null;
   longitude: string | null;
   galleryUrls: Array<string | null> | null;
@@ -338,7 +339,7 @@ export function Head({
   return (
     <SEO
       title={name}
-      description={node ? localized(node.description, locale) || null : null}
+      description={node?.gramoSeo?.description ?? (node ? localized(node.description, locale) || null : null)}
       locale={locale}
       pathname={location.pathname}
       translationPath={pageContext.translationPath}
@@ -396,6 +397,10 @@ export const query = graphql`
         labelEn
       }
       mapsUrl
+      gramoSeo {
+        description
+        short
+      }
       latitude
       longitude
       galleryUrls

@@ -42,6 +42,7 @@ interface CoffeeDetailNode {
   harvest: string | null;
   availability: string | null;
   subscriptionInterval: string | null;
+  gramoSeo: { description: string | null; short: string | null } | null;
   price: number | null;
   purchasable: boolean | null;
   imageUrl: string | null;
@@ -253,7 +254,7 @@ export function Head({
   return (
     <SEO
       title={name}
-      description={locale === 'en' ? coffee?.descriptionEn : null}
+      description={coffee?.gramoSeo?.description ?? (locale === 'en' ? coffee?.descriptionEn : null)}
       locale={locale}
       pathname={location.pathname}
       translationPath={pageContext.translationPath}
@@ -292,6 +293,10 @@ export const query = graphql`
       harvest
       availability
       subscriptionInterval
+      gramoSeo {
+        description
+        short
+      }
       price
       purchasable
       imageUrl
