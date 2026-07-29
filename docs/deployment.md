@@ -82,3 +82,18 @@ GitHub repository secrets (set by `setup-vps-deploy.sh`): `SSH_HOST`,
 Twilio ships in dry-run: the whole notification workflow runs and logs, but
 nothing is sent until real credentials replace the empty constants and
 `GRAMO_SMS_DRY_RUN` is set to `false`.
+
+## Known constraints
+
+- **WordPress page slugs are globally unique**, so a translation pair cannot
+  share one. The Spanish menu page owns `menu`; its English pair is
+  `our-menu`, and `src/i18n/routes.ts` points at the real URL. If you add a
+  pair whose two languages want the same slug, WordPress will silently append
+  `-2` — check the route map afterwards.
+- **NGINX gzip is enabled server-wide** through `/etc/nginx/conf.d/zz-gzip.conf`
+  (cPanel ships it commented out in `nginx.conf`, which it regenerates). This
+  affects every vhost on the box, not just Gramo.
+- `public_html/.htaccess` carries the compression, caching and security headers
+  for the static site; `public_cms/.htaccess` carries the WordPress rewrite
+  block. Both are server-owned and not deployed from the repo — recreate them
+  from this document if the docroots are ever rebuilt.
