@@ -1,7 +1,9 @@
 /**
- * Site shell — announcement bar, board-strip header, footer — in the
- * Coffee Data Portraits grammar. Wraps every page; locale comes from
- * pageContext so nav labels and the switcher resolve per language.
+ * Site shell — announcement hairline, a quiet wall strip of a header, and
+ * the wall-deep footer. The wordmark is always the real 2024 asset, never
+ * re-typed: bone glyphs, because the shell is wall-black on every page.
+ * Locale comes from pageContext so nav labels and the ES · EN switch
+ * resolve per language.
  */
 
 import * as React from 'react';
@@ -11,6 +13,7 @@ import { useSettings } from '@/hooks/useSettings';
 import { useCart } from '@/state/cart';
 import { homeFor, STATIC_ROUTES, type Locale } from '@/i18n/routes';
 import { t } from '@/i18n/strings';
+import logoBone from '@/images/logo-bone.png';
 
 import * as styles from './Layout.module.scss';
 
@@ -72,7 +75,7 @@ export function Layout({ locale, translationPath, children }: LayoutProps): Reac
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link to={homeFor(locale)} className={styles.wordmark}>
-            GRAMO
+            <img src={logoBone} alt="Gramo" width={130} height={26} />
           </Link>
 
           <button
@@ -104,9 +107,34 @@ export function Layout({ locale, translationPath, children }: LayoutProps): Reac
           </nav>
 
           <div className={styles.headerActions}>
-            <Link to={switchTarget} className={styles.localeSwitch} aria-label={t('switchLocale', locale)}>
-              {locale === 'es' ? 'EN' : 'ES'}
-            </Link>
+            <p className={styles.localeSwitch}>
+              {locale === 'es' ? (
+                <>
+                  <span className={styles.localeCurrent} aria-current="true">
+                    ES
+                  </span>
+                  <span className={styles.localeSep} aria-hidden="true">
+                    ·
+                  </span>
+                  <Link to={switchTarget} className={styles.localeOther} aria-label={t('switchLocale', locale)}>
+                    EN
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to={switchTarget} className={styles.localeOther} aria-label={t('switchLocale', locale)}>
+                    ES
+                  </Link>
+                  <span className={styles.localeSep} aria-hidden="true">
+                    ·
+                  </span>
+                  <span className={styles.localeCurrent} aria-current="true">
+                    EN
+                  </span>
+                </>
+              )}
+            </p>
+
             <Link to={STATIC_ROUTES.cart[locale]} className={styles.cartLink}>
               <span>{t('cart', locale)}</span>
               <span className={styles.cartCount} aria-hidden={!hydrated || count === 0}>
@@ -122,13 +150,21 @@ export function Layout({ locale, translationPath, children }: LayoutProps): Reac
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
           <div className={styles.footerBrand}>
-            <p className={styles.footerWordmark}>GRAMO</p>
+            <img
+              className={styles.footerWordmark}
+              src={logoBone}
+              alt=""
+              aria-hidden="true"
+              width={260}
+              height={52}
+            />
             {settings.business.tagline ? (
               <p className={styles.footerTagline}>{settings.business.tagline}</p>
             ) : null}
           </div>
 
           <nav className={styles.footerNav} aria-label={locale === 'es' ? 'Enlaces del pie' : 'Footer links'}>
+            <p className={styles.footerColHeading}>{locale === 'es' ? 'Navegar' : 'Browse'}</p>
             {settings.footer.map((item) => (
               <Link key={item.path} to={localizePath(item.path, locale)} className={styles.footerLink}>
                 {localized(item.label, locale)}
@@ -137,6 +173,7 @@ export function Layout({ locale, translationPath, children }: LayoutProps): Reac
           </nav>
 
           <div className={styles.footerSocial}>
+            <p className={styles.footerColHeading}>{locale === 'es' ? 'Seguir' : 'Follow'}</p>
             {settings.social.instagram ? (
               <a href={settings.social.instagram} rel="noopener noreferrer" target="_blank">
                 Instagram
