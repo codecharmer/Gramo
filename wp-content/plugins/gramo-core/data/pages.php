@@ -258,7 +258,7 @@ BLOCKS
 		),
 		'en'   => array(
 			'title'            => 'Menu',
-			'slug'             => 'our-menu',
+			'slug'             => 'menu',
 			'seo_short'        => 'The Gramo menu: bar coffee, drinks, food, and pastry from Pacífica.',
 			'meta_description' => 'Gramo Café menu: espresso, pour overs, cascara, chai and cold brew; toasts, salads and croissants, plus pastry from our sister bakery Pacífica.',
 			'content'          => <<<'BLOCKS'
@@ -370,7 +370,7 @@ BLOCKS
 		),
 		'en'   => array(
 			'title'            => 'Our Process',
-			'slug'             => 'our-process',
+			'slug'             => 'process',
 			'seo_short'        => 'From origin to bar: how coffee reaches your cup at Gramo.',
 			'meta_description' => 'The coffee\'s journey at Gramo: origin producers, roasting with Gramo Coffee Roasters and Kurt W, and a bar that treats every cup with calm.',
 			'content'          => <<<'BLOCKS'
