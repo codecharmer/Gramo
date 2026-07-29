@@ -31,7 +31,7 @@ jobs:
       # these directories are ever written to or pruned on the server.
       # Order matters for activation: gramo-core declares "Requires Plugins:
       # woocommerce", so WooCommerce and WPGraphQL must be active before it.
-      WP_PATHS: "wp-content/themes/gramo wp-content/plugins/woocommerce wp-content/plugins/wp-graphql wp-content/plugins/gramo-core"
+      WP_PATHS: "wp-content/themes/gramo wp-content/plugins/woocommerce wp-content/plugins/wp-graphql wp-content/plugins/restricted-site-access wp-content/plugins/gramo-core"
 
     steps:
       - name: Checkout repo
@@ -209,7 +209,7 @@ jobs:
              WP=\"wp --path=${{ secrets.DEPLOY_PATH }} --allow-root\"
              # Activation is idempotent; already-active is reported and ignored.
              \$WP theme activate 'gramo' || echo 'WARN: theme activation failed'
-             for P in gramo-core wp-graphql woocommerce; do
+             for P in gramo-core wp-graphql woocommerce restricted-site-access; do
                \$WP plugin activate \"\$P\" || echo \"WARN: plugin \$P did not activate (missing dependency?)\"
              done
              # wp-cli runs as root here, so anything it wrote is root-owned and

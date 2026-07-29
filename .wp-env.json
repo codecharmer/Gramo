@@ -5,6 +5,7 @@
   "plugins": [
     "./wp-content/plugins/woocommerce",
     "./wp-content/plugins/wp-graphql",
+    "./wp-content/plugins/restricted-site-access",
     "./wp-content/plugins/gramo-core"
   ],
   "themes": [
