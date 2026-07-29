@@ -39,9 +39,9 @@ return array(
 			'seo_short'        => 'Gramo Café: tostadores y cafeterías de especialidad en Cuernavaca y CDMX.',
 			'meta_description' => 'Intervenimos espacios en donde hace falta buen café: ocho cafeterías entre Cuernavaca y CDMX, café de origen tostado por nuestro sello y suscripciones mensuales.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Gramo Café","heading":"Intervenimos espacios en donde hace falta buen café","subheading":"Ocho cafeterías entre Cuernavaca y la Ciudad de México: jardines, museos, librerías y una tostadora propia.","primaryCta":{"label":"Ver cafés","url":"/cafe/"},"secondaryCta":{"label":"Ubicaciones","url":"/ubicaciones/"}} /-->
+<!-- wp:gramo/hero {"eyebrow":"Gramo Café","heading":"Intervenimos espacios en donde hace falta buen café","subheading":"Ocho cafeterías entre Cuernavaca y la Ciudad de México: jardines, museos, librerías y una tostadora propia.","primaryCta":{"label":"Ver cafés","url":"/cafe/"},"secondaryCta":{"label":"Ubicaciones","url":"/ubicaciones/"},"media":{"id":0,"url":"@escena-red-apple","alt":"Bolsa Vincent Vega en mano frente a la repisa"}} /-->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"La casa","heading":"Nacimos en un garaje, en plena pandemia"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"La casa","heading":"Nacimos en un garaje, en plena pandemia","media":{"id":0,"url":"@escena-grunge","alt":"Entrega de una bolsa Grunge Coffee en la barra"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Gramo empezó como una barra de café en un garaje de Cuernavaca, montada por Salo y Sara cuando el mundo se detuvo. Hoy cada ubicación se piensa como una película — con su set, su utilería y su soundtrack — pero la regla sigue siendo la del primer día: el café, bien hecho y sin prisa.</p>
 <!-- /wp:paragraph -->
@@ -59,7 +59,7 @@ return array(
 
 <!-- wp:gramo/testimonials {"heading":"Lo que se dice en barra"} /-->
 
-<!-- wp:gramo/cta-band {"heading":"Café en casa, cada mes","text":"Suscríbete y recibe un origen distinto cada mes, con sorpresas de la casa.","cta":{"label":"Ver suscripciones","url":"/suscripciones/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Café en casa, cada mes","text":"Suscríbete y recibe un origen distinto cada mes, con sorpresas de la casa.","cta":{"label":"Ver suscripciones","url":"/suscripciones/"},"media":{"id":0,"url":"@escena-stickers","alt":"Decenas de stickers ilustrados de Gramo extendidos uno sobre otro, en colores saturados."}} /-->
 BLOCKS
 			,
 		),
@@ -69,9 +69,9 @@ BLOCKS
 			'seo_short'        => 'Gramo Café: specialty coffee roasters and cafés in Cuernavaca and Mexico City.',
 			'meta_description' => 'We take good coffee to the spaces missing it: eight cafés across Cuernavaca and Mexico City, origin coffees roasted under our own label, and monthly subscriptions.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Gramo Café","heading":"We take good coffee to the spaces that are missing it","subheading":"Eight cafés across Cuernavaca and Mexico City: gardens, museums, bookstores, and a roastery of our own.","primaryCta":{"label":"Shop coffee","url":"/cafe/"},"secondaryCta":{"label":"Locations","url":"/en/locations/"}} /-->
+<!-- wp:gramo/hero {"eyebrow":"Gramo Café","heading":"We take good coffee to the spaces that are missing it","subheading":"Eight cafés across Cuernavaca and Mexico City: gardens, museums, bookstores, and a roastery of our own.","primaryCta":{"label":"Shop coffee","url":"/cafe/"},"secondaryCta":{"label":"Locations","url":"/en/locations/"},"media":{"id":0,"url":"@escena-red-apple","alt":"Vincent Vega bag held up in front of the shelf"}} /-->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"The house","heading":"Born in a garage, at the height of the pandemic"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"The house","heading":"Born in a garage, at the height of the pandemic","media":{"id":0,"url":"@escena-grunge","alt":"A Grunge Coffee bag handed over at the bar"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Gramo began as a coffee bar in a Cuernavaca garage, set up by Salo and Sara when the world stood still. Today every location is conceived like a film — with its own set, props and soundtrack — but the rule is still the one from day one: coffee, done well, without hurry.</p>
 <!-- /wp:paragraph -->
@@ -89,7 +89,7 @@ BLOCKS
 
 <!-- wp:gramo/testimonials {"heading":"Heard at the bar"} /-->
 
-<!-- wp:gramo/cta-band {"heading":"Coffee at home, every month","text":"Subscribe and receive a different origin each month, with small extras from the house.","cta":{"label":"See subscriptions","url":"/en/subscriptions/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Coffee at home, every month","text":"Subscribe and receive a different origin each month, with small extras from the house.","cta":{"label":"See subscriptions","url":"/en/subscriptions/"},"media":{"id":0,"url":"@escena-stickers","alt":"Dozens of illustrated Gramo stickers spread one over another in saturated colour."}} /-->
 BLOCKS
 			,
 		),
@@ -106,21 +106,21 @@ BLOCKS
 			'seo_short'        => 'La historia de Gramo: del garaje en Cuernavaca a ocho cafeterías en dos ciudades.',
 			'meta_description' => 'Gramo nació en un garaje de Cuernavaca durante la pandemia, fundado por Salo y Sara. Hoy: ocho ubicaciones, tostadora propia y pan de nuestra hermana Pacífica.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Nosotros","heading":"Una casa de café con identidad propia","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Nosotros","heading":"Una casa de café con identidad propia","height":"compact","media":{"id":0,"url":"@escena-marigold","alt":"Entrega de una bolsa Marigold sobre la barra"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"El origen","heading":"Del garaje a la calle"} -->
+<!-- wp:gramo/split-image {"eyebrow":"El origen","heading":"Del garaje a la calle","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Bolsa Red Apple sobre un barandal de metal"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Gramo nació en un garaje de Cuernavaca durante la pandemia y para finales de 2021 ya operaba como cafetería. No hubo plan maestro: hubo una barra, buen café y la intuición de que la ciudad merecía una cultura de café con identidad propia.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"Los fundadores","heading":"Salo y Sara"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"Los fundadores","heading":"Salo y Sara","media":{"id":0,"url":"@escena-love-buzz","alt":"Dos bolsas Love Buzz, negra y blanca, entre plantas"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Salo venía del cine; Sara, del diseño gráfico. Esa mezcla explica casi todo lo que ves: cada ubicación se concibe como una película — set, utilería, soundtrack — y cada bolsa, cada taza y cada espacio pasa por un ojo de diseño que no perdona el detalle flojo.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"eyebrow":"El tueste","heading":"Nuestra tostadora y sus aliados"} -->
+<!-- wp:gramo/split-image {"eyebrow":"El tueste","heading":"Nuestra tostadora y sus aliados","media":{"id":0,"url":"@escena-red-apple","alt":"Bolsa Vincent Vega en mano frente a la repisa"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>El café de casa se tuesta bajo nuestro sello, Gramo Coffee Roasters, en la Ciudad de México, y los tuestes medios corren por cuenta de Kurt W en Cuernavaca. A la repisa se suman tostadores invitados que admiramos: Flowerchild e Hydrangea desde California, y Color Roasters desde Colorado.</p>
 <!-- /wp:paragraph --></div>
@@ -134,7 +134,7 @@ BLOCKS
 
 <!-- wp:gramo/stats {"heading":"La casa en cifras","items":[{"value":"8","suffix":"","label":"ubicaciones"},{"value":"2","suffix":"","label":"ciudades"},{"value":"20","suffix":"+","label":"cafés de origen servidos"},{"value":"10","suffix":"","label":"sellos para tu recompensa de lealtad"}]} /-->
 
-<!-- wp:gramo/cta-band {"heading":"Hazte de la casa","text":"Gramo Clientes: junta 10 sellos en tu tarjeta digital y llévate tu recompensa.","cta":{"label":"Únete a Gramo Clientes","url":"https://take.cards/I0F24"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Hazte de la casa","text":"Gramo Clientes: junta 10 sellos en tu tarjeta digital y llévate tu recompensa.","cta":{"label":"Únete a Gramo Clientes","url":"https://take.cards/I0F24"},"media":{"id":0,"url":"@escena-stickers","alt":"Decenas de stickers ilustrados de Gramo extendidos uno sobre otro, en colores saturados."}} /-->
 BLOCKS
 			,
 		),
@@ -144,21 +144,21 @@ BLOCKS
 			'seo_short'        => 'The Gramo story: from a Cuernavaca garage to eight cafés in two cities.',
 			'meta_description' => 'Gramo was born in a Cuernavaca garage during the pandemic, founded by Salo and Sara. Today: eight locations, a roastery of its own, and bread from sister bakery Pacífica.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"About","heading":"A coffee house with an identity of its own","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"About","heading":"A coffee house with an identity of its own","height":"compact","media":{"id":0,"url":"@escena-marigold","alt":"A Marigold bag handed across the bar"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"The origin","heading":"From the garage to the street"} -->
+<!-- wp:gramo/split-image {"eyebrow":"The origin","heading":"From the garage to the street","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Red Apple bag on a metal railing"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Gramo was born in a Cuernavaca garage during the pandemic and was operating as a café by late 2021. There was no master plan: there was a bar, good coffee, and the intuition that the city deserved a coffee culture with an identity of its own.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"The founders","heading":"Salo and Sara"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"The founders","heading":"Salo and Sara","media":{"id":0,"url":"@escena-love-buzz","alt":"Two Love Buzz bags, black and white, among plants"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Salo came from film; Sara, from graphic design. That mix explains most of what you see: every location is conceived like a film — set, props, soundtrack — and every bag, cup and space passes a designer's eye that forgives no loose detail.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"eyebrow":"The roast","heading":"Our roastery and its allies"} -->
+<!-- wp:gramo/split-image {"eyebrow":"The roast","heading":"Our roastery and its allies","media":{"id":0,"url":"@escena-red-apple","alt":"Vincent Vega bag held up in front of the shelf"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>The house coffee is roasted under our own label, Gramo Coffee Roasters, in Mexico City, with the medium roasts handled by Kurt W in Cuernavaca. The shelf also welcomes guest roasters we admire: Flowerchild and Hydrangea from California, and Color Roasters from Colorado.</p>
 <!-- /wp:paragraph --></div>
@@ -172,7 +172,7 @@ BLOCKS
 
 <!-- wp:gramo/stats {"heading":"The house in numbers","items":[{"value":"8","suffix":"","label":"locations"},{"value":"2","suffix":"","label":"cities"},{"value":"20","suffix":"+","label":"origin coffees served"},{"value":"10","suffix":"","label":"stamps to your loyalty reward"}]} /-->
 
-<!-- wp:gramo/cta-band {"heading":"Make yourself at home","text":"Gramo Clientes: collect 10 stamps on your digital card and claim your reward.","cta":{"label":"Join Gramo Clientes","url":"https://take.cards/I0F24"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Make yourself at home","text":"Gramo Clientes: collect 10 stamps on your digital card and claim your reward.","cta":{"label":"Join Gramo Clientes","url":"https://take.cards/I0F24"},"media":{"id":0,"url":"@escena-stickers","alt":"Dozens of illustrated Gramo stickers spread one over another in saturated colour."}} /-->
 BLOCKS
 			,
 		),
@@ -189,11 +189,11 @@ BLOCKS
 			'seo_short'        => 'Café en grano de origen: tostado por Gramo Coffee Roasters y tostadores invitados.',
 			'meta_description' => 'Cafés de origen en grano: lavados, naturales y honeys de México, Colombia, Ecuador y África, tostados por Gramo Coffee Roasters y tostadores invitados.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"La tostadora","heading":"Café en grano, de origen","subheading":"Lotes en rotación constante, con ficha técnica completa y nombres que se quedan.","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"La tostadora","heading":"Café en grano, de origen","subheading":"Lotes en rotación constante, con ficha técnica completa y nombres que se quedan.","height":"compact","media":{"id":0,"url":"@escena-overdose","alt":"Bolsa Overdose sobre un poste oxidado, al aire libre"}} /-->
 
 <!-- wp:gramo/featured-coffees {"heading":"Ahora en la repisa","intro":"Los destacados de la temporada."} /-->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"El tueste","heading":"Un sello propio y buenos invitados"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"El tueste","heading":"Un sello propio y buenos invitados","media":{"id":0,"url":"@escena-red-apple","alt":"Bolsa Vincent Vega en mano frente a la repisa"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>El café de casa lleva el sello de Gramo Coffee Roasters, nuestra tostadora en la Ciudad de México; los tuestes medios se trabajan en Cuernavaca con Kurt W. Y porque el buen café no entiende de fronteras, la repisa recibe tostadores invitados: Flowerchild e Hydrangea, de California, y Color Roasters, de Colorado.</p>
 <!-- /wp:paragraph -->
@@ -203,7 +203,7 @@ BLOCKS
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/cta-band {"tone":"linen","heading":"¿Mejor sin pensarlo cada mes?","text":"Las suscripciones traen un origen distinto cada mes, con sorpresas de la casa.","cta":{"label":"Ver suscripciones","url":"/suscripciones/"}} /-->
+<!-- wp:gramo/cta-band {"tone":"linen","heading":"¿Mejor sin pensarlo cada mes?","text":"Las suscripciones traen un origen distinto cada mes, con sorpresas de la casa.","cta":{"label":"Ver suscripciones","url":"/suscripciones/"},"media":{"id":0,"url":"@escena-marigold","alt":"Una bolsa negra de café Marigold se entrega sobre la barra, con las gorras de la casa en la repisa al fondo."}} /-->
 BLOCKS
 			,
 		),
@@ -213,11 +213,11 @@ BLOCKS
 			'seo_short'        => 'Origin whole-bean coffee, roasted by Gramo Coffee Roasters and guest roasters.',
 			'meta_description' => 'Whole-bean origin coffees: washed, natural and honey lots from Mexico, Colombia, Ecuador and Africa, roasted by Gramo Coffee Roasters and guest roasters.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"The roastery","heading":"Whole-bean coffee, from origin","subheading":"Lots in constant rotation, with full spec sheets and names that stick.","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"The roastery","heading":"Whole-bean coffee, from origin","subheading":"Lots in constant rotation, with full spec sheets and names that stick.","height":"compact","media":{"id":0,"url":"@escena-overdose","alt":"Overdose bag on a rusted post, outdoors"}} /-->
 
 <!-- wp:gramo/featured-coffees {"heading":"On the shelf now","intro":"This season's highlights."} /-->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"The roast","heading":"A label of our own, and good guests"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"The roast","heading":"A label of our own, and good guests","media":{"id":0,"url":"@escena-red-apple","alt":"Vincent Vega bag held up in front of the shelf"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>The house coffee carries the Gramo Coffee Roasters label, our roastery in Mexico City; medium roasts are worked in Cuernavaca with Kurt W. And because good coffee knows no borders, the shelf hosts guest roasters too: Flowerchild and Hydrangea from California, and Color Roasters from Colorado.</p>
 <!-- /wp:paragraph -->
@@ -227,7 +227,7 @@ BLOCKS
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/cta-band {"tone":"linen","heading":"Rather not think about it every month?","text":"Subscriptions bring a different origin each month, with small extras from the house.","cta":{"label":"See subscriptions","url":"/en/subscriptions/"}} /-->
+<!-- wp:gramo/cta-band {"tone":"linen","heading":"Rather not think about it every month?","text":"Subscriptions bring a different origin each month, with small extras from the house.","cta":{"label":"See subscriptions","url":"/en/subscriptions/"},"media":{"id":0,"url":"@escena-marigold","alt":"A black Marigold coffee bag handed across the bar, house caps on the shelf behind."}} /-->
 BLOCKS
 			,
 		),
@@ -244,7 +244,7 @@ BLOCKS
 			'seo_short'        => 'El menú de Gramo: café de barra, bebidas, alimentos y pastelería de Pacífica.',
 			'meta_description' => 'Menú de Gramo Café: espresso, filtrados, cáscara, chai y cold brew; toasts, ensaladas y croissants, y pastelería de nuestra panadería hermana Pacífica.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Menú","heading":"Lo que se sirve en barra","subheading":"Café, bebidas, alimentos y el pan dulce de Pacífica.","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Menú","heading":"Lo que se sirve en barra","subheading":"Café, bebidas, alimentos y el pan dulce de Pacífica.","height":"compact","media":{"id":0,"url":"@escena-grunge","alt":"Entrega de una bolsa Grunge Coffee en la barra"}} /-->
 
 <!-- wp:gramo/menu-section {"sectionSlug":"cafe"} /-->
 
@@ -262,7 +262,7 @@ BLOCKS
 			'seo_short'        => 'The Gramo menu: bar coffee, drinks, food, and pastry from Pacífica.',
 			'meta_description' => 'Gramo Café menu: espresso, pour overs, cascara, chai and cold brew; toasts, salads and croissants, plus pastry from our sister bakery Pacífica.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Menu","heading":"What the bar is serving","subheading":"Coffee, drinks, food, and sweet breads from Pacífica.","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Menu","heading":"What the bar is serving","subheading":"Coffee, drinks, food, and sweet breads from Pacífica.","height":"compact","media":{"id":0,"url":"@escena-grunge","alt":"A Grunge Coffee bag handed over at the bar"}} /-->
 
 <!-- wp:gramo/menu-section {"sectionSlug":"cafe"} /-->
 
@@ -287,7 +287,7 @@ BLOCKS
 			'seo_short'        => 'Las ocho cafeterías de Gramo en Cuernavaca y Ciudad de México.',
 			'meta_description' => 'Encuentra tu Gramo: jardines, museos, una librería y kioscos 2GO — ocho ubicaciones entre Cuernavaca y la Ciudad de México, con horarios y mapas.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Ubicaciones","heading":"Ocho espacios, dos ciudades","subheading":"Jardines, museos, una librería y un par de kioscos para llevar.","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Ubicaciones","heading":"Ocho espacios, dos ciudades","subheading":"Jardines, museos, una librería y un par de kioscos para llevar.","height":"compact","media":{"id":0,"url":"@escena-pennyroyal","alt":"Entrega de una bolsa Pennyroyal Blend en barra"}} /-->
 
 <!-- wp:gramo/locations /-->
 BLOCKS
@@ -299,7 +299,7 @@ BLOCKS
 			'seo_short'        => 'Gramo\'s eight cafés across Cuernavaca and Mexico City.',
 			'meta_description' => 'Find your Gramo: gardens, museums, a bookstore and 2GO kiosks — eight locations across Cuernavaca and Mexico City, with hours and maps.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Locations","heading":"Eight spaces, two cities","subheading":"Gardens, museums, a bookstore, and a couple of kiosks to go.","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Locations","heading":"Eight spaces, two cities","subheading":"Gardens, museums, a bookstore, and a couple of kiosks to go.","height":"compact","media":{"id":0,"url":"@escena-pennyroyal","alt":"A Pennyroyal Blend bag handed over at the bar"}} /-->
 
 <!-- wp:gramo/locations /-->
 BLOCKS
@@ -318,21 +318,21 @@ BLOCKS
 			'seo_short'        => 'Del origen a la barra: cómo llega el café a tu taza en Gramo.',
 			'meta_description' => 'El camino del café en Gramo: productores de origen, tueste con Gramo Coffee Roasters y Kurt W, y una barra que trata cada taza con calma.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Proceso","heading":"Del origen a la barra","subheading":"El camino que recorre cada bolsa antes de llegar a tu taza."} /-->
+<!-- wp:gramo/hero {"eyebrow":"Proceso","heading":"Del origen a la barra","subheading":"El camino que recorre cada bolsa antes de llegar a tu taza.","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Bolsa Red Apple sobre un barandal de metal"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"Origen","heading":"Primero, el productor"} -->
+<!-- wp:gramo/split-image {"eyebrow":"Origen","heading":"Primero, el productor","media":{"id":0,"url":"@escena-love-buzz","alt":"Dos bolsas Love Buzz, negra y blanca, entre plantas"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Todo empieza lejos de la barra: en Xico y Huatusco, en Morelos y Colima, en Huila, en Hacienda La Papaya, en Kayanza o en Guji. Cada café del catálogo lleva nombre y apellido de quien lo produjo — Meléndez y Córtes, Erick Bravo, Juan Peña, Hugo Salazar, Tagel Alemayehu — porque la trazabilidad no es un adorno: es la mitad de la historia.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"Tueste","heading":"Después, el fuego"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"Tueste","heading":"Después, el fuego","media":{"id":0,"url":"@escena-overdose","alt":"Bolsa Overdose sobre un poste oxidado, al aire libre"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>El grano verde pasa por Gramo Coffee Roasters, nuestro sello en la Ciudad de México, o por el tambor de Kurt W en Cuernavaca para los tuestes medios. Los lotes de tostadores invitados — Flowerchild, Hydrangea, Color Roasters — llegan ya firmados por su casa. El objetivo es siempre el mismo: que el tueste sirva al origen, no al revés.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"eyebrow":"Barra","heading":"Al final, la taza"} -->
+<!-- wp:gramo/split-image {"eyebrow":"Barra","heading":"Al final, la taza","media":{"id":0,"url":"@escena-pennyroyal","alt":"Entrega de una bolsa Pennyroyal Blend en barra"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>En barra el café se trata con calma: espresso o filtrado, receta ajustada al lote y una regla sencilla — si la taza no convence a quien la prepara, no sale. Es el último paso del camino y el único que ves; los anteriores están ahí, en el sabor.</p>
 <!-- /wp:paragraph --></div>
@@ -364,7 +364,7 @@ BLOCKS
 <!-- /wp:gramo/faq-item --></div>
 <!-- /wp:gramo/faq -->
 
-<!-- wp:gramo/cta-band {"heading":"Pruébalo en tu método","text":"El catálogo completo, con ficha técnica de cada lote.","cta":{"label":"Ver cafés","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Pruébalo en tu método","text":"El catálogo completo, con ficha técnica de cada lote.","cta":{"label":"Ver cafés","url":"/cafe/"},"media":{"id":0,"url":"@escena-red-apple","alt":"Una mano sostiene una bolsa de café Vincent Vega frente a una repisa con bolsas de Gramo y un muro de lámina corrugada."}} /-->
 BLOCKS
 			,
 		),
@@ -374,21 +374,21 @@ BLOCKS
 			'seo_short'        => 'From origin to bar: how coffee reaches your cup at Gramo.',
 			'meta_description' => 'The coffee\'s journey at Gramo: origin producers, roasting with Gramo Coffee Roasters and Kurt W, and a bar that treats every cup with calm.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Our process","heading":"From origin to the bar","subheading":"The road every bag travels before it reaches your cup."} /-->
+<!-- wp:gramo/hero {"eyebrow":"Our process","heading":"From origin to the bar","subheading":"The road every bag travels before it reaches your cup.","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Red Apple bag on a metal railing"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"Origin","heading":"First, the producer"} -->
+<!-- wp:gramo/split-image {"eyebrow":"Origin","heading":"First, the producer","media":{"id":0,"url":"@escena-love-buzz","alt":"Two Love Buzz bags, black and white, among plants"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>It all begins far from the bar: in Xico and Huatusco, in Morelos and Colima, in Huila, at Hacienda La Papaya, in Kayanza or Guji. Every coffee in the catalogue carries the name of the person who produced it — Meléndez y Córtes, Erick Bravo, Juan Peña, Hugo Salazar, Tagel Alemayehu — because traceability isn't decoration: it's half the story.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"Roast","heading":"Then, the fire"} -->
+<!-- wp:gramo/split-image {"imageSide":"right","eyebrow":"Roast","heading":"Then, the fire","media":{"id":0,"url":"@escena-overdose","alt":"Overdose bag on a rusted post, outdoors"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>The green beans pass through Gramo Coffee Roasters, our label in Mexico City, or through Kurt W's drum in Cuernavaca for the medium roasts. Guest lots — Flowerchild, Hydrangea, Color Roasters — arrive already signed by their house. The goal never changes: the roast serves the origin, not the other way around.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:gramo/split-image -->
 
-<!-- wp:gramo/split-image {"eyebrow":"Bar","heading":"Finally, the cup"} -->
+<!-- wp:gramo/split-image {"eyebrow":"Bar","heading":"Finally, the cup","media":{"id":0,"url":"@escena-pennyroyal","alt":"A Pennyroyal Blend bag handed over at the bar"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>At the bar the coffee is treated with calm: espresso or filter, the recipe tuned to the lot, and one simple rule — if the cup doesn't convince the person brewing it, it doesn't leave the bar. It's the last step of the road and the only one you see; the others are all there, in the taste.</p>
 <!-- /wp:paragraph --></div>
@@ -420,7 +420,7 @@ BLOCKS
 <!-- /wp:gramo/faq-item --></div>
 <!-- /wp:gramo/faq -->
 
-<!-- wp:gramo/cta-band {"heading":"Try it in your method","text":"The full catalogue, spec sheet included with every lot.","cta":{"label":"Shop coffee","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Try it in your method","text":"The full catalogue, spec sheet included with every lot.","cta":{"label":"Shop coffee","url":"/cafe/"},"media":{"id":0,"url":"@escena-red-apple","alt":"A hand holds up a Vincent Vega coffee bag in front of a ledge lined with Gramo bags against a corrugated metal wall."}} /-->
 BLOCKS
 			,
 		),
@@ -437,9 +437,9 @@ BLOCKS
 			'seo_short'        => 'Suscripciones de café Gramo: un origen distinto cada mes, desde $399 MXN.',
 			'meta_description' => 'Café en casa cada mes: suscripciones Gramo de 250–300 g, 600 g o 1 kg premium, con orígenes en rotación, stickers y sorpresas de la casa.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Suscripciones","heading":"Un origen distinto, cada mes","subheading":"Elige tu tamaño y deja la curaduría en manos de la casa."} /-->
+<!-- wp:gramo/hero {"eyebrow":"Suscripciones","heading":"Un origen distinto, cada mes","subheading":"Elige tu tamaño y deja la curaduría en manos de la casa.","media":{"id":0,"url":"@escena-overdose","alt":"Bolsa Overdose sobre un poste oxidado, al aire libre"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"Cómo se siente","heading":"El café llega solo; la sorpresa, también"} -->
+<!-- wp:gramo/split-image {"eyebrow":"Cómo se siente","heading":"El café llega solo; la sorpresa, también","media":{"id":0,"url":"@escena-stickers","alt":"Stickers ilustrados de Gramo, extendidos a todo color"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Cada mes elegimos entre lo mejor que pasa por la tostadora — un lavado de Veracruz, un natural de Morelos, lo que la temporada mande — y te lo enviamos con stickers y detalles de la casa. Tu única tarea es no quedarte sin café, y de esa nos encargamos nosotros.</p>
 <!-- /wp:paragraph -->
@@ -491,9 +491,9 @@ BLOCKS
 			'seo_short'        => 'Gramo coffee subscriptions: a different origin every month, from $399 MXN.',
 			'meta_description' => 'Coffee at home every month: Gramo subscriptions in 250–300 g, 600 g or 1 kg premium, with rotating origins, stickers and small extras from the house.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Subscriptions","heading":"A different origin, every month","subheading":"Pick your size and leave the curation to the house."} /-->
+<!-- wp:gramo/hero {"eyebrow":"Subscriptions","heading":"A different origin, every month","subheading":"Pick your size and leave the curation to the house.","media":{"id":0,"url":"@escena-overdose","alt":"Overdose bag on a rusted post, outdoors"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"How it feels","heading":"The coffee arrives on its own; so does the surprise"} -->
+<!-- wp:gramo/split-image {"eyebrow":"How it feels","heading":"The coffee arrives on its own; so does the surprise","media":{"id":0,"url":"@escena-stickers","alt":"Gramo's illustrated stickers, spread out in full colour"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Each month we choose from the best passing through the roastery — a washed Veracruz, a natural from Morelos, whatever the season sends — and ship it with stickers and small extras from the house. Your only job is not running out of coffee, and we take care of that one too.</p>
 <!-- /wp:paragraph -->
@@ -552,9 +552,9 @@ BLOCKS
 			'seo_short'        => 'Café Gramo al mayoreo para restaurantes, cafeterías y oficinas.',
 			'meta_description' => 'Café de origen al mayoreo, con tueste propio en CDMX y Cuernavaca: acompañamiento de barra para restaurantes, cafeterías y oficinas que cuidan la taza.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Mayoreo","heading":"Café para mesas que cuidan el detalle","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Mayoreo","heading":"Café para mesas que cuidan el detalle","height":"compact","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Bolsa Red Apple sobre un barandal de metal"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"Cómo trabajamos","heading":"Acompañamiento, no solo costales"} -->
+<!-- wp:gramo/split-image {"eyebrow":"Cómo trabajamos","heading":"Acompañamiento, no solo costales","media":{"id":0,"url":"@escena-marigold","alt":"Entrega de una bolsa Marigold sobre la barra"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Trabajamos con restaurantes, cafeterías y oficinas que quieren servir buen café sin convertirse en expertos de la noche a la mañana. Nuestro tueste propio — Gramo Coffee Roasters en CDMX y los tuestes medios con Kurt W en Cuernavaca — nos permite ajustar el perfil a tu carta y a tu equipo.</p>
 <!-- /wp:paragraph -->
@@ -586,9 +586,9 @@ BLOCKS
 			'seo_short'        => 'Gramo wholesale coffee for restaurants, cafés and offices.',
 			'meta_description' => 'Origin coffee at wholesale, roasted in-house in Mexico City and Cuernavaca: bar-level support for restaurants, cafés and offices that care about the cup.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Wholesale","heading":"Coffee for tables that mind the details","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Wholesale","heading":"Coffee for tables that mind the details","height":"compact","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Red Apple bag on a metal railing"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"How we work","heading":"Support, not just sacks"} -->
+<!-- wp:gramo/split-image {"eyebrow":"How we work","heading":"Support, not just sacks","media":{"id":0,"url":"@escena-marigold","alt":"A Marigold bag handed across the bar"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>We work with restaurants, cafés and offices that want to serve good coffee without becoming experts overnight. Roasting in-house — Gramo Coffee Roasters in Mexico City, medium roasts with Kurt W in Cuernavaca — lets us tune the profile to your menu and your team.</p>
 <!-- /wp:paragraph -->
@@ -627,9 +627,9 @@ BLOCKS
 			'seo_short'        => 'Trabaja en Gramo: barras en Cuernavaca y CDMX que crecen con su equipo.',
 			'meta_description' => 'Únete al equipo de Gramo Café: barras en Cuernavaca y Ciudad de México donde el oficio se aprende en serio. Envía tu CV o escríbenos desde el formulario.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Empleo","heading":"Trabaja con nosotros","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Empleo","heading":"Trabaja con nosotros","height":"compact","media":{"id":0,"url":"@escena-grunge","alt":"Entrega de una bolsa Grunge Coffee en la barra"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"La cultura","heading":"Un oficio que se aprende en barra"} -->
+<!-- wp:gramo/split-image {"eyebrow":"La cultura","heading":"Un oficio que se aprende en barra","media":{"id":0,"url":"@escena-pennyroyal","alt":"Entrega de una bolsa Pennyroyal Blend en barra"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Gramo creció de una barra en un garaje a ocho ubicaciones en dos ciudades, y ese crecimiento lo hizo la gente detrás de la barra. Buscamos personas con ganas de aprender el oficio en serio: el café, el servicio y el cuidado por los espacios que habitamos.</p>
 <!-- /wp:paragraph -->
@@ -655,9 +655,9 @@ BLOCKS
 			'seo_short'        => 'Work at Gramo: bars in Cuernavaca and Mexico City that grow with their team.',
 			'meta_description' => 'Join the Gramo Café team: bars in Cuernavaca and Mexico City where the craft is taken seriously. Send your CV or reach out through the form.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Careers","heading":"Work with us","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Careers","heading":"Work with us","height":"compact","media":{"id":0,"url":"@escena-grunge","alt":"A Grunge Coffee bag handed over at the bar"}} /-->
 
-<!-- wp:gramo/split-image {"eyebrow":"The culture","heading":"A craft learned at the bar"} -->
+<!-- wp:gramo/split-image {"eyebrow":"The culture","heading":"A craft learned at the bar","media":{"id":0,"url":"@escena-pennyroyal","alt":"A Pennyroyal Blend bag handed over at the bar"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Gramo grew from a bar in a garage to eight locations in two cities, and that growth was made by the people behind the bar. We look for people eager to learn the craft properly: the coffee, the service, and the care for the spaces we inhabit.</p>
 <!-- /wp:paragraph -->
@@ -690,7 +690,7 @@ BLOCKS
 			'seo_short'        => 'Escríbele a Gramo Café: dudas, pedidos y todo lo demás.',
 			'meta_description' => 'Contacta a Gramo Café: escríbenos desde el formulario o visítanos en cualquiera de nuestras ocho ubicaciones en Cuernavaca y Ciudad de México.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Contacto","heading":"Escríbenos con confianza","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Contacto","heading":"Escríbenos con confianza","height":"compact","media":{"id":0,"url":"@escena-love-buzz","alt":"Dos bolsas Love Buzz, negra y blanca, entre plantas"}} /-->
 
 <!-- wp:gramo/inquiry-form {"formType":"general","heading":"Cuéntanos","intro":"Dudas, pedidos, ideas o saludos: todo se lee y todo se responde."} /-->
 
@@ -704,7 +704,7 @@ BLOCKS
 			'seo_short'        => 'Write to Gramo Café: questions, orders and everything else.',
 			'meta_description' => 'Contact Gramo Café: reach out through the form, or visit us at any of our eight locations across Cuernavaca and Mexico City.',
 			'content'          => <<<'BLOCKS'
-<!-- wp:gramo/hero {"eyebrow":"Contact","heading":"Write to us","height":"compact"} /-->
+<!-- wp:gramo/hero {"eyebrow":"Contact","heading":"Write to us","height":"compact","media":{"id":0,"url":"@escena-love-buzz","alt":"Two Love Buzz bags, black and white, among plants"}} /-->
 
 <!-- wp:gramo/inquiry-form {"formType":"general","heading":"Tell us","intro":"Questions, orders, ideas or hellos: everything gets read, and everything gets answered."} /-->
 

@@ -49,6 +49,7 @@ return array(
 			'pair'       => 'la-batalla-xico',
 			'date'       => '2026-06-10',
 			'categories' => array( 'origenes' ),
+			'media'      => 'la-batalla',
 			'es'         => array(
 				'title'            => 'La Batalla: un lavado de Xico, Veracruz',
 				'slug'             => 'la-batalla-un-lavado-de-xico-veracruz',
@@ -118,7 +119,7 @@ return array(
 <p>Si todavía no lo has probado, empieza por ahí: es la puerta de entrada a todo lo demás que pasa por nuestra tostadora.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"heading":"Prueba La Batalla","text":"El lavado de casa, en bolsa de 250 g o de 1 kg.","cta":{"label":"Ver en la tienda","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Prueba La Batalla","text":"El lavado de casa, en bolsa de 250 g o de 1 kg.","cta":{"label":"Ver en la tienda","url":"/cafe/"},"media":{"id":0,"url":"@escena-red-apple","alt":"Una mano sostiene una bolsa de café Vincent Vega frente a una repisa con bolsas de Gramo y un muro de lámina corrugada."}} /-->
 BLOCKS
 				,
 			),
@@ -191,7 +192,7 @@ BLOCKS
 <p>If you haven't tried it yet, start there: it's the doorway to everything else that passes through our roastery.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"heading":"Try La Batalla","text":"The house washed coffee, in 250 g or 1 kg bags.","cta":{"label":"Shop coffee","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Try La Batalla","text":"The house washed coffee, in 250 g or 1 kg bags.","cta":{"label":"Shop coffee","url":"/cafe/"},"media":{"id":0,"url":"@escena-red-apple","alt":"A hand holds up a Vincent Vega coffee bag in front of a ledge lined with Gramo bags against a corrugated metal wall."}} /-->
 BLOCKS
 				,
 			),
@@ -204,6 +205,7 @@ BLOCKS
 			'pair'       => 'filtrado-en-barra',
 			'date'       => '2026-06-24',
 			'categories' => array( 'barismo' ),
+			'media'      => 'escena-pennyroyal',
 			'es'         => array(
 				'title'            => 'Cómo preparamos un filtrado en barra',
 				'slug'             => 'como-preparamos-un-filtrado-en-barra',
@@ -279,7 +281,7 @@ BLOCKS
 <p>Y si un día quieres ver el proceso de cerca, pide un filtrado en cualquiera de nuestras barras y quédate junto a la mesa: el método completo dura menos de cuatro minutos y se entiende mejor en vivo que en cualquier texto.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"tone":"linen","heading":"Café para tu método","text":"Grano de origen, tostado para filtrado.","cta":{"label":"Ver cafés","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"tone":"linen","heading":"Café para tu método","text":"Grano de origen, tostado para filtrado.","cta":{"label":"Ver cafés","url":"/cafe/"},"media":{"id":0,"url":"@escena-overdose","alt":"Bolsa blanca de café Overdose de pie sobre un poste oxidado, con vegetación verde desenfocada al fondo."}} /-->
 BLOCKS
 				,
 			),
@@ -358,7 +360,7 @@ BLOCKS
 <p>And if one day you want to watch the process up close, order a pour over at any of our bars and stay by the table: the whole method takes under four minutes and makes more sense live than in any text.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"tone":"linen","heading":"Coffee for your method","text":"Origin beans, roasted for filter.","cta":{"label":"Shop coffee","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"tone":"linen","heading":"Coffee for your method","text":"Origin beans, roasted for filter.","cta":{"label":"Shop coffee","url":"/cafe/"},"media":{"id":0,"url":"@escena-overdose","alt":"A white Overdose coffee bag standing on a rusted post, green foliage blurred behind it."}} /-->
 BLOCKS
 				,
 			),
@@ -371,6 +373,7 @@ BLOCKS
 			'pair'       => 'intervenir-espacios',
 			'date'       => '2026-07-08',
 			'categories' => array( 'casa' ),
+			'media'      => 'escena-marigold',
 			'es'         => array(
 				'title'            => 'Intervenir espacios: de La Tallera a Casa Gaia',
 				'slug'             => 'intervenir-espacios-de-la-tallera-a-casa-gaia',
@@ -390,7 +393,7 @@ BLOCKS
 <p>Gramo nació de un fundador que venía del cine y otra que venía del diseño gráfico, y eso definió el método: cada ubicación se concibe como una película. Hay un set — el espacio y lo que ya vivía en él —, hay utilería — la barra, las tazas, los objetos que la habitan — y hay soundtrack, porque un lugar también se escucha. Cuando los tres elementos están en su sitio, el café deja de ser un mostrador y se vuelve una escena.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/split-image {"eyebrow":"El método","heading":"Set, utilería, soundtrack"} -->
+<!-- wp:gramo/split-image {"eyebrow":"El método","heading":"Set, utilería, soundtrack","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Bolsa Red Apple sobre un barandal de metal"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>Primero escuchamos el lugar: qué era, qué es, qué le falta. Después decidimos qué papel juega ahí el café. La barra nunca llega a imponerse; llega a completar.</p>
 <!-- /wp:paragraph --></div>
@@ -438,7 +441,7 @@ BLOCKS
 <p>Si aún no conoces todas las escenas, el mapa está abierto: ocho ubicaciones entre Cuernavaca y la Ciudad de México, cada una con su propia función.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"heading":"Conoce nuestras ubicaciones","text":"Ocho espacios intervenidos entre Cuernavaca y CDMX.","cta":{"label":"Ver ubicaciones","url":"/ubicaciones/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Conoce nuestras ubicaciones","text":"Ocho espacios intervenidos entre Cuernavaca y CDMX.","cta":{"label":"Ver ubicaciones","url":"/ubicaciones/"},"media":{"id":0,"url":"@escena-grunge","alt":"En la barra, una bolsa de café Grunge Coffee pasa de las manos del equipo a la bolsa de tela de un cliente."}} /-->
 BLOCKS
 				,
 			),
@@ -461,7 +464,7 @@ BLOCKS
 <p>Gramo was founded by one person who came from film and another who came from graphic design, and that defined the method: every location is conceived like a film. There's a set — the space and what already lived in it —, there are props — the bar, the cups, the objects that inhabit it — and there's a soundtrack, because a place is also something you hear. When all three are in position, the café stops being a counter and becomes a scene.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/split-image {"eyebrow":"The method","heading":"Set, props, soundtrack"} -->
+<!-- wp:gramo/split-image {"eyebrow":"The method","heading":"Set, props, soundtrack","media":{"id":0,"url":"@escena-bad-motherfucker","alt":"Red Apple bag on a metal railing"}} -->
 <div class="wp-block-gramo-split-image"><!-- wp:paragraph -->
 <p>First we listen to the place: what it was, what it is, what it's missing. Then we decide what part coffee plays there. The bar never arrives to impose; it arrives to complete.</p>
 <!-- /wp:paragraph --></div>
@@ -509,7 +512,7 @@ BLOCKS
 <p>If you haven't seen every scene yet, the map is open: eight locations between Cuernavaca and Mexico City, each running its own show.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"heading":"Visit our locations","text":"Eight intervened spaces between Cuernavaca and CDMX.","cta":{"label":"See locations","url":"/en/locations/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Visit our locations","text":"Eight intervened spaces between Cuernavaca and CDMX.","cta":{"label":"See locations","url":"/en/locations/"},"media":{"id":0,"url":"@escena-grunge","alt":"At the bar, a Grunge Coffee bag passes from the team's hands into a customer's Gramo tote."}} /-->
 BLOCKS
 				,
 			),
@@ -522,6 +525,7 @@ BLOCKS
 			'pair'       => 'nombres-de-cancion',
 			'date'       => '2026-07-22',
 			'categories' => array( 'casa' ),
+			'media'      => 'escena-stickers',
 			'es'         => array(
 				'title'            => 'Por qué nuestros cafés se llaman como canciones y películas',
 				'slug'             => 'por-que-nuestros-cafes-se-llaman-como-canciones-y-peliculas',
@@ -583,7 +587,7 @@ BLOCKS
 <p>El catálogo rota, así que el reparto cambia con las cosechas. Lo que no cambia es la regla de la casa: primero el café tiene que ser bueno; el nombre llega después, cuando el lote ya se lo ganó.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"heading":"Conoce el reparto completo","text":"Los cafés de la casa, con ficha técnica y todo.","cta":{"label":"Ver el catálogo","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Conoce el reparto completo","text":"Los cafés de la casa, con ficha técnica y todo.","cta":{"label":"Ver el catálogo","url":"/cafe/"},"media":{"id":0,"url":"@escena-red-apple","alt":"Una mano sostiene una bolsa de café Vincent Vega frente a una repisa con bolsas de Gramo y un muro de lámina corrugada."}} /-->
 BLOCKS
 				,
 			),
@@ -648,7 +652,7 @@ BLOCKS
 <p>The catalogue rotates, so the cast changes with the harvests. What doesn't change is the house rule: first the coffee has to be good; the name comes later, once the lot has earned it.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:gramo/cta-band {"heading":"Meet the full cast","text":"The house coffees, spec sheets included.","cta":{"label":"Browse the catalogue","url":"/cafe/"}} /-->
+<!-- wp:gramo/cta-band {"heading":"Meet the full cast","text":"The house coffees, spec sheets included.","cta":{"label":"Browse the catalogue","url":"/cafe/"},"media":{"id":0,"url":"@escena-red-apple","alt":"A hand holds up a Vincent Vega coffee bag in front of a ledge lined with Gramo bags against a corrugated metal wall."}} /-->
 BLOCKS
 				,
 			),

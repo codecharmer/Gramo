@@ -89,7 +89,12 @@ final class MediaImporter {
 		if ( $cached_id > 0 && get_post( $cached_id ) instanceof \WP_Post ) {
 			$stale = ( null !== $raster && 'photo' !== $cached_src );
 			if ( ! $stale ) {
-				if ( '' !== $alt ) {
+				// First description wins. One image can be reused by several
+				// callers — a product, a page block, a journal post — and the
+				// alt describes the photograph, not whoever asked for it last.
+				// Without this the newest caller's title would overwrite an
+				// accurate description, in the wrong language.
+				if ( '' !== $alt && '' === (string) get_post_meta( $cached_id, '_wp_attachment_image_alt', true ) ) {
 					update_post_meta( $cached_id, '_wp_attachment_image_alt', sanitize_text_field( $alt ) );
 				}
 				return $cached_id;
