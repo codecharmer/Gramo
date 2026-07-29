@@ -500,13 +500,17 @@ final class MetaBoxes implements Bootable {
 
 	/**
 	 * update_post_meta, or delete_post_meta when the sanitized value is ''.
+	 *
+	 * The value is slashed on the way in because update_post_meta() unslashes
+	 * whatever it receives; without this a quote inside JSON-encoded content
+	 * would lose its escape and break the stored structure.
 	 */
 	private function persist( int $post_id, string $meta_key, string $value ): void {
 		if ( '' === $value ) {
 			delete_post_meta( $post_id, $meta_key );
 			return;
 		}
-		update_post_meta( $post_id, $meta_key, $value );
+		update_post_meta( $post_id, $meta_key, wp_slash( $value ) );
 	}
 
 	/*

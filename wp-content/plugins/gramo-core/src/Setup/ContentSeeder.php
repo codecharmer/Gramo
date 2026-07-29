@@ -179,7 +179,9 @@ final class ContentSeeder {
 			if ( '' === $clean ) {
 				delete_post_meta( $post_id, $meta_key );
 			} else {
-				update_post_meta( $post_id, $meta_key, $clean );
+				// Slashed on the way in: update_post_meta() unslashes, which
+				// would otherwise strip escapes out of JSON-encoded values.
+				update_post_meta( $post_id, $meta_key, wp_slash( $clean ) );
 			}
 		}
 	}

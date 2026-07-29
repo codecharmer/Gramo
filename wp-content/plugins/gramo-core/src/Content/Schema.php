@@ -542,6 +542,23 @@ final class Schema {
 	}
 
 	/**
+	 * Encode a structured value for meta storage.
+	 *
+	 * Unicode stays literal on purpose: update_post_meta() unslashes what it
+	 * is given, which would strip the backslashes out of \uXXXX escapes and
+	 * turn "Té" into "Tu00e9". Callers additionally wp_slash() the result so
+	 * quotes inside content survive the same unslashing.
+	 *
+	 * @param array<int|string,mixed> $value Structured value.
+	 */
+	public static function encode_meta( array $value ): string {
+		if ( array() === $value ) {
+			return '';
+		}
+		return (string) wp_json_encode( $value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
+	}
+
+	/**
 	 * Whether a field type is stored as a JSON string.
 	 */
 	public static function is_json_type( string $type ): bool {
@@ -586,7 +603,7 @@ final class Schema {
 			case 'gallery':
 				$ids = is_array( $value ) ? $value : json_decode( (string) $value, true );
 				$ids = is_array( $ids ) ? array_values( array_filter( array_map( 'intval', $ids ) ) ) : array();
-				return array() === $ids ? '' : (string) wp_json_encode( $ids );
+				return self::encode_meta( $ids );
 			case 'hours':
 				return self::sanitize_hours( $value );
 			case 'list':
@@ -620,7 +637,7 @@ final class Schema {
 			);
 		}
 
-		return array() === $clean ? '' : (string) wp_json_encode( $clean );
+		return self::encode_meta( $clean );
 	}
 
 	/**
@@ -657,6 +674,6 @@ final class Schema {
 			}
 		}
 
-		return array() === $clean ? '' : (string) wp_json_encode( $clean );
+		return self::encode_meta( $clean );
 	}
 }
