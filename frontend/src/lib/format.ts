@@ -26,3 +26,33 @@ export function formatDate(iso: string, locale: Locale): string {
     year: 'numeric',
   }).format(date);
 }
+
+/**
+ * Human labels for the schema's enum fields.
+ *
+ * The backend stores slugs (`temporada`, `medio`) so editors pick from a
+ * fixed list; the site shows the phrase a reader expects, in their language.
+ * An unknown slug falls back to itself capitalized, so adding a choice in
+ * WordPress degrades to something readable rather than blank.
+ */
+const ENUM_LABELS: Record<string, { es: string; en: string }> = {
+  // Availability.
+  permanente: { es: 'Permanente', en: 'Year-round' },
+  temporada: { es: 'De temporada', en: 'Seasonal' },
+  // Roast level.
+  ligero: { es: 'Ligero', en: 'Light' },
+  medio: { es: 'Medio', en: 'Medium' },
+  'medio-oscuro': { es: 'Medio oscuro', en: 'Medium-dark' },
+  oscuro: { es: 'Oscuro', en: 'Dark' },
+  // Subscription interval.
+  semanal: { es: 'Semanal', en: 'Weekly' },
+  quincenal: { es: 'Quincenal', en: 'Fortnightly' },
+  mensual: { es: 'Mensual', en: 'Monthly' },
+};
+
+export function enumLabel(slug: string | null | undefined, locale: Locale): string | null {
+  if (!slug) return null;
+  const entry = ENUM_LABELS[slug];
+  if (entry) return locale === 'es' ? entry.es : entry.en;
+  return slug.charAt(0).toUpperCase() + slug.slice(1);
+}

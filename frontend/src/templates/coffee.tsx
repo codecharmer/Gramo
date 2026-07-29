@@ -1,9 +1,9 @@
 /**
- * Coffee detail — a compact board-strip title, the plate-mounted photograph
- * on the left, and the coffee's data portrait on the right: price + add to
- * order, the inked data sheet (dotted leaders, caps labels), tasting-note
- * chips on rotating pigment underlines, brew methods, and the description.
- * Three other coffees close the page; JSON-LD Product for search.
+ * Coffee detail — one gallery room: the bag lit large in a pool of light on
+ * the left, its museum wall label on the right (origin, process, altitude,
+ * price), tasting notes as caps chips on 2px artwork-key underlines, and the
+ * brew methods. The description inverts to a daylight reading room; three
+ * other works close the page. JSON-LD Product for search.
  */
 
 import * as React from 'react';
@@ -17,8 +17,9 @@ import { CoffeeCard, type CoffeeCardData } from '@/components/CoffeeCard';
 import { useCart } from '@/state/cart';
 import { t, type StringKey } from '@/i18n/strings';
 import type { Locale } from '@/i18n/routes';
-import { formatMxn } from '@/lib/format';
+import { enumLabel, formatMxn } from '@/lib/format';
 import { pigmentAt } from '@/lib/pigments';
+import { useReveal } from '@/lib/reveal';
 import type { LocalizedText } from '@/types/content';
 
 import * as styles from './coffee.module.scss';
@@ -61,10 +62,6 @@ interface CoffeeContext {
   translationPath: string | null;
 }
 
-function capitalize(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
-
 function AddToCart({ coffee, locale }: { coffee: CoffeeDetailNode; locale: Locale }): React.JSX.Element {
   const { add } = useCart();
   const [added, setAdded] = React.useState(false);
@@ -100,6 +97,8 @@ export default function CoffeeTemplate({
 }: PageProps<CoffeeData, CoffeeContext>): React.JSX.Element {
   const coffee = data.gramoCoffee;
   const locale = pageContext.locale;
+  const roomRef = useReveal<HTMLElement>();
+  const relatedRef = useReveal<HTMLElement>();
 
   if (!coffee) {
     return (
@@ -125,31 +124,30 @@ export default function CoffeeTemplate({
     ['altitude', coffee.altitude],
     ['variety', coffee.variety],
     ['process', process],
-    ['roast', coffee.roastLevel ? capitalize(coffee.roastLevel) : null],
+    ['roast', enumLabel(coffee.roastLevel, locale)],
     ['harvest', coffee.harvest],
-    ['availability', coffee.availability],
+    ['availability', enumLabel(coffee.availability, locale)],
   ];
 
   return (
     <Layout locale={locale} translationPath={pageContext.translationPath}>
-      <header className={styles.board}>
-        <div className={styles.boardInner}>
-          {coffee.origin ? <p className={styles.eyebrow}>{coffee.origin}</p> : null}
-          <h1 className={styles.title}>{name}</h1>
-        </div>
-      </header>
+      <article className={styles.room} ref={roomRef}>
+        <div className={styles.roomInner}>
+          <figure className={styles.work}>
+            <span className={styles.pool} data-reveal="pool" aria-hidden="true" />
+            {image ? (
+              <div className={styles.workImage} data-reveal="work">
+                <GatsbyImage image={image} alt={coffee.imageAlt ?? name} loading="eager" />
+              </div>
+            ) : (
+              <div className={styles.workPlaceholder} data-reveal="work" aria-hidden="true" />
+            )}
+          </figure>
 
-      <article className={styles.portrait}>
-        <div className={styles.portraitInner}>
-          {image ? (
-            <figure className={styles.plate}>
-              <GatsbyImage image={image} alt={coffee.imageAlt ?? name} loading="eager" />
-            </figure>
-          ) : (
-            <div className={styles.platePlaceholder} aria-hidden="true" />
-          )}
+          <div className={styles.data} data-reveal="label">
+            {coffee.origin ? <p className={styles.eyebrow}>{coffee.origin}</p> : null}
+            <h1 className={styles.title}>{name}</h1>
 
-          <div className={styles.data}>
             <div className={styles.buyRow}>
               {coffee.price != null ? (
                 <p className={styles.price}>{formatMxn(coffee.price)}</p>
@@ -193,7 +191,9 @@ export default function CoffeeTemplate({
 
       {locale === 'en' && coffee.descriptionEn ? (
         <section className={styles.description}>
-          <p>{coffee.descriptionEn}</p>
+          <div className={styles.descriptionInner}>
+            <p>{coffee.descriptionEn}</p>
+          </div>
         </section>
       ) : coffee.content ? (
         <section className={styles.descriptionProse}>
@@ -202,7 +202,7 @@ export default function CoffeeTemplate({
       ) : null}
 
       {data.related.nodes.length > 0 ? (
-        <section className={styles.related}>
+        <section className={styles.related} ref={relatedRef}>
           <div className={styles.relatedInner}>
             <h2 className={styles.relatedHeading}>{t('relatedCoffees', locale)}</h2>
             <div className={styles.relatedGrid}>
