@@ -34,7 +34,7 @@ function localizePath(path: string, locale: Locale): string {
   const map: Record<string, string> = {
     '/': '/en/',
     '/cafe/': '/en/coffee/',
-    '/menu/': '/en/menu/',
+    '/menu/': '/en/our-menu/',
     '/ubicaciones/': '/en/locations/',
     '/nosotros/': '/en/about/',
     '/journal/': '/en/journal/',

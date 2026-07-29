@@ -258,7 +258,10 @@ BLOCKS
 		),
 		'en'   => array(
 			'title'            => 'Menu',
-			'slug'             => 'menu',
+			// WordPress page slugs are globally unique, so the English page
+			// cannot also be "menu" — the Spanish one owns it, and WP would
+			// silently make this "menu-2". The route map points here.
+			'slug'             => 'our-menu',
 			'seo_short'        => 'The Gramo menu: bar coffee, drinks, food, and pastry from Pacífica.',
 			'meta_description' => 'Gramo Café menu: espresso, pour overs, cascara, chai and cold brew; toasts, salads and croissants, plus pastry from our sister bakery Pacífica.',
 			'content'          => <<<'BLOCKS'

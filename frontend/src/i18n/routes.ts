@@ -16,7 +16,7 @@ export const DEFAULT_LOCALE: Locale = 'es';
 export const STATIC_ROUTES = {
   home: { es: '/', en: '/en/' },
   coffee: { es: '/cafe/', en: '/en/coffee/' },
-  menu: { es: '/menu/', en: '/en/menu/' },
+  menu: { es: '/menu/', en: '/en/our-menu/' },
   locations: { es: '/ubicaciones/', en: '/en/locations/' },
   journal: { es: '/journal/', en: '/en/journal/' },
   cart: { es: '/pedido/', en: '/en/order/' },
