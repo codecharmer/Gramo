@@ -251,6 +251,10 @@
 }
 
 .footerWordmark {
+	// The brand column is a column flex container, whose default stretch
+	// would pull a replaced element to the full column width and distort the
+	// wordmark; aligning to the start keeps it at its own ratio.
+	align-self: flex-start;
 	display: block;
 	height: 52px;
 	margin-left: -2%;
