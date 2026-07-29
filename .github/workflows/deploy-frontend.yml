@@ -1,8 +1,10 @@
 name: Deploy Gramo frontend to VPS
 
 # The static Gatsby site at gramo.cafe. It builds against the headless
-# WordPress backend at cms.gramo.cafe, so it runs on three triggers:
-#   - a push that touches the frontend (or this workflow),
+# WordPress backend at cms.gramo.cafe, so it runs on four triggers:
+#   - a push that touches the frontend,
+#   - a successful backend deploy (so a commit spanning both halves always
+#     builds against the schema that is actually live),
 #   - a repository_dispatch from WordPress when an editor publishes content
 #     (gramo-core's Deploy\RebuildTrigger sends event_type: content-updated),
 #   - manual dispatch.
@@ -21,6 +23,14 @@ on:
   repository_dispatch:
     types: [content-updated]
   workflow_dispatch:
+  # A commit that touches both halves triggers the backend deploy too, and the
+  # frontend must not build against a backend that has not shipped yet — that
+  # race is how a build failed asking for a GraphQL field the live schema did
+  # not have. Building again once the backend finishes guarantees the schema
+  # the build queries is the one that is deployed.
+  workflow_run:
+    workflows: ["Deploy WordPress Site to VPS"]
+    types: [completed]
 
 concurrency:
   group: frontend-deploy
@@ -39,6 +49,11 @@ jobs:
   build-and-deploy:
     name: Build Gatsby and publish
     runs-on: ubuntu-latest
+    # Skip when the backend deploy that triggered us failed: there is nothing
+    # good to build against.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout
@@ -56,9 +71,9 @@ jobs:
       - name: Wait for the WordPress GraphQL endpoint
         run: |
           for attempt in $(seq 1 30); do
-            code=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$WP_GRAPHQL_URL" \
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 -X POST "$WP_GRAPHQL_URL" \
               -H 'Content-Type: application/json' \
-              -d '{"query":"{ generalSettings { title } }"}' || echo 000)
+              -d '{"query":"{ generalSettings { title } }"}') || code=000
             if [ "$code" = "200" ]; then
               echo "GraphQL is up (attempt $attempt)."
               exit 0
