@@ -25,7 +25,5 @@ return array(
 
 <!-- wp:gramo/featured-coffees {"heading":"Cafés de temporada","intro":"Una selección breve, en rotación constante."} /-->
 
-<!-- wp:gramo/testimonials {"heading":"Lo que se dice en barra"} /-->
-
 <!-- wp:gramo/cta-band {"heading":"Reserva tu café de esta semana","text":"Pedido por adelantado, recogida en barra.","cta":{"label":"Reservar","url":"/reservar/"}} /-->',
 );
