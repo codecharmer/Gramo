@@ -7,9 +7,9 @@
  * stamps `_gramo_locale`, and links them via `_gramo_translation_of`. The
  * Spanish «Inicio» page sets the static front page.
  *
- * Composition uses the twelve gramo/* blocks (hero, split-image, stats, faq,
- * menu-section, featured-coffees, locations, testimonials, inquiry-form,
- * cta-band) plus core text blocks. Reference blocks resolve their data from
+ * Composition uses the gramo/* blocks (hero, split-image, stats, faq,
+ * menu-section, featured-coffees, locations, inquiry-form, cta-band)
+ * plus core text blocks. Reference blocks resolve their data from
  * the store/CPTs at render time, so pages stay thin and editorial.
  *
  * All copy is grounded in verified brand facts (founders, the garage origin,
@@ -57,8 +57,6 @@ return array(
 
 <!-- wp:gramo/locations {"heading":"Dónde encontrarnos"} /-->
 
-<!-- wp:gramo/testimonials {"heading":"Lo que se dice en barra"} /-->
-
 <!-- wp:gramo/cta-band {"heading":"Café en casa, cada mes","text":"Suscríbete y recibe un origen distinto cada mes, con sorpresas de la casa.","cta":{"label":"Ver suscripciones","url":"/suscripciones/"},"media":{"id":0,"url":"@escena-stickers","alt":"Decenas de stickers ilustrados de Gramo extendidos uno sobre otro, en colores saturados."}} /-->
 BLOCKS
 			,
@@ -86,8 +84,6 @@ BLOCKS
 <!-- wp:gramo/menu-section {"sectionSlug":"cafe","headingOverride":"From the bar"} /-->
 
 <!-- wp:gramo/locations {"heading":"Where to find us"} /-->
-
-<!-- wp:gramo/testimonials {"heading":"Heard at the bar"} /-->
 
 <!-- wp:gramo/cta-band {"heading":"Coffee at home, every month","text":"Subscribe and receive a different origin each month, with small extras from the house.","cta":{"label":"See subscriptions","url":"/en/subscriptions/"},"media":{"id":0,"url":"@escena-stickers","alt":"Dozens of illustrated Gramo stickers spread one over another in saturated colour."}} /-->
 BLOCKS
